@@ -29,13 +29,13 @@ public :
         puts("this is me");
     }
 };
+
 void    f(void)
 {
     system("leaks a.out");
 }
 int main()
 {
-    atexit(f);
     employee employee1 = employee();
     employee employee2;
     employee1.anoonce();
