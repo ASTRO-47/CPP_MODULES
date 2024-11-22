@@ -6,7 +6,7 @@
 /*   By: iez-zagh <iez-zagh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 19:19:02 by iez-zagh          #+#    #+#             */
-/*   Updated: 2024/11/22 00:20:03 by iez-zagh         ###   ########.fr       */
+/*   Updated: 2024/11/22 22:02:16 by iez-zagh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,7 @@ void    Contact::list_book()
         std::cout << (this->first_name).substr(0, 9) << ".|";
     else
         std::cout << this->first_name << "|";
-    
     len = this->last_name.length();
-    
     if ((10-len) < 0)
         lenght = 0;
     else
@@ -52,8 +50,6 @@ void    Contact::list_book()
         std::cout << (this->last_name).substr(0, 9) << ".|";
     else
      std::cout << this->last_name << "|";
-    
-    
     len = this->nickname_name.length();
     if ((10-len) < 0)
         lenght = 0;
@@ -62,18 +58,25 @@ void    Contact::list_book()
     for (int i = 0; i < lenght; i++)
         std::cout << ' ';
     if ((10 - len) < 0)
-        std::cout << (this->nickname_name).substr(0, 9) << ".|";
+        std::cout << (this->nickname_name).substr(0, 9) << ".|\n";
     else
         std::cout << this->nickname_name << "|\n";
-    
 }
 
-std::string Contact::get_input(std::string message)
+std::string get_input(std::string message)
 {
-    std::cout << message;
-    std::string atr;
-    std::cin >> atr;
-    return (atr);
+    std::string name;
+    while (true)
+    {
+        std::cout << message;
+        std::getline(std::cin, name);
+        if (std::cin.eof())
+            exit(0);
+        if (name.empty())
+            std::cout << "Invalid input, please try again." << std::endl;
+        else
+          return name;
+    }
 }
 
 void    Contact::init()
@@ -83,4 +86,19 @@ void    Contact::init()
     this->nickname_name = get_input("nickname:");
     this->phone_number = get_input("phone number :");
     this->darkest_secret = get_input("darkest secret :");
+}
+
+void    Contact::show_infos()
+{
+    if (this->first_name.empty() || this->last_name.empty() || this->nickname_name.empty())
+    {
+        std::cout<< "no one with this index in the phonebook\n";
+        return ;
+    }
+    std::cout << std::endl;
+    std::cout << "---->> CONTACT #" << index << " <<----" << std::endl;
+    std::cout << "first Name:\t" << this->first_name << std::endl;
+    std::cout << "last Name:\t" << this->last_name << std::endl;
+    std::cout << "nickname:\t" << this->nickname_name << std::endl;
+    std::cout << std::endl;
 }
