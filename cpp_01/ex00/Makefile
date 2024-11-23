@@ -3,11 +3,11 @@ FLAGS = -Wall -Wextra -Werror
 
 CC = c++ -std=c++98
 
-SOURCES =  Account.cpp tests.cpp
+SOURCES =  main.cpp Zombie.cpp newZombie.cpp randomChump.cpp
 OBJECTS = $(SOURCES:.cpp=.o)
 
-NAME = Account
-HEADERS = Account.hpp
+NAME = Zombie
+HEADERS = Zombie.hpp
 RM = rm -f
 
 #Colors:
@@ -16,12 +16,6 @@ YELLOW		=	\e[93;5;226m
 GRAY		=	\e[33;2;37m
 RESET		=	\e[0m
 CURSIVE		=	\e[33;3m
-
-
-
-
-
-
 
 
 %.o: %.cpp $(HEADERS)

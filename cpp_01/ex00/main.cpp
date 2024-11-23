@@ -1,33 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Contact.hpp                                        :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iez-zagh <iez-zagh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/21 19:23:14 by iez-zagh          #+#    #+#             */
-/*   Updated: 2024/11/23 14:01:34 by iez-zagh         ###   ########.fr       */
+/*   Created: 2024/11/23 17:17:07 by iez-zagh          #+#    #+#             */
+/*   Updated: 2024/11/23 18:22:58 by iez-zagh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONTACT_HPP
-#define CONTACT_HPP
+#include "Zombie.hpp"
 
-#include <iostream>
+int main()
+{
+    std::cout << "creating new zombie on stack\n";
+    randomChump("bagito");
+    
+    std::cout << "creating new zombie on heap\n";
+    Zombie *zombie = newZombie("Foooo");
+    zombie->announce();
+    delete(zombie);
+}
 
-class Contact{
-    private:
-        std::string first_name;
-        std::string last_name;
-        std::string nickname_name;
-        std::string phone_number;
-        std::string darkest_secret;
-        int     index;
-    public:
-       void init();
-       void  set_index(int ind);
-       void list_book();
-       void show_infos();
-};
-
-#endif

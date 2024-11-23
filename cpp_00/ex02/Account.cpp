@@ -7,21 +7,23 @@ int Account::_totalAmount = 0;
 int Account::_totalNbDeposits = 0;
 int Account::_totalNbWithdrawals = 0;
 
+
+// getting the time from 1970's then convert it to [YYYYMMDD_HHMMSS]
+
 void Account::_dispalyTimestamp()
 {
-    return ;
     std::time_t curremt_time = std::time(NULL);
     struct tm* local_time = std::localtime(&curremt_time);
     char buffer[20];
     std::strftime(buffer, sizeof(buffer), "[%Y%m%d_%H%M%S]", local_time);
-    std::cout << buffer<< " ";
+    std::cout << buffer << " ";
 }
 
 int     Account::getNbAccounts()
 {
     return (_nbAccounts);
 }
-
+// display the insfos about the initialazed object
 Account::Account(int initial_deposit)
 {
     this->_dispalyTimestamp();   
@@ -36,7 +38,6 @@ Account::Account(int initial_deposit)
     _totalAmount += initial_deposit;
 
 }
-
 
 int Account::checkAmount() const
 {
