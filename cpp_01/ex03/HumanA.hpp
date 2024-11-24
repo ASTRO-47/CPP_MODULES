@@ -6,12 +6,12 @@
 /*   By: iez-zagh <iez-zagh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 15:17:57 by iez-zagh          #+#    #+#             */
-/*   Updated: 2024/11/24 16:11:32 by iez-zagh         ###   ########.fr       */
+/*   Updated: 2024/11/24 18:14:19 by iez-zagh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HUMANB_HPP
-#define HUMANB_HPP
+#ifndef HUMANA_HPP
+#define HUMANA_HPP
 
 #include "Weapon.hpp"
 
@@ -19,10 +19,11 @@ class HumanA
 {
 private:
     std::string name;
-public:
-    HumanA(std::string name, Weapon w);
     Weapon weapon;
-    void    attack();
+public:
+    HumanA(std::string name_, Weapon &w);
+    void    setWeapon(Weapon& w);
+    void    attack();//make it const
 };
 
 #endif
