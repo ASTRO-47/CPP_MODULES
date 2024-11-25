@@ -16,7 +16,7 @@ GRAY		=	\e[33;2;37m
 RESET		=	\e[0m
 CURSIVE		=	\e[33;3m
 
-%.o:%.cpp $(HREADERS)
+%.o:%.cpp $(HEADERS)
 	@$(CC) $(FLAGS) -c $< -o $@
 
 all : $(NAME)

@@ -6,7 +6,7 @@
 /*   By: iez-zagh <iez-zagh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 15:17:57 by iez-zagh          #+#    #+#             */
-/*   Updated: 2024/11/24 18:14:19 by iez-zagh         ###   ########.fr       */
+/*   Updated: 2024/11/25 20:38:06 by iez-zagh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ class HumanA
 {
 private:
     std::string name;
-    Weapon weapon;
+    Weapon &weapon;
 public:
     HumanA(std::string name_, Weapon &w);
     void    setWeapon(Weapon& w);

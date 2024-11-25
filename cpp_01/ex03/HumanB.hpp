@@ -6,7 +6,7 @@
 /*   By: iez-zagh <iez-zagh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 15:24:11 by iez-zagh          #+#    #+#             */
-/*   Updated: 2024/11/24 18:11:23 by iez-zagh         ###   ########.fr       */
+/*   Updated: 2024/11/25 20:54:18 by iez-zagh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ private:
     Weapon *weapon;
 public:
     HumanB(std::string name_);
-    void    setWeapon(Weapon& w);
+    void    setWeapon(Weapon &w);
     void    attack();
 };
 
