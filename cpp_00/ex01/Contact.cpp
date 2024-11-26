@@ -6,7 +6,7 @@
 /*   By: iez-zagh <iez-zagh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 19:19:02 by iez-zagh          #+#    #+#             */
-/*   Updated: 2024/11/22 22:02:16 by iez-zagh         ###   ########.fr       */
+/*   Updated: 2024/11/23 17:06:32 by iez-zagh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,16 @@ void    Contact::list_book()
         std::cout << this->nickname_name << "|\n";
 }
 
+bool    isall_spaces(std::string str)
+{
+    for (size_t i =0;i<str.length();i++)
+    {
+        if (str[i]!=' ')
+            return 1;
+    }
+    return 0;
+}
+
 std::string get_input(std::string message)
 {
     std::string name;
@@ -72,7 +82,7 @@ std::string get_input(std::string message)
         std::getline(std::cin, name);
         if (std::cin.eof())
             exit(0);
-        if (name.empty())
+        if (!isall_spaces(name))
             std::cout << "Invalid input, please try again." << std::endl;
         else
           return name;

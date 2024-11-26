@@ -6,7 +6,7 @@
 #    By: iez-zagh <iez-zagh@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/21 09:48:00 by iez-zagh          #+#    #+#              #
-#    Updated: 2024/11/21 16:07:50 by iez-zagh         ###   ########.fr        #
+#    Updated: 2024/11/23 17:12:42 by iez-zagh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ SOURCES =  megaphone.cpp
 
 NAME = megaphone
 
-RM = rm
+RM = rm -f
 
 #Colors:
 GREEN		=	\e[92;5;118m

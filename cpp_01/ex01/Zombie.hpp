@@ -6,7 +6,7 @@
 /*   By: iez-zagh <iez-zagh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 18:25:40 by iez-zagh          #+#    #+#             */
-/*   Updated: 2024/11/24 10:44:23 by iez-zagh         ###   ########.fr       */
+/*   Updated: 2024/11/24 11:12:14 by iez-zagh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ private:
     std::string name;
 public:
     Zombie();
-    ~Zombie();
     void    announce();
     void    set_name(std::string _name);
 };

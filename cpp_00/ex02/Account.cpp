@@ -16,7 +16,7 @@ void Account::_dispalyTimestamp()
     struct tm* local_time = std::localtime(&curremt_time);
     char buffer[20];
     std::strftime(buffer, sizeof(buffer), "[%Y%m%d_%H%M%S]", local_time);
-    std::cout << buffer << " ";
+    std::cout << buffer<< " ";
 }
 
 int     Account::getNbAccounts()

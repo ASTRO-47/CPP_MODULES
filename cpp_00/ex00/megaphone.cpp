@@ -12,8 +12,6 @@ int main(int ac, char **av)
 			int j = 0;
 			while (av[i][j])
 				std::cout << (char)toupper(av[i][j++]);
-			if (i < ac - 1)
-				std::cout << ' ';
 			i++;
 		}
 	}

@@ -6,7 +6,7 @@
 /*   By: iez-zagh <iez-zagh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 16:18:30 by iez-zagh          #+#    #+#             */
-/*   Updated: 2024/11/22 21:17:20 by iez-zagh         ###   ########.fr       */
+/*   Updated: 2024/11/23 16:58:54 by iez-zagh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,7 @@ int    PhoneBook::get_index()
         if (index.length() < 3 && check_number(index) && !index.empty() && in_ >= 0 && in_ <= 7)
             return (in_) ;
         else
-        {
             std::cout << "Invalid input, please try again.\n" << std::flush;
-        }
     }
     return (in_);
 }

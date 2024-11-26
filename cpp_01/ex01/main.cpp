@@ -6,7 +6,7 @@
 /*   By: iez-zagh <iez-zagh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 18:25:38 by iez-zagh          #+#    #+#             */
-/*   Updated: 2024/11/24 10:49:24 by iez-zagh         ###   ########.fr       */
+/*   Updated: 2024/11/24 11:15:04 by iez-zagh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,10 @@
 
 int main()
 {
-    int N = 10;
+    int N = 5;
     Zombie *z = zombieHorde(N, "bagito");
+    if (!z)
+        exit (1);
     for (int i=0;i < N;i++)
         z[i].announce();
     delete[] z;
