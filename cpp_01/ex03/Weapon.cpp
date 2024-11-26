@@ -1,29 +1,19 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Weapon.cpp                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: iez-zagh <iez-zagh@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/24 16:10:26 by iez-zagh          #+#    #+#             */
-/*   Updated: 2024/11/25 20:16:01 by iez-zagh         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 
 #include "Weapon.hpp"
 
-Weapon::Weapon(std::string type_)
+void    Weapon::setType(std::string type_)
 {
-    this->setType(type_);
+    this->type = type_;
 }
 
-void    Weapon::setType(std::string newtype)
+const   std::string&    Weapon::getType()
 {
-    this->type = newtype;
+    return this->type;
 }
 
-const std::string&   Weapon::getType()
+
+Weapon::Weapon(std::string type)
 {
-    return (this->type);
+    this->setType(type);
 }
