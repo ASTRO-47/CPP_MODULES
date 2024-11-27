@@ -2,11 +2,11 @@ FLAGS = -Wall -Wextra -Werror
 
 CC = c++ -std=c++98
 
-SOURCES =  main.cpp Harl.cpp 
+SOURCES =  main.cpp sed.cpp 
 OBJECTS = $(SOURCES:.cpp=.o)
 
 NAME = sed
-HEADERS = Harl.hpp
+HEADERS = sed.hpp
 RM = rm -f
 
 #Colors:

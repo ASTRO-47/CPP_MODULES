@@ -6,7 +6,7 @@
 /*   By: iez-zagh <iez-zagh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 18:25:40 by iez-zagh          #+#    #+#             */
-/*   Updated: 2024/11/24 11:12:14 by iez-zagh         ###   ########.fr       */
+/*   Updated: 2024/11/26 15:49:09 by iez-zagh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,6 @@ public:
     void    set_name(std::string _name);
 };
 
-Zombie* zombieHorde( int N, std::string name );
+Zombie* zombieHorde( int N, std::string name);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: iez-zagh <iez-zagh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 19:19:02 by iez-zagh          #+#    #+#             */
-/*   Updated: 2024/11/23 17:06:32 by iez-zagh         ###   ########.fr       */
+/*   Updated: 2024/11/26 16:04:23 by iez-zagh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,5 +110,7 @@ void    Contact::show_infos()
     std::cout << "first Name:\t" << this->first_name << std::endl;
     std::cout << "last Name:\t" << this->last_name << std::endl;
     std::cout << "nickname:\t" << this->nickname_name << std::endl;
+    std::cout << "phone number:\t" << this->phone_number << std::endl;
+    std::cout << "darkest secret:\t" << this->darkest_secret << std::endl;
     std::cout << std::endl;
 }
