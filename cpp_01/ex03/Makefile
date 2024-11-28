@@ -1,6 +1,6 @@
 NAME = weapon
 CC = c++ -std=c++98
-FLAGS = -Wall -Wextra -Wall
+FLAGS = -Wall -Wextra -Wall //TODO
 
 SOURCES = main.cpp HumanB.cpp HumanA.cpp Weapon.cpp
 HEADERS = HumanA.hpp HumanB.hpp Weapon.hpp
