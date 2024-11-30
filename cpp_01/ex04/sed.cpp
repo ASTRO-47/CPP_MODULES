@@ -18,34 +18,37 @@ int    Sed::read_replace(Sed &obj, std::ifstream &file)
     std::string rest;
     std::string begin;
     std::string replace;
+    std::string buffer;
+    if (!std::getline(file, buffer, '\0'))
+    {
+        std::cerr << "can not read from file" << std::endl;
+        // return (out_file.close(), 1);
+        return 1;
+    }
+    if (buffer.empty()) // even through getline return when nothing readed
+    {
+        std::cerr << "empty file" << std::endl;
+        // out_file.close();
+        return 1;
+    }
     std::ofstream out_file(obj.f_name + ".replace");
     if (!out_file.is_open())
     {
         std::cerr << "can not open file" << std::endl;
         return (1);
     }
-    std::string buffer;
-    if (!std::getline(file, buffer, '\0'))
-    {
-        std::cerr << "can not read from file" << std::endl;
-        return (out_file.close(), 1);
-    }
-    if (buffer.empty())
-    {
-        std::cerr << "empty file" << std::endl;
-        out_file.close();
-        return 1;
-    }
     pos = buffer.find(s1);
     replace = buffer;
     while (pos != -1)
     {
+        if (obj.s1.empty())
+            break ;
         begin = replace.substr(0, pos);
         rest = replace.substr(pos + s1.length(), buffer.length());
         replace = begin;
         replace += s2;
         replace += rest;
-        pos = replace.find(s1, pos + s1.length());
+        pos = replace.find(s1, pos + s2.length());
     }
     out_file << replace;
     out_file.close();

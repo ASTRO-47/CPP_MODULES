@@ -6,7 +6,7 @@
 /*   By: iez-zagh <iez-zagh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 18:19:18 by iez-zagh          #+#    #+#             */
-/*   Updated: 2024/11/24 16:07:47 by iez-zagh         ###   ########.fr       */
+/*   Updated: 2024/11/28 14:33:20 by iez-zagh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,4 @@ Zombie* newZombie( std::string name )
     if (!zombie)
         return (NULL);
     return zombie;
-}
-
- void randomChump( std::string name ){
-    Zombie zombie(name);
-    zombie.announce();
 }

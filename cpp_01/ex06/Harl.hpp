@@ -9,11 +9,10 @@ class Harl{
     void warning( void );
     void error( void );
 public:
+    static int hello;
     Harl();
     ~Harl();
     void complain( std::string level );
 };
-
-typedef void (Harl::*ptr_func)();
 
 #endif

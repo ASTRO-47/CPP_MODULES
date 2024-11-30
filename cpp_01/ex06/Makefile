@@ -1,12 +1,12 @@
-NAME = weapon
-CC = c++ -std=c++98
 FLAGS = -Wall -Wextra -Werror
 
-SOURCES = main.cpp HumanB.cpp HumanA.cpp Weapon.cpp
-HEADERS = HumanA.hpp HumanB.hpp Weapon.hpp
+CC = c++ -std=c++98
 
+SOURCES =  main.cpp Harl.cpp
 OBJECTS = $(SOURCES:.cpp=.o)
 
+NAME = harlFilter
+HEADERS = Harl.hpp
 RM = rm -f
 
 #Colors:
