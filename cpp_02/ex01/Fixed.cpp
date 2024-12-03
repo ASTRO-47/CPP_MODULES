@@ -1,6 +1,6 @@
 #include "Fixed.hpp"
 
-Fixed::Fixed(const int n) : fixed_point(n)
+Fixed::Fixed(const int n) : fixed_point(n * (1 << Fixed::fr_bits))
 {
     std::cout << "Int constructor called" << std::endl;
     
@@ -12,6 +12,13 @@ Fixed::Fixed(const float n) : fixed_point(roundf(n * (1 << Fixed::fr_bits)))
 
 }
 
+float Fixed::toFloat( void ) const{
+    return (float)(this->fixed_point) / (1 << Fixed::fr_bits);
+}
+
+int Fixed::toInt( void ) const{
+    return this->fixed_point  >> Fixed::fr_bits;
+}
 
 Fixed::Fixed() : fixed_point(0)
 {
@@ -21,7 +28,7 @@ Fixed::Fixed() : fixed_point(0)
 Fixed::~Fixed()
 {
     std::cout << "Destructor called" <<std::endl;
-    // no dynamic allocation to delete
+    // no dynamic allocation in the class
 }
 
 Fixed::Fixed( const Fixed  &obj)
@@ -40,8 +47,8 @@ Fixed& Fixed::operator=(const Fixed &obj)
     return *this;
 }
 
-std::ostream &operator<<(std::ostream &out, Fixed &i)
+std::ostream &operator<<(std::ostream &out, Fixed const &i)
 {
-    out << i.to
+    out << i.toFloat();
     return out;
 }

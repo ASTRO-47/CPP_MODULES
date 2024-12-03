@@ -3,6 +3,7 @@
 
 
 #include <iostream>
+#include <cmath>
 
 class Fixed {
 private:
@@ -15,10 +16,10 @@ public:
     ~Fixed();
     Fixed(const Fixed &obj);
     Fixed& operator=(const Fixed &obj);
-    // float toFloat( void ) const;
-    // int toInt( void ) const;
+    float toFloat( void ) const;
+    int toInt( void ) const;
 };
 
-std::ostream &operator<<(std::ostream &out, Fixed &i);
+std::ostream &operator<<(std::ostream &out, Fixed const &i);
 
 #endif
