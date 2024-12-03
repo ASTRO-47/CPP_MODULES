@@ -7,7 +7,7 @@
 
 class Fixed {
 private:
-    int fixed_point;
+    int fixed_point_value;
     static const int fr_bits;
 public:
     Fixed(const int n);
@@ -20,6 +20,6 @@ public:
     int toInt( void ) const;
 };
 
-std::ostream &operator<<(std::ostream &out, Fixed const &i);
+std::ostream& operator<<(std::ostream &out, Fixed const &i);
 
 #endif
