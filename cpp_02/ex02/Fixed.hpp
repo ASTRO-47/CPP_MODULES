@@ -3,7 +3,8 @@
 
 
 #include <iostream>
-#include <cmath>
+
+// #include <cmath>
 
 class Fixed {
 private:
@@ -16,6 +17,7 @@ public:
     ~Fixed();
     Fixed(const Fixed &obj);
     Fixed& operator=(const Fixed &obj);
+    Fixed operator*(const Fixed &other);
     float toFloat( void ) const;
     int toInt( void ) const;
 };

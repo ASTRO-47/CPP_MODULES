@@ -52,3 +52,9 @@ std::ostream& operator<<(std::ostream &out, Fixed const &i)
     out << i.toFloat();
     return out;
 }
+
+Fixed   Fixed::operator*(Fixed const &other)
+{
+    std::cout << other.fixed_point_value / 256 << " " << (float)this->fixed_point_value / 256<< "]\n";
+    return (Fixed((float)this->fixed_point_value * other.fixed_point_value));
+}
