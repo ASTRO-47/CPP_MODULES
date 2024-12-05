@@ -2,13 +2,13 @@
 
 Fixed::Fixed(const int n) : fixed_point_value(n * (1 << Fixed::fr_bits))
 {
-    std::cout << "Int constructor called" << std::endl;
+    // std::cout << "Int constructor called" << std::endl;
     
 }
 
 Fixed::Fixed(const float n) : fixed_point_value(roundf(n * (1 << Fixed::fr_bits)))
 {
-    std::cout << "Float constructor called" << std::endl;
+    // std::cout << "Float constructor called" << std::endl;
 
 }
 
@@ -22,30 +22,34 @@ int Fixed::toInt( void ) const{
 
 Fixed::Fixed() : fixed_point_value(0)
 {
-    std::cout << "Default constructor called" << std::endl;
+    // std::cout << "Default constructor called" << std::endl;
 }
 
 Fixed::~Fixed()
 {
-    std::cout << "Destructor called" <<std::endl;
+    // std::cout << "Destructor called" <<std::endl;
     // no dynamic allocation in the class
 }
 
-Fixed::Fixed( const Fixed  &obj)
+Fixed::Fixed( const Fixed  &obj) //copy constructor
 {
-    std::cout << "Copy constructor called" << std::endl;
+    // std::cout << "Copy constructor called" << std::endl;
     this->fixed_point_value = obj.fixed_point_value;
 }
 
 
 Fixed& Fixed::operator=(const Fixed &obj)
 {
-    std::cout << "Copy assignment operator called" << std::endl;
+    // std::cout << "Copy assignment operator called" << std::endl;
     if (this == &obj)
         return *this;
     this->fixed_point_value = obj.fixed_point_value;;
     return *this;
 }
+
+
+
+        /*the insertion operator overloading*/
 
 std::ostream& operator<<(std::ostream &out, Fixed const &i)
 {
@@ -53,8 +57,53 @@ std::ostream& operator<<(std::ostream &out, Fixed const &i)
     return out;
 }
 
+
+
+        /*arithmetic operators int*/
 Fixed   Fixed::operator*(Fixed const &other)
 {
-    std::cout << other.fixed_point_value / 256 << " " << (float)this->fixed_point_value / 256<< "]\n";
-    return (Fixed((float)this->fixed_point_value * other.fixed_point_value));
+    return (Fixed(this->toFloat() * other.toFloat()));
 }
+
+Fixed   Fixed::operator+(Fixed const &other)
+{
+    return (Fixed(this->toFloat() + other.toFloat()));
+}
+
+/*pre and post increment*/
+
+Fixed&   Fixed::operator++(void)
+{
+    this->fixed_point_value++;
+    return *this;
+}
+
+Fixed  Fixed::operator++(int) // dummy var to intrepet the post increment
+{
+    Fixed tmp = *this;
+    this->fixed_point_value++;
+    return tmp;
+}
+
+Fixed&   Fixed::operator--(void)
+{
+    this->fixed_point_value--;
+    return *this;
+}
+
+Fixed  Fixed::operator--(int) // dummy var to intrepet the post increment
+{
+    Fixed tmp = *this;
+    this->fixed_point_value--;
+    return tmp;
+}
+
+
+
+// 0
+// 0.00390625
+// 0.00390625
+// 0.00390625
+// 0.0078125
+// 10.1016
+// 10.1016

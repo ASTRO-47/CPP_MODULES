@@ -18,6 +18,11 @@ public:
     Fixed(const Fixed &obj);
     Fixed& operator=(const Fixed &obj);
     Fixed operator*(const Fixed &other);
+    Fixed operator+(const Fixed &other);
+    Fixed& operator++(void);
+    Fixed operator++(int );
+    Fixed& operator--(void);
+    Fixed operator--(int );
     float toFloat( void ) const;
     int toInt( void ) const;
 };
