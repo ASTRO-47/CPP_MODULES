@@ -78,9 +78,7 @@ Fixed   Fixed::operator/(Fixed const &other) const
     return (Fixed(this->toFloat() / other.toFloat()));
 }
 
-
-
-     /*pre and post increment*/
+    /*pre and post increment*/
 
 Fixed&   Fixed::operator++(void)
 {
@@ -109,7 +107,7 @@ Fixed  Fixed::operator--(int) // dummy var to intrepet the post increment
 }
 
 
-        /*comparison operators*/
+    /*comparison operators*/
 
 bool    Fixed::operator>( const Fixed &rhs ) const {
     return (this->fixed_point_value > rhs.fixed_point_value);
@@ -164,6 +162,12 @@ const Fixed& Fixed::max(const Fixed &a, const Fixed &b)
     if (a > b)
         return (a);
     return (b);
+}
+
+
+void    Fixed::set_value(void)
+{
+    this->fixed_point_value *= -1;
 }
 
 

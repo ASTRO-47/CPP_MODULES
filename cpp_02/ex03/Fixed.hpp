@@ -45,6 +45,7 @@ public:
 
     float toFloat( void ) const;
     int toInt( void ) const;
+    void    set_value(void);
 };
 
 std::ostream& operator<<(std::ostream &out, Fixed const &i);
