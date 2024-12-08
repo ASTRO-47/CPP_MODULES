@@ -5,7 +5,7 @@ CC = c++ -std=c++98
 SOURCES =  main.cpp ClapTrap.cpp
 OBJECTS = $(SOURCES:.cpp=.o)
 
-NAME = Fixed
+NAME = ClapTrap
 HEADERS = ClapTrap.hpp 
 RM = rm -f
 

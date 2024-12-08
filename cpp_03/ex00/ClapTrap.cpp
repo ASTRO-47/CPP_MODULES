@@ -19,7 +19,7 @@ ClapTrap::~ClapTrap(void)
 
 void    ClapTrap::attack(const std::string &target)
 {
-    std::cout << ClapTrap <<  "attacks" << target <<  "causing" <<  <damage>  << "points of damage!" << std::endl;
+    std::cout << *this <<  "attacks" << target <<  "causing" << this->at_damage << "points of damage!" << std::endl;
 }
 
 std::ostream& operator<<(std::ostream &out, const ClapTrap &other)
@@ -28,6 +28,7 @@ std::ostream& operator<<(std::ostream &out, const ClapTrap &other)
     return out;
 }
 
-const std::string& ClapTrap::get_name(){
+std::string ClapTrap::get_name()
+{
     return (this->name);
 }
