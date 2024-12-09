@@ -14,12 +14,12 @@ public:
     ClapTrap(std::string name_);
     ~ClapTrap();
 
-    std::string get_name();
+    std::string get_name() const;
     void attack(const std::string& target);
     void takeDamage(unsigned int amount);
     void beRepaired(unsigned int amount);
 };
 
-std::ostream& operator<<(std::ostream &out, const ClapTrap &ohter);
+std::ostream& operator<<(std::ostream &out, const ClapTrap &other);
 
 #endif
