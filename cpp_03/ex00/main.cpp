@@ -2,7 +2,12 @@
 
 int main()
 {
-    ClapTrap imad("imad");
-    std::cout << imad.get_name() << std::endl;
 
+    ClapTrap fooo("fooo");
+    ClapTrap braiin("braiin");
+
+
+    fooo.attack("braiin");
+    braiin.takeDamage(9);
+    braiin.beRepaired(5);
 }

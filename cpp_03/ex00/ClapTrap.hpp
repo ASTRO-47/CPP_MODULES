@@ -5,21 +5,19 @@
 
 class ClapTrap{
 private:
-    const std::string name;  //is it should be const or not think about it
+    std::string name;  //is it should be const or not think about it
     unsigned int h_point;
     unsigned int e_points;
     unsigned int at_damage;
 public:
-    ClapTrap(void);
     ClapTrap(std::string name_);
+    ClapTrap(const ClapTrap &other);
+    ClapTrap &operator=(const ClapTrap &other);
     ~ClapTrap();
 
-    std::string get_name() const;
     void attack(const std::string& target);
     void takeDamage(unsigned int amount);
     void beRepaired(unsigned int amount);
 };
-
-std::ostream& operator<<(std::ostream &out, const ClapTrap &other);
 
 #endif
