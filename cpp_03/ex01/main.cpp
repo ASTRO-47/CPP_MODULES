@@ -1,13 +1,14 @@
-#include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
 
-int main()
+int main( void )
 {
+    ScavTrap ash( "Ash" );
+    ScavTrap ash2( ash );
 
-    ClapTrap fooo("fooo");
-    ClapTrap braiin("braiin");
+    // ash.attack( "the air" );
+    // ash.takeDamage( 10 );
+    // ash.beRepaired( 10 );
+    ash.guardGate();
 
-
-    fooo.attack("braiin");
-    braiin.takeDamage(9);
-    braiin.beRepaired(5);
+    return 0;
 }

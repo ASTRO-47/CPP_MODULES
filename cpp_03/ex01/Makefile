@@ -2,11 +2,11 @@ FLAGS = -Wall -Wextra -Werror -O0
 
 CC = c++ -std=c++98
 
-SOURCES =  main.cpp ClapTrap.cpp
+SOURCES =  main.cpp ClapTrap.cpp ScavTrap.cpp
 OBJECTS = $(SOURCES:.cpp=.o)
 
-NAME = ClapTrap
-HEADERS = ClapTrap.hpp 
+NAME = ScavTrap
+HEADERS = ClapTrap.hpp ScavTrap.hpp
 RM = rm -f
 
 #Colors:
