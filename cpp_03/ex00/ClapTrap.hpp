@@ -10,6 +10,7 @@ private:
     unsigned int e_points;
     unsigned int at_damage;
 public:
+    ClapTrap(void);
     ClapTrap(std::string name_);
     ClapTrap(const ClapTrap &other);
     ClapTrap &operator=(const ClapTrap &other);

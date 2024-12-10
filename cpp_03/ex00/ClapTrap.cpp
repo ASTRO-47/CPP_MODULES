@@ -1,8 +1,12 @@
 #include "ClapTrap.hpp"
- 
+
+ClapTrap::ClapTrap(){
+    std::cout << "default constructor called" << std::endl;
+}
+
 ClapTrap::ClapTrap(std::string name_) : name(name_), h_point(10), e_points(10), at_damage(0)
 {
-    std::cout << "default constructor called" << std::endl;
+    std::cout << "ClapTrap " << name_ << " is born" << std::endl;
 }
 
 ClapTrap::~ClapTrap(void)
