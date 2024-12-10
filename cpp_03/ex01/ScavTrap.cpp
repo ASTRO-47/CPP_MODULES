@@ -18,7 +18,7 @@ ScavTrap& ScavTrap::operator=(const ScavTrap &other)
 {
     std::cout << "copy assigment for ScavTrap called" << std::endl;
     if (this == &other)
-        return *this; // just avoid compiler yalling
+        return *this; // all the atributtes copying handeled by the ClapTrap copy assigement
     return *this;
 }
 
@@ -31,7 +31,7 @@ void   ScavTrap::guardGate()
     std::cout << "ScavTrap " << this->name << " is now in Gate keeper mode" << std::endl;
 }
 
-void    ClapTrap::attack(const std::string &target)
+void    ScavTrap::attack(const std::string &target)
 {
     if (!this->h_point)
     {
