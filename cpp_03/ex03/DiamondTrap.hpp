@@ -14,7 +14,7 @@ public:
     ~DiamondTrap();
     DiamondTrap(std::string name);
 
-    using   ScavTrap::attack; //even though there is one instance of this 
+    void    attack(const std::string &target); //even though there is one instance of this 
     void whoAmI();
 };
 
