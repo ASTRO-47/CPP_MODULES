@@ -9,7 +9,8 @@ DiamondTrap::DiamondTrap(std::string name_): ClapTrap(name_), ScavTrap(name_), F
     std::cout << "DiamondTrap " << name_  << " is born" << std::endl;
 }
 
-DiamondTrap::DiamondTrap() : ScavTrap(), FragTrap(){
+DiamondTrap::DiamondTrap() : ClapTrap(), ScavTrap(), FragTrap()
+{
     std::cout << "default constructor for DiamondTrap called"<< std::endl;
 }
 
