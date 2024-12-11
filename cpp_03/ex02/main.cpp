@@ -4,12 +4,14 @@
 int main( void )
 {
     FragTrap ash( "Ash" );
-    FragTrap ash2( ash);
+    FragTrap ash2 (ash);
 
-    ash.attack( "the air" );
-    ash.takeDamage( 10 );
-    ash.beRepaired( 10 );
-    ash.highFivesGuys();
+    ash2.get_datat();
+    ash.get_datat();
+    // ash.attack( "the air" );
+    // ash.takeDamage( 10 );
+    // ash.beRepaired( 10 );
+    // ash.highFivesGuys();
 
     return 0;
 }

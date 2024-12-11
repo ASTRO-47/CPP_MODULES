@@ -12,7 +12,9 @@ public:
     FragTrap(std::string name_);
     FragTrap(const FragTrap &other);
     FragTrap &operator=(const FragTrap& other);
-
+    void get_datat(){
+        std::cout << this->h_point << std::endl;
+    }
     void highFivesGuys(void);
 
     ~FragTrap();
