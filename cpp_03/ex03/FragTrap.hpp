@@ -8,7 +8,7 @@ class FragTrap : virtual public ClapTrap
 private:
     //
 public:
-    FragTrap();
+    FragTrap(); //need to know which one is selected in the constructing step
     FragTrap(std::string name_);
     FragTrap(const FragTrap &other);
     FragTrap &operator=(const FragTrap& other);

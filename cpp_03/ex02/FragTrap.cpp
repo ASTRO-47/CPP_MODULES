@@ -1,6 +1,9 @@
 #include "FragTrap.hpp"
 
 FragTrap::FragTrap(std::string name_): ClapTrap(name_){
+    this->h_point = 100;
+    this->e_points = 100;
+    this->at_damage = 30;
     std::cout << "FragTrap " << name_  << " is born" << std::endl;
 
 }
@@ -30,20 +33,3 @@ void FragTrap::highFivesGuys(void)
 {
     std::cout << "FragTrap " << this->name << " high fives mate" << std::endl;
 }
-
-void    FragTrap::attack(const std::string &target)
-{
-    if (!this->h_point)
-    {
-        std::cout << "FragTrap "<< this->name << " is dead" << std::endl;
-        return ;
-    }
-    if (!this->e_points)
-    {
-        std::cout << "FragTrap " << this->name << " have no enough energy points to attack !!" << std::endl;
-        return ;
-    }
-    std::cout << "FragTrap " << this->name <<  " attacks " << target <<  " causing " << this->at_damage << " points of damage!" << std::endl;
-    this->e_points--;
-}
-

@@ -1,8 +1,10 @@
 #include "ScavTrap.hpp"
 
 ScavTrap::ScavTrap(std::string name_): ClapTrap(name_){
+    this->h_point = 100;
+    this->e_points = 50;
+    this->at_damage = 20;
     std::cout << "ScavTrap " << name_  << " is born" << std::endl;
-
 }
 
 ScavTrap::ScavTrap() : ClapTrap(){

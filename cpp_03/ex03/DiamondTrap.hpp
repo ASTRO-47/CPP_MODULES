@@ -2,7 +2,6 @@
 #define DIAMONDTRAP_HPP
 
 #include "FragTrap.hpp"
-#include "ClapTrap.hpp"
 
 class DiamondTrap  : public ScavTrap, public FragTrap
 {
@@ -14,7 +13,9 @@ public:
     DiamondTrap& operator=(const DiamondTrap &other); //cpy assigment
     ~DiamondTrap();
     DiamondTrap(std::string name);
-    //
+
+    using   ScavTrap::attack; //even though there is one instance of this 
+    void whoAmI();
 };
 
 #endif

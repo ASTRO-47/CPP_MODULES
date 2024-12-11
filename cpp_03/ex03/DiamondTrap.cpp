@@ -1,9 +1,12 @@
 #include "DiamondTrap.hpp"
 
-DiamondTrap::DiamondTrap(std::string name_): ClapTrap(name_), ScavTrap(name_), FragTrap(name_){
+DiamondTrap::DiamondTrap(std::string name_): ClapTrap(name_), ScavTrap(name_), FragTrap(name_){ //should build the claptrap first
     name = name_;
+    ClapTrap::name = name + "_clap_name";
+    FragTrap::h_point = 100;
+    ScavTrap::e_points = 50;
+    FragTrap::at_damage = 30;
     std::cout << "DiamondTrap " << name_  << " is born" << std::endl;
-
 }
 
 DiamondTrap::DiamondTrap() : ScavTrap(), FragTrap(){
@@ -23,6 +26,12 @@ DiamondTrap& DiamondTrap::operator=(const DiamondTrap &other)
     return *this;
 }
 
-DiamondTrap::~DiamondTrap(){
+DiamondTrap::~DiamondTrap()
+{
     std::cout << "destructor for DiamondTrap  called" << std::endl;
+}
+
+void    DiamondTrap::whoAmI()
+{
+    std::cout << "this is ScavTrap " << this->name << " and ClapTrap " << ClapTrap::name << " here" << std::endl;
 }

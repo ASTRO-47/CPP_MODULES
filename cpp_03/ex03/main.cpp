@@ -3,12 +3,15 @@
 int main( void )
 {
     DiamondTrap ash( "Ash" );
-    // DiamondTrap ash2( ash); 
+    DiamondTrap ash2( ash );
+    DiamondTrap ash3(".");
 
-    // ash.attack( "the air" );
-    // ash.takeDamage( 10 );
-    // ash.beRepaired( 10 );
-    // ash.highFivesGuys();
+    ash.whoAmI();
+    ash2.whoAmI();
+    ash3 = ash;
+    ash3.whoAmI();
 
-    return 0;
+    ash.attack( "the air" );
+    ash.takeDamage( 10 );
+    ash.beRepaired( 10 );
 }

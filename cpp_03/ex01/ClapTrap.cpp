@@ -6,7 +6,7 @@ ClapTrap::ClapTrap()
     std::cout << "default constructor for ClapTrap called" << std::endl;
 }
 
-ClapTrap::ClapTrap(std::string name_) : name(name_), h_point(100), e_points(50), at_damage(20)
+ClapTrap::ClapTrap(std::string name_) : name(name_), h_point(10), e_points(10), at_damage(0)
 {
     std::cout << "ClapTrap " << name_ << " is born" << std::endl;
 }
