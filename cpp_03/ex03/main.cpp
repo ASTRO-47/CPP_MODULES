@@ -1,10 +1,9 @@
-#include "FragTrap.hpp"
-#include "ScavTrap.hpp"
+#include "DiamondTrap.hpp"
 
 int main( void )
 {
     FragTrap ash( "Ash" );
-    FragTrap ash2( ash);
+    FragTrap ash2( ash); 
 
     ash.attack( "the air" );
     ash.takeDamage( 10 );
