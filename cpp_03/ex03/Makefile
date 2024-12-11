@@ -1,11 +1,11 @@
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror #variables shadowing
 
 CC = c++ -std=c++98
 
 SOURCES =  main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp DiamondTrap.cpp
 OBJECTS = $(SOURCES:.cpp=.o)
 
-NAME = FragTrap
+NAME = DiamondTrap
 HEADERS = ClapTrap.hpp ScavTrap.hpp FragTrap.hpp DiamondTrap.hpp
 RM = rm -f
 

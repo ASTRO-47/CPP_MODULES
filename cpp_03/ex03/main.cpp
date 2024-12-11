@@ -2,13 +2,13 @@
 
 int main( void )
 {
-    FragTrap ash( "Ash" );
-    FragTrap ash2( ash); 
+    DiamondTrap ash( "Ash" );
+    // DiamondTrap ash2( ash); 
 
-    ash.attack( "the air" );
-    ash.takeDamage( 10 );
-    ash.beRepaired( 10 );
-    ash.highFivesGuys();
+    // ash.attack( "the air" );
+    // ash.takeDamage( 10 );
+    // ash.beRepaired( 10 );
+    // ash.highFivesGuys();
 
     return 0;
 }

@@ -1,6 +1,7 @@
 #include "DiamondTrap.hpp"
 
-DiamondTrap::DiamondTrap(std::string name_): ScavTrap(name_), FragTrap(name_){
+DiamondTrap::DiamondTrap(std::string name_): ClapTrap(name_), ScavTrap(name_), FragTrap(name_){
+    name = name_;
     std::cout << "DiamondTrap " << name_  << " is born" << std::endl;
 
 }
@@ -9,7 +10,7 @@ DiamondTrap::DiamondTrap() : ScavTrap(), FragTrap(){
     std::cout << "default constructor for DiamondTrap called"<< std::endl;
 }
 
-DiamondTrap::DiamondTrap(const DiamondTrap &other) : ScavTrap(other), FragTrap(other)
+DiamondTrap::DiamondTrap(const DiamondTrap &other) : ClapTrap(other), ScavTrap(other), FragTrap(other)
 {
     std::cout << "copy constructor for DiamondTrap called" << std::endl;
 }
