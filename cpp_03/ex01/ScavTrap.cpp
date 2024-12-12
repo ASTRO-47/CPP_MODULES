@@ -13,14 +13,17 @@ ScavTrap::ScavTrap() : ClapTrap(){
 
 ScavTrap::ScavTrap(const ScavTrap &other) : ClapTrap(other)
 {
+    *this = other; // just need the copy assigement to be explicitly declared
     std::cout << "copy constructor for ScavTrap called" << std::endl;
 }
 
 ScavTrap& ScavTrap::operator=(const ScavTrap &other)
 {
+    if (this != &other)
+        ClapTrap::operator=(other);
+
+    // all the atributtes copying handeled by the ClapTrap copy assigement
     std::cout << "copy assigment for ScavTrap called" << std::endl;
-    if (this == &other)
-        return *this; // all the atributtes copying handeled by the ClapTrap copy assigement
     return *this;
 }
 

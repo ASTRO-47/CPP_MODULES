@@ -16,7 +16,6 @@ ClapTrap::~ClapTrap(void)
     std::cout << "destructor for ClapTrap called" << std::endl;
 }
 
-
 ClapTrap::ClapTrap(const ClapTrap &other)
 {
     *this = other;
@@ -25,12 +24,13 @@ ClapTrap::ClapTrap(const ClapTrap &other)
 
 ClapTrap& ClapTrap::operator=(const ClapTrap &other)
 {
-    if (this == &other)
-        return *this;
-    this->h_point = other.h_point;
-    this->at_damage = other.at_damage;
-    this->e_points = other.e_points;
-    this->h_point = other.h_point;
+    if (this != &other)
+    {
+        this->name = other.name;
+        this->h_point = other.h_point;
+        this->at_damage = other.at_damage;
+        this->e_points = other.e_points;
+    }
     std::cout << "copy assigment for ClapTrap called" << std::endl;
     return *this;
 }
@@ -56,6 +56,7 @@ void ClapTrap::takeDamage(unsigned int amount)
     if (this->h_point <= amount)
     {
         std::cout << "ClapTrap "<< this->name << " is dead" << std::endl;
+        h_point = 0;
         return ;
     }
     std::cout << "ClapTrap "<< this->name <<  " takes "  << amount  << " of damage!" << std::endl;

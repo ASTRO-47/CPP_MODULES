@@ -6,7 +6,6 @@ int main( void )
     ScavTrap ash2( ash );
 
     ash.attack( "the air" );
-    ash.takeDamage( 10 );
     ash.beRepaired( 10 );
     ash.guardGate();
 
