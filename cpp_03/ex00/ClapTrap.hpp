@@ -5,7 +5,7 @@
 
 class ClapTrap{
 private:
-    std::string name;  //is it should be const or not think about it
+    std::string name;
     unsigned int h_point;
     unsigned int e_points;
     unsigned int at_damage;

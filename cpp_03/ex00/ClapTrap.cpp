@@ -26,10 +26,10 @@ ClapTrap& ClapTrap::operator=(const ClapTrap &other)
     std::cout << "copy assigment operator called" << std::endl;
     if (this == &other)
         return *this;
-    this->h_point = other.h_point; // if we use just var names without this what should happen
+    this->name = other.name;
+    this->h_point = other.h_point;
     this->at_damage = other.at_damage;
     this->e_points = other.e_points;
-    this->h_point = other.h_point;
     return *this;
 }
 
