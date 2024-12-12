@@ -3,13 +3,12 @@
 
 int main( void )
 {
-    FragTkrap ash( "Ash" );
-    FragTrap ash2 (ash);
+    FragTrap ash( "Ash" );
+    FragTrap ash2(ash);
 
     ash.attack( "the air" );
-    ash.taeDamage( 10 );
-    ash.beRepaired( 10 );
-    ash.highFivesGuys();
+    ash2.takeDamage( 10 );
+    ash2.beRepaired( 10 );
 
     return 0;
 }
