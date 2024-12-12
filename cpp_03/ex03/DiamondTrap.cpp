@@ -1,6 +1,8 @@
 #include "DiamondTrap.hpp"
 
-DiamondTrap::DiamondTrap(std::string name_): ClapTrap(name_), ScavTrap(name_), FragTrap(name_){ //should build the claptrap first
+DiamondTrap::DiamondTrap(std::string name_): ClapTrap(name_), ScavTrap(name_), FragTrap(name_)
+{
+    //should build the claptrap first
     name = name_;
     ClapTrap::name = name + "_clap_name";
     FragTrap::h_point = 100;
@@ -23,8 +25,8 @@ DiamondTrap::DiamondTrap(const DiamondTrap &other) : ClapTrap(other.name + "_cla
 DiamondTrap& DiamondTrap::operator=(const DiamondTrap &other)
 {
     std::cout << "copy assigment for DiamondTrap called" << std::endl;
-    if (this == &other)
-        return *this; // all the atributtes copying handeled by the ClapTrap copy assigement
+    if (this != &other)
+        this->name = other.name; // all the atributtes copying handeled by the ClapTrap copy assigement
     return *this;
 }
 
@@ -35,7 +37,7 @@ DiamondTrap::~DiamondTrap()
 
 void    DiamondTrap::whoAmI()
 {
-    std::cout << "this is ScavTrap " << this->name << " and ClapTrap " << ClapTrap::name << " here" << std::endl;
+    std::cout << "this is DiamondTrap " << this->name << " and ClapTrap " << ClapTrap::name << " here" << std::endl;
 }
 
 void    DiamondTrap::attack(const std::string &target)

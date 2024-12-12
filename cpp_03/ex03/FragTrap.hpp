@@ -8,7 +8,7 @@ class FragTrap : virtual public ClapTrap
 private:
     //
 public:
-    FragTrap(); //need to know which one is selected in the constructing step
+    FragTrap();
     FragTrap(std::string name_);
     FragTrap(const FragTrap &other);
     FragTrap &operator=(const FragTrap& other);
@@ -32,10 +32,9 @@ arises because the derived class has multiple paths to access members
 or methods inherited from the common ancestor, leading to confusion
 during method resolution and member access.
 
-
+so wiht virtual one attribute create , so one instance created
 */
 
 
-/*https://stackoverflow.com/questions/2659116/how-does-virtual-inheritance-solve-the-diamond-multiple-inheritance-ambiguit/2659186#2659186
 
-how the virtual inheritance solve the diamond porblem*/
+/*https://stackoverflow.com/questions/2659116/how-does-virtual-inheritance-solve-the-diamond-multiple-inheritance-ambiguit/2659186#2659186*/

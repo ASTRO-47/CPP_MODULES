@@ -25,12 +25,14 @@ ClapTrap::ClapTrap(const ClapTrap &other)
 
 ClapTrap& ClapTrap::operator=(const ClapTrap &other)
 {
-    if (this == &other)
-        return *this;
-    this->h_point = other.h_point;
-    this->at_damage = other.at_damage;
-    this->e_points = other.e_points;
-    this->h_point = other.h_point;
+    if (this != &other)
+    {
+        this->name  = other.name;
+        this->h_point = other.h_point;
+        this->at_damage = other.at_damage;
+        this->e_points = other.e_points;
+        this->h_point = other.h_point;
+    }
     std::cout << "copy assigment for ClapTrap called" << std::endl;
     return *this;
 }

@@ -5,7 +5,7 @@
 
 class ClapTrap{
 protected:
-    std::string name;  //is it should be const or not think about it
+    std::string name;  //should be const ?
     unsigned int h_point;
     unsigned int e_points;
     unsigned int at_damage;
