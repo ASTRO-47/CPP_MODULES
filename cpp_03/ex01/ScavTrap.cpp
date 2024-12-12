@@ -41,7 +41,6 @@ void    ScavTrap::attack(const std::string &target)
     if (!this->h_point)
     {
         std::cout << "ScavTrap "<< this->name << " is dead" << std::endl;
-        this->h_point = 0;
         return ;
     }
     if (!this->e_points)
