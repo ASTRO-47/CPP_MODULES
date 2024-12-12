@@ -19,9 +19,11 @@ ScavTrap::ScavTrap(const ScavTrap &other) : ClapTrap(other)
 
 ScavTrap& ScavTrap::operator=(const ScavTrap &other)
 {
+    if (this != &other)
+        ClapTrap::operator=(other);
+
+    // all the atributtes copying handeled by the ClapTrap copy assigement
     std::cout << "copy assigment for ScavTrap called" << std::endl;
-    if (this == &other)
-        return *this; // all the atributtes copying handeled by the ClapTrap copy assigement
     return *this;
 }
 

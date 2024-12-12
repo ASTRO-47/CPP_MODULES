@@ -24,9 +24,12 @@ DiamondTrap::DiamondTrap(const DiamondTrap &other) : ClapTrap(other.name + "_cla
 
 DiamondTrap& DiamondTrap::operator=(const DiamondTrap &other)
 {
-    std::cout << "copy assigment for DiamondTrap called" << std::endl;
     if (this != &other)
+    {
+        ClapTrap::operator=(other);
         this->name = other.name; // all the atributtes copying handeled by the ClapTrap copy assigement
+    }
+    std::cout << "copy assigment for DiamondTrap called" << std::endl;
     return *this;
 }
 

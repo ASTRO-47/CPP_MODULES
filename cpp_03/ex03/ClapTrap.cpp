@@ -31,7 +31,6 @@ ClapTrap& ClapTrap::operator=(const ClapTrap &other)
         this->h_point = other.h_point;
         this->at_damage = other.at_damage;
         this->e_points = other.e_points;
-        this->h_point = other.h_point;
     }
     std::cout << "copy assigment for ClapTrap called" << std::endl;
     return *this;

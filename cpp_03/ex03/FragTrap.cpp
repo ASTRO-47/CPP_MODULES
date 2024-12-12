@@ -14,14 +14,15 @@ FragTrap::FragTrap() : ClapTrap(){
 
 FragTrap::FragTrap(const FragTrap &other) : ClapTrap(other)
 {
+    *this = other; // nothing to be copied just for debuging
     std::cout << "copy constructor for FragTrap called" << std::endl;
 }
 
-FragTrap& FragTrap::operator=(const FragTrap &other)
+FragTrap& FragTrap::operator=(const FragTrap &other) 
 {
+    if (this != &other)
+        ClapTrap::operator=(other);
     std::cout << "copy assigment for FragTrap called" << std::endl;
-    if (this == &other)
-        return *this; // all the atributtes copying handeled by the ClapTrap copy assigement
     return *this;
 }
 
@@ -31,5 +32,5 @@ FragTrap::~FragTrap(){
 
 void FragTrap::highFivesGuys(void)
 {
-    std::cout << "FragTrap " << this->name << " high fives mate" << std::endl;
+    std::cout << "FragTrap " << ClapTrap::name << " high fives mate" << std::endl;
 }
