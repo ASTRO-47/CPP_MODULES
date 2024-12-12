@@ -7,3 +7,8 @@ Dog::Dog(): Animal("Dog"){
 Dog::~Dog(){
     std::cout << "destructor for Dog called\n";
 }
+
+
+void    Dog::makeSound(void) const{
+    std::cout << "haww !\n";
+}

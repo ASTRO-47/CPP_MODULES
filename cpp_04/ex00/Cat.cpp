@@ -7,3 +7,8 @@ Cat::Cat(): Animal("Cat"){
 Cat::~Cat(){
     std::cout << "destructor for Cat called\n";
 }
+
+
+void    Cat::makeSound(void) const{
+    std::cout << "myaaaw !\n";
+}

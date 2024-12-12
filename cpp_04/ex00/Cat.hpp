@@ -10,6 +10,8 @@ private:
 public:
     Cat();
     ~Cat();
+
+    void makeSound(void) const;
 };
 
 #endif

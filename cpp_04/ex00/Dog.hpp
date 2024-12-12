@@ -10,6 +10,8 @@ private:
 public:
     Dog();
     ~Dog();
+
+    void    makeSound(void) const;
 };
 
 #endif
