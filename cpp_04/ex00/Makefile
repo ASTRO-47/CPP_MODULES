@@ -5,7 +5,7 @@ CC = c++ -std=c++98
 SOURCES =  main.cpp Animal.cpp Dog.cpp Cat.cpp
 OBJECTS = $(SOURCES:.cpp=.o)
 
-NAME = ClapTrap
+NAME = animal
 HEADERS = Animal.hpp Dog.hpp Cat.hpp 
 RM = rm -f
 
