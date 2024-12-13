@@ -13,5 +13,8 @@ public:
 
     void    makeSound(void) const;
 };
-
+class test{
+    public: 
+    std::string name;
+};
 #endif
