@@ -18,11 +18,9 @@ static binding = redefining
 https://www.ibm.com/docs/en/i/7.5?topic=only-virtual-functions-c
 */
 
-void    f(){system("leaks animal");} // remove this later du
 
 int main()
 {
-    // atexit (f);
     const Animal* meta = new Animal();
     const Animal* j = new Dog();
     const Animal* i = new Cat();
@@ -41,7 +39,7 @@ int main()
     const WrongAnimal *_meta = new WrongAnimal();
     const WrongAnimal *_i = new WrongCat();
 
-    std::cout<< "WrongAnimal type : " << _meta->getType() << " " << std::endl;
+    std::cout<< "WrongAnimal type: " << _meta->getType() << " " << std::endl;
     std::cout<< "WrongCat  type: "  << _i->getType() << " " << std::endl;
 
     _meta->makeSound();
