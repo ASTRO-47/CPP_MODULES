@@ -6,7 +6,7 @@ Animal::~Animal(){
 
 Animal::Animal(){
     this->type = "Animal"; 
-    std::cout << "constructor for Animal called" << std::endl;
+    std::cout << "default constructor for Animal called" << std::endl;
 }
 
 Animal::Animal(const std::string type_){
