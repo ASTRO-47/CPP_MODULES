@@ -34,7 +34,7 @@ int main()
     delete i;
     delete j;
 
-    std::cout << "\n------------wrong classes--------------\n\n";
+    std::cout << "\n------------Wrong classes--------------\n\n";
 
     const WrongAnimal *_meta = new WrongAnimal();
     const WrongAnimal *_i = new WrongCat();

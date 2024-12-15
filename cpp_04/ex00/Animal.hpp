@@ -12,10 +12,10 @@ public:
     Animal(const Animal &other);
     Animal& operator=(const Animal &other);
     
-    virtual void    makeSound(void) const;
+    virtual void  makeSound(void) const;
     const std::string getType(void) const;
 
-    virtual ~Animal();
+    virtual ~Animal();// also needed to destroy the derived class then the base class pointer
 } ;
 
 
