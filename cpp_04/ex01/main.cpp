@@ -20,7 +20,7 @@ https://www.ibm.com/docs/en/i/7.5?topic=only-virtual-functions-c
 
 int main()
 {
-    int N = 10;
+    int N = 4;
     Animal *ans[N];
 
     // creating dogs objects
