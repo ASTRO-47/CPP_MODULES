@@ -3,7 +3,6 @@
 
 #include "WrongAnimal.hpp"
 
-
 class WrongCat: public WrongAnimal{
 private:
     //

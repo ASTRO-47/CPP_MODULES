@@ -20,6 +20,12 @@ https://www.ibm.com/docs/en/i/7.5?topic=only-virtual-functions-c
 
 int main()
 {
+    /* to check the shallow copy
+    Dog d1;
+    Dog d2(d1);
+    std::cout << d1._br <<std::endl;
+    std::cout << d2._br <<std::endl; */
+
     int N = 4;
     Animal *ans[N];
 
@@ -27,11 +33,11 @@ int main()
     for (int i=0;i<N/2;i++)
         ans[i] = new Dog();
 
-    
     // creating cats objects
     for (int i=N/2;i<N;i++)
         ans[i] = new Cat();
 
+    // deleting the objects
     for (int i=0;i<N;i++)
         delete ans[i];
     return 0;

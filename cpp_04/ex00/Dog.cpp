@@ -15,6 +15,7 @@ Dog::Dog(const Dog &other) : Animal(other)
     *this = other;
     std::cout << "copy constructor for Dog called\n";
 }
+
 Dog &Dog::operator=(const Dog &other)
 {
     if (this != &other)

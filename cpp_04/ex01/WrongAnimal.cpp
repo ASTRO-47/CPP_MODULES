@@ -1,15 +1,18 @@
 #include "WrongAnimal.hpp"
 
-WrongAnimal::~WrongAnimal(){
+WrongAnimal::~WrongAnimal()
+{
     std::cout << "Destructor for WrongAnimal called" << std::endl;
 }
 
-WrongAnimal::WrongAnimal(){
+WrongAnimal::WrongAnimal()
+{
     this->type = "WrongAnimal"; 
     std::cout << "default constructor for WrongAnimal called" << std::endl;
 }
 
-WrongAnimal::WrongAnimal(const std::string type_){
+WrongAnimal::WrongAnimal(const std::string type_)
+{
     this->type = type_;
     std::cout << "a " << type_ << " is born" << std::endl;
 }

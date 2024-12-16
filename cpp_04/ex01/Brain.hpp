@@ -6,11 +6,13 @@
 class Brain {
 private:
 
+    std::string ideas[100];
 
 public:
-    std::string ideas[100];
     Brain();
-    // need to handle the shallow and deep copies
+    Brain(const Brain &other);
+    Brain &operator=(const Brain &other);
+
     ~Brain();
 } ;
 
