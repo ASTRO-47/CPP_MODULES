@@ -17,8 +17,8 @@ RESET		=	\e[0m
 CURSIVE		=	\e[33;3m
 
 
-# %.o: %.cpp $(HEADERS)
-# 	@$(CC) $(FLAGS) -c $< -o $@
+%.o: %.cpp $(HEADERS)
+	@$(CC) $(FLAGS) -c $< -o $@
 
 all : $(NAME)
 

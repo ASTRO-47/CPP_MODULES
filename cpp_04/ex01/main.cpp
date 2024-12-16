@@ -32,11 +32,11 @@ to call a virtual function, the derived class's function is called
 
 int main()
 {
-    /* to check the shallow copy
-    Dog d1;
-    Dog d2(d1);
-    std::cout << d1._br <<std::endl;
-    std::cout << d2._br <<std::endl; */
+    // to check the shallow copy
+    // Dog d1;
+    // Dog d2 = d1;
+    // std::cout << d1._br << std::endl;
+    // std::cout << d2._br << std::endl; 
 
     int N = 4;
     Animal *ans[N];
