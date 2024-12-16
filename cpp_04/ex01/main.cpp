@@ -49,8 +49,10 @@ int main()
     for (int i=N/2;i<N;i++)
         ans[i] = new Cat();
 
-    // deleting the objects
+    // deleting all the objects
     for (int i=0;i<N;i++)
         delete ans[i];
+
+
     return 0;
 }
