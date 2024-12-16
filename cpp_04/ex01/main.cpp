@@ -17,6 +17,18 @@ static binding = redefining
 
 https://www.ibm.com/docs/en/i/7.5?topic=only-virtual-functions-c
 */
+/*Static Binding: The compiler binds the function call at compile-time 
+based on the type of the pointer, not the object. This is the default for non-virtual functions.
+Dynamic Binding and 
+Polymorphism: If a base class function is declared as 
+virtual, the compiler generates a vtable for virtual functions. At runtime, 
+the vtable of the object being pointed to is used to call the correct 
+function (derived class's function, if overridden).
+
+Key Concept: Polymorphism ensures that when using a base class pointer 
+to call a virtual function, the derived class's function is called 
+(if it overrides the base class's virtual function).*/
+
 
 int main()
 {
