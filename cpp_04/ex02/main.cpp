@@ -20,7 +20,7 @@ int main( void )
 
     delete j;//should not create a leak
     delete i;
-
+    
     const Animall* animals[2] = { new Dog(), new Cat()};
     for ( int i = 0; i < 2; i++ )
         delete animals[i];
