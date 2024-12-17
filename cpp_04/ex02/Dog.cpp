@@ -1,6 +1,6 @@
 #include "Dog.hpp"
 
-Dog::Dog(): Animal("Dog")
+Dog::Dog(): Animall("Dog")
 {
     this->_br = new (std::nothrow) Brain();
     if (!this->_br)
@@ -14,7 +14,7 @@ Dog::~Dog()
     std::cout << "destructor for Dog called\n";
 }
 
-Dog::Dog(const Dog &other) : Animal(other)
+Dog::Dog(const Dog &other) : Animall(other)
 {
     *this = other;
     std::cout << "copy constructor for Dog called\n";
@@ -24,7 +24,7 @@ Dog &Dog::operator=(const Dog &other)
 {
     if (this != &other)
     {
-       Animal::operator=(other);
+       Animall::operator=(other);
         this->_br = new (std::nothrow) Brain(*other._br);
         if (!this->_br)
             exit (1);

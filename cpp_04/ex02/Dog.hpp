@@ -2,14 +2,15 @@
 #define DOG_HPP
 
 #include "Animal.hpp"
+#include "Animal2.hpp"
 #include "Brain.hpp"
 
 
-class Dog: public Animal{
+class Dog: public Animall{
 private:
+    Brain *_br;
 //
 public:
-    Brain *_br; // make this private
     Dog();
     Dog(const Dog &other);
     Dog& operator=(const Dog &other);

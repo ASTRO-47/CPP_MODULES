@@ -15,7 +15,7 @@ public:
     virtual void    makeSound(void) const;
     const std::string getType(void) const;
 
-    virtual ~Animal(); // if there is a virtual func to avoid the polymorphism  the destructor should also be virtual , so the compiler now which destructor to call
+    virtual ~Animal();
 } ;
 
 

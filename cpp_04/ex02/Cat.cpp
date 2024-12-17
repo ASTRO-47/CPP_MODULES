@@ -1,6 +1,6 @@
 #include "Cat.hpp"
 
-Cat::Cat(): Animal("Cat")
+Cat::Cat(): Animall("Cat")
 {
     this->_br = new (std::nothrow) Brain();
     if (!this->_br)
@@ -14,7 +14,7 @@ Cat::~Cat()
     std::cout << "destructor for Cat called\n";
 }
 
-Cat::Cat(const Cat &other) : Animal(other)
+Cat::Cat(const Cat &other) : Animall(other)
 {
     *this = other;
     std::cout << "copy constructor for Cat called\n";
@@ -23,7 +23,7 @@ Cat &Cat::operator=(const Cat &other)
 {
     if (this != &other)
     {
-       Animal::operator=(other); 
+       Animall::operator=(other); 
         this->_br = new (std::nothrow) Brain(*other._br);
         if (!this->_br)
             exit (1);
@@ -35,3 +35,4 @@ Cat &Cat::operator=(const Cat &other)
 void    Cat::makeSound(void) const{
     std::cout << "myaaaw !\n";
 }
+
