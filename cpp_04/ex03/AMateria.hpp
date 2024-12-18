@@ -7,7 +7,7 @@
 class AMateria
 {
 protected:
-    // std::string type;
+    std::string type;// for ice and cure 
     //
 public:
     AMateria(std::string const & type);
@@ -19,3 +19,8 @@ public:
 
 
 #endif
+
+
+// arrr[4] = ice, cure, NULL, NULL
+
+// arr[0]->clone()
