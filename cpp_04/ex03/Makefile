@@ -2,11 +2,11 @@
 
 CC = c++ -std=c++98
 
-SOURCES =  main.cpp Ice.cpp Cure.cpp AMateria.cpp Icharacter.cpp
+SOURCES =  main.cpp Ice.cpp Cure.cpp AMateria.cpp Icharacter.cpp Character.cpp
 OBJECTS = $(SOURCES:.cpp=.o)
 
 NAME = animal
-HEADERS = AMateria.hpp Icharacter.hpp Ice.hpp Cure.hpp
+HEADERS = AMateria.hpp Icharacter.hpp Ice.hpp Cure.hpp Character.hpp
 RM = rm -f
 
 #Colors:

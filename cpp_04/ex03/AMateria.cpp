@@ -9,3 +9,8 @@ AMateria::~AMateria()
 {
     // desctructor
 }
+
+// void AMateria::use(ICharacter &tagrget)
+// {  
+//     std::cout << this->type << ": * shoots an ice bolt at " << target.get_name() << std::endl;
+// }

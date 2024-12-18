@@ -1,6 +1,6 @@
 
-#ifndef "ICE_HPP"
-#define "ICE_HPP"
+#ifndef ICE_HPP
+#define ICE_HPP
 
 
 #include  "AMateria.hpp"
@@ -10,5 +10,5 @@ private:
     //
 public:
     //
-}
+} ;
 #endif
