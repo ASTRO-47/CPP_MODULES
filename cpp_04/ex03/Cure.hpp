@@ -1,8 +1,5 @@
-// inherite from a materia 
-// const type 
-
 #ifndef CURE_HPP
-#define CURE_HP
+#define CURE_HPP
 
 
 #include  "AMateria.hpp"
@@ -12,10 +9,12 @@ private:
     //
 public:
     Cure();
-    ~Cure();
     Cure(Cure const &other);
     Cure& operator=(Cure const &other);
-    //
+    void use(ICharacter &target);
+    ~Cure(); // destructor
+
+    // 0
 };
 
 #endif
