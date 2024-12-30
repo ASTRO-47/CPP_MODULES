@@ -20,7 +20,7 @@ Cure& Cure::operator=(Cure const &other)
 {
     if (this != &other)
     {
-        // copy elements
+        //copy elements
     }
     std::cout << "copy assigement for Cure called\n";
     return *this;
@@ -29,4 +29,9 @@ Cure& Cure::operator=(Cure const &other)
 void Cure::use(ICharacter &target)
 {
     std::cout << "Cure: * heals " << target.getName() <<  " wounds *" << std::endl;
+}
+
+Cure* Cure::clone() const
+{
+    return new Cure(*this); // new inst from the old cure
 }

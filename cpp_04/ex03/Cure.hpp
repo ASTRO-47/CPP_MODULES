@@ -4,7 +4,8 @@
 
 #include  "AMateria.hpp"
 
-class Cure: public AMateria{
+class Cure: public AMateria
+{
 private:
     //
 public:
@@ -12,9 +13,11 @@ public:
     Cure(Cure const &other);
     Cure& operator=(Cure const &other);
     void use(ICharacter &target);
+    Cure *clone() const;
+
+
     ~Cure(); // destructor
 
-    // 0
 };
 
 #endif

@@ -1,6 +1,5 @@
 #include "Character.hpp"
 
-
 Character::Character()
 {
     std::cout << "default constructor for Character called\n" ;
