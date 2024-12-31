@@ -2,13 +2,15 @@
 #define CHARACTER_HPP
 
 #include "Icharacter.hpp"
-
+#include "AMateria.hpp"
 
 class Character: public ICharacter
 {
 private:
+    int i;
     std::string name;
-    // also the materia array
+    AMateria *ar[4];
+    // polymor
 public:
     Character(); // default constructor
     // for the canonical form

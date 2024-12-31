@@ -37,3 +37,28 @@ Character& Character::operator=(const Character &other)
     std::cout << "copy assigement for Character called\n";
     return *this;
 }
+
+void Character::equip(AMateria *m)
+{
+    if (this->i == 3)
+        return ;
+    this->ar[i] = m;
+    this->i++;
+}
+
+void Character::unequip(int idx)
+{
+    if (idx > this->i) // check this when done
+        return ;
+    // what if try to remove some thing first and we have more materias
+    this->ar[idx] = NULL; // must NOT delete the Materia
+    this->i--;
+}
+
+void Character::use(int idx, ICharacter &target)
+{
+    if (!this->ar[idx])
+        return ;
+    this->ar[idx]->use(target);
+    // print a message to attack the enemy
+}
