@@ -5,7 +5,8 @@
 
 #include  "AMateria.hpp"
 
-class Ice: public AMateria{
+class Ice: public AMateria
+{
 private:
     //
 public:
@@ -15,7 +16,6 @@ public:
     Ice &operator=(Ice const &other);
     void use(ICharacter &target);
     Ice *clone() const;
-
 
     ~Ice();// dest
 } ;

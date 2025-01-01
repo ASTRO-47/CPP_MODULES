@@ -1,5 +1,10 @@
 #include "AMateria.hpp"
 
+// void    __attribute__((destructor))gb() // by mobarmij
+// {
+//     std::cout << "khobz" << std::endl;
+// }
+
 int main()
 {
     // IMateriaSource* src = new MateriaSource();

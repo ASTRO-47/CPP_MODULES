@@ -62,3 +62,5 @@ void Character::use(int idx, ICharacter &target)
     this->ar[idx]->use(target);
     // print a message to attack the enemy
 }
+
+

@@ -1,12 +1,12 @@
-FLAGS = -Wall -Wextra -Werror 
+# FLAGS = -Wall -Wextra -Werror 
 
-CC = c++ -std=c++98
+CC = c++ 
 
-SOURCES =  main.cpp Ice.cpp Cure.cpp AMateria.cpp Icharacter.cpp Character.cpp
+SOURCES =  main.cpp Ice.cpp Cure.cpp AMateria.cpp  Character.cpp MateriaSource.cpp 
 OBJECTS = $(SOURCES:.cpp=.o)
 
 NAME = animal
-HEADERS = AMateria.hpp Icharacter.hpp Ice.hpp Cure.hpp Character.hpp
+HEADERS = AMateria.hpp Icharacter.hpp Ice.hpp Cure.hpp Character.hpp IMateriaSource.hpp MateriaSource.hpp
 RM = rm -f
 
 #Colors:
