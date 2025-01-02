@@ -1,6 +1,6 @@
-# FLAGS = -Wall -Wextra -Werror 
+FLAGS = -Wall -Wextra -Werror 
 
-CC = c++ 
+CPPC = c++ 
 
 SOURCES =  main.cpp Ice.cpp Cure.cpp AMateria.cpp  Character.cpp MateriaSource.cpp 
 OBJECTS = $(SOURCES:.cpp=.o)
@@ -18,13 +18,13 @@ CURSIVE		=	\e[33;3m
 
 
 %.o: %.cpp $(HEADERS)
-	$(CC) $(FLAGS) -c $< -o $@
+	$(CPPC) $(FLAGS) -c $< -o $@
 
 all : $(NAME)
 
 $(NAME): $(OBJECTS)
 	@printf "$(CURSIVE)$(GRAY) 	- Compiling $(NAME)... $(RESET)\n"
-	@$(CC) $(FLAGS) $(OBJECTS) -o $(NAME)
+	@$(CPPC) $(FLAGS) $(OBJECTS) -o $(NAME)
 	@printf "$(GREEN)    - Executable ready.\n$(RESET)"
 
 clean:

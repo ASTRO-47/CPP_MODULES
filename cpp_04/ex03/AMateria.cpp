@@ -10,10 +10,10 @@ AMateria::~AMateria()
     // desctructor
 }
 
-// void AMateria::use(ICharacter &target)
-// {  
-//     std::cout << "a materia " << this->type << "used on " << target.getName() << std::endl;
-// }
+void AMateria::use(ICharacter &target)
+{  
+    std::cout << "a materia " << this->type << "used on " << target.getName() << std::endl;
+}
 
 const std::string& AMateria::getType() const 
 {

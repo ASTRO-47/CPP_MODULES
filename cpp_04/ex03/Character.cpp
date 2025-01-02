@@ -40,6 +40,8 @@ Character& Character::operator=(const Character &other)
 
 void Character::equip(AMateria *m)
 {
+    if (!m)
+        return ;
     if (this->i == 3)
         return ;
     this->ar[i] = m;

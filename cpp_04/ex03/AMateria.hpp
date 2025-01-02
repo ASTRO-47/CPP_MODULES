@@ -3,7 +3,6 @@
 
 #include "Icharacter.hpp"
 
-
 class AMateria
 {
 protected:
@@ -13,9 +12,9 @@ public:
     AMateria(std::string const & type);
     ~AMateria();
 
-    std::string const & getType() const; //Returns the materia type
-    virtual AMateria* clone() const = 0; //virtual to avoid the conflicts with the derived classes
-    virtual void use(ICharacter& target); // need to implement this at this class
+    std::string const & getType() const; // Returns the materia type
+    virtual AMateria* clone() const = 0; // virtual to avoid the conflicts with the derived classes
+    virtual void use(ICharacter& target); // should implement this
 };
 
 #endif
