@@ -18,23 +18,16 @@ void MateriaSource::learnMateria(AMateria *m)
     if (!m)
         return ;
     if (!(this->arr[this->idx]))
-        this->arr[this->idx] = m;
+        this->arr[this->idx] = m->clone();
     this->idx++;
-}
-void AMateria::use(ICharacter &target)
-{  
-    std::cout << "a materia " << this->type << "used on " << target.getName() << std::endl;
-}
-
-const std::string& AMateria::getType() const 
-{
-    return this->type; 
+    delete m;
 }
 
 AMateria *MateriaSource::createMateria(std::string const & type)
 {
-    
     // create new materia
+    if (type == "elo")
+        return NULL;
     return NULL;
 }
 

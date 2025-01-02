@@ -5,7 +5,7 @@ CPPC = c++
 SOURCES =  main.cpp Ice.cpp Cure.cpp AMateria.cpp  Character.cpp MateriaSource.cpp 
 OBJECTS = $(SOURCES:.cpp=.o)
 
-NAME = animal
+NAME = materia
 HEADERS = AMateria.hpp Icharacter.hpp Ice.hpp Cure.hpp Character.hpp IMateriaSource.hpp MateriaSource.hpp
 RM = rm -f
 

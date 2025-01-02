@@ -40,8 +40,6 @@ Character& Character::operator=(const Character &other)
 
 void Character::equip(AMateria *m)
 {
-    if (!m)
-        return ;
     if (this->i == 3)
         return ;
     this->ar[i] = m;
@@ -59,10 +57,9 @@ void Character::unequip(int idx)
 
 void Character::use(int idx, ICharacter &target)
 {
+    puts("hello");
     if (!this->ar[idx])
         return ;
     this->ar[idx]->use(target);
     // print a message to attack the enemy
 }
-
-

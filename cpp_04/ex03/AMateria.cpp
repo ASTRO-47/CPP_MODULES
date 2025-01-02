@@ -11,7 +11,8 @@ AMateria::~AMateria()
 }
 
 void AMateria::use(ICharacter &target)
-{  
+{
+    puts("hello");
     std::cout << "a materia " << this->type << "used on " << target.getName() << std::endl;
 }
 
