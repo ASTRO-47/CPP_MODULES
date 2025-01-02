@@ -20,7 +20,7 @@ void MateriaSource::learnMateria(AMateria *m)
     if (!(this->arr[this->idx]))
         this->arr[this->idx] = m->clone();
     this->idx++;
-    delete m;
+    // delete m;
 }
 
 AMateria *MateriaSource::createMateria(std::string const & type)
