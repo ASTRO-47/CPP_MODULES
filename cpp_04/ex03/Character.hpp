@@ -7,7 +7,6 @@
 class Character: public ICharacter
 {
 private:
-    int i;
     std::string name;
     AMateria *ar[4];
     // polymor

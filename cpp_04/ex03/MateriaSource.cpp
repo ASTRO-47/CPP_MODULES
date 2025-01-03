@@ -17,18 +17,26 @@ void MateriaSource::learnMateria(AMateria *m)
 {
     if (!m)
         return ;
-    if (!(this->arr[this->idx]))
-        this->arr[this->idx] = m->clone();
-    this->idx++;
+    for(int i=0;i< 4;i++)
+    {
+        if (!this->arr[i])
+        {
+            this->arr[i] = m;
+            return ;
+        }
+    }
     // delete m;
 }
 
 AMateria *MateriaSource::createMateria(std::string const & type)
 {
     // create new materia
-    if (type == "elo")
-        return NULL;
-    return NULL;
+    for (int i = 0; i < 4; i++)
+    {
+        if (this->arr[i] && this->arr[i]->getType() == type)
+        {
+            return this->arr[i]->clone();
+        }
+    }
+    return NULL; // check that there
 }
-
-

@@ -5,7 +5,7 @@
 
 class AMateria;
 
-class ICharacter  // interface
+class ICharacter  // interface: all the methods are pure virtual function
 {
     public:
     virtual ~ICharacter() {}

@@ -13,6 +13,14 @@ public:
     MateriaSource();
     virtual void learnMateria(AMateria*);
     virtual AMateria* createMateria(std::string const & type);
+    virtual void see(void)
+    {
+        for (int i=0;i<4;i++)
+        {
+            if (this->arr[i])
+               std::cout << this->arr[i]->getType() << std::endl;
+        }
+    };
 };
 
 #endif

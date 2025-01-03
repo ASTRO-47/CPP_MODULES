@@ -5,7 +5,7 @@ Ice::~Ice()
     // std::cout << "destructor for Ice called\n";
 }
 
-Ice::Ice() : AMateria("Ice")
+Ice::Ice() : AMateria("ice")
 {
     std::cout << "a Ice is build\n";
 }
@@ -28,7 +28,7 @@ Ice& Ice::operator=(Ice const &other)
 
 void Ice::use(ICharacter &target)
 {
-    std::cout << "Ice: * heals " << target.getName() <<  " wounds *" << std::endl;
+    std::cout << "* shoots an " << getType()<<  " bolt at " << target.getName()<< " *" << std::endl;
 }
 
 Ice* Ice::clone() const

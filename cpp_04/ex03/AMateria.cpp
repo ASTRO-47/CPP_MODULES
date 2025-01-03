@@ -1,22 +1,32 @@
 #include "AMateria.hpp"
 
+AMateria::AMateria() : type("")
+{   
+    std::cout << "* a materia is created\n";
+}
+
 AMateria::AMateria(std::string const &type)
 {
     this->type = type;
 }
 
+AMateria::AMateria(const AMateria &other)
+{
+    this->type = other.type;
+}
+
 AMateria::~AMateria()
 {
+    std::cout << "AMateria " << this->getType() << " destroyed\n";
     // desctructor
 }
 
 void AMateria::use(ICharacter &target)
 {
-    puts("hello");
     std::cout << "a materia " << this->type << "used on " << target.getName() << std::endl;
 }
 
 const std::string& AMateria::getType() const 
 {
-    return this->type; 
+    return this->type;
 }

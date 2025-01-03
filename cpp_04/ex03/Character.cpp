@@ -1,6 +1,6 @@
 #include "Character.hpp"
 
-Character::Character()
+Character::Character() : name("")
 {
     std::cout << "default constructor for Character called\n" ;
 }
@@ -8,6 +8,10 @@ Character::Character()
 Character::Character(std::string const &name_)
 {
     this->name = name_;
+    for (int i=0;i<0;i++)
+    {
+        this->ar[i] = NULL;
+    }
     std::cout << "Character " << name_ << " created\n";
 }
 
@@ -32,6 +36,7 @@ Character& Character::operator=(const Character &other)
     if (this != &other)
     {
         this->name = other.getName(); // i can get the name direct though
+        
         // should do something else?
     }
     std::cout << "copy assigement for Character called\n";
@@ -40,24 +45,27 @@ Character& Character::operator=(const Character &other)
 
 void Character::equip(AMateria *m)
 {
-    if (this->i == 3)
-        return ;
-    this->ar[i] = m;
-    this->i++;
+    // std::cout << i << "]\n";
+    for (int i =0;i < 4;i++)
+    {
+        if (!this->ar[i])
+        {
+            this->ar[i] = m;
+            std::cout << this->name << " equip a " << m->getType() << std::endl;
+            return;
+        }
+    }
 }
 
 void Character::unequip(int idx)
 {
-    if (idx > this->i) // check this when done
-        return ;
     // what if try to remove some thing first and we have more materias
-    this->ar[idx] = NULL; // must NOT delete the Materia
-    this->i--;
+    if (this->ar[idx])
+        this->ar[idx] = NULL; // must NOT delete the Materia
 }
 
 void Character::use(int idx, ICharacter &target)
 {
-    puts("hello");
     if (!this->ar[idx])
         return ;
     this->ar[idx]->use(target);

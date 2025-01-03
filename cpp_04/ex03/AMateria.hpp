@@ -7,14 +7,16 @@ class AMateria
 {
 protected:
     std::string type;// for ice and cure 
-    //
+    //;
 public:
+    AMateria();
     AMateria(std::string const & type);
-    ~AMateria();
-
     std::string const & getType() const; // Returns the materia type
-    virtual AMateria* clone() const = 0; // virtual to avoid the conflicts with the derived classes
-    virtual void use(ICharacter& target); // should implement this
+    AMateria(const AMateria &other);
+    virtual AMateria* clone() const = 0;
+    virtual void use(ICharacter& target); 
+
+    virtual ~AMateria();
 };
 
 #endif
