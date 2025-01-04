@@ -20,7 +20,7 @@ Ice& Ice::operator=(Ice const &other)
 {
     if (this != &other)
     {
-        //copy elements
+        this->type = other.type;
     }
     std::cout << "copy assigement for Ice called\n";
     return *this;

@@ -35,8 +35,14 @@ Character& Character::operator=(const Character &other)
 {
     if (this != &other)
     {
-        this->name = other.getName(); // i can get the name direct though
-        
+        this->name = other.getName();
+        for (int i=0;i < 4;i++)
+        {
+            if (!this->ar[i])
+                this->ar[i] = NULL;
+            else
+                this->ar[i] = other.ar[i]->clone();
+        }
         // should do something else?
     }
     std::cout << "copy assigement for Character called\n";

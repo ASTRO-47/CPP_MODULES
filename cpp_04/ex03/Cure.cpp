@@ -20,7 +20,7 @@ Cure& Cure::operator=(Cure const &other)
 {
     if (this != &other)
     {
-        //copy elements
+        this->type = other.type;
     }
     std::cout << "copy assigement for Cure called\n";
     return *this;

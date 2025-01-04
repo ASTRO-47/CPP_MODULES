@@ -10,13 +10,13 @@ private:
     std::string name;
     AMateria *ar[4];
     // polymor
-public:
+public: 
     Character(); // default constructor
     // for the canonical form
     Character(std::string const &name_);
     Character(const Character &other);
     Character& operator=(const Character &other);
-    ~Character();
+    ~Character(); // destructor
 
     std::string const & getName() const;
     void equip(AMateria* m);

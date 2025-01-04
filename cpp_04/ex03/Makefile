@@ -1,6 +1,7 @@
 FLAGS = -Wall -Wextra -Werror 
 
-CPPC = c++ 
+CPPC = c++ -std=c++98
+
 
 SOURCES =  main.cpp Ice.cpp Cure.cpp AMateria.cpp  Character.cpp MateriaSource.cpp 
 OBJECTS = $(SOURCES:.cpp=.o)
