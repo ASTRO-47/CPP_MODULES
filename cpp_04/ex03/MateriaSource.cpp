@@ -45,10 +45,11 @@ void MateriaSource::learnMateria(AMateria *m)
     {
         if (!this->arr[i])
         {
-            this->arr[i] = m;
-            return ;
+            this->arr[i] = m->clone();
+            break ;
         }
     }
+    delete m;
 }
 
 AMateria *MateriaSource::createMateria(std::string const & type)
