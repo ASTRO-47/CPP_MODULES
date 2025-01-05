@@ -1,14 +1,14 @@
 #include "Character.hpp"
 
-Character::Character() : name("")
+Character::Character() : name("") , g()
 {
     std::cout << "default constructor for Character called\n" ;
 }
 
-Character::Character(std::string const &name_)
+Character::Character(std::string const &name_) : g()
 {
     this->name = name_;
-    for (int i=0;i<0;i++)
+    for (int i=0;i<4;i++)
     {
         this->ar[i] = NULL;
     }
@@ -17,6 +17,12 @@ Character::Character(std::string const &name_)
 
 Character::~Character()
 {
+    for (int i = 0;i < 4; i++)
+    {
+        if (this->ar[i])
+            delete ar[i];
+    }
+    g.clear();
     std::cout << "destructor for Character called\n" ;
 }
 
@@ -51,13 +57,13 @@ Character& Character::operator=(const Character &other)
 
 void Character::equip(AMateria *m)
 {
-    // std::cout << i << "]\n";
+
     for (int i =0;i < 4;i++)
     {
         if (!this->ar[i])
         {
             this->ar[i] = m;
-            std::cout << this->name << " equip a " << m->getType() << std::endl;
+            std::cout << this->name << " equiped " << m->getType() << " successfully" << std::endl;
             return;
         }
     }
@@ -67,7 +73,10 @@ void Character::unequip(int idx)
 {
     // what if try to remove some thing first and we have more materias
     if (this->ar[idx])
+    {
+        g.add(this->ar[idx]);
         this->ar[idx] = NULL; // must NOT delete the Materia
+    }
 }
 
 void Character::use(int idx, ICharacter &target)
@@ -75,5 +84,4 @@ void Character::use(int idx, ICharacter &target)
     if (!this->ar[idx])
         return ;
     this->ar[idx]->use(target);
-    // print a message to attack the enemy
 }

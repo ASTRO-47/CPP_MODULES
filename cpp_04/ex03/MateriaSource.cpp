@@ -2,6 +2,12 @@
 
 MateriaSource::~MateriaSource()
 {
+    for (size_t i = 0; i < 4; i++)
+    {
+        if (this->arr[i])
+            delete this->arr[i];
+    }
+    
     std::cout << "destrctor for MateriaSoure called\n";
     // free something
 }
@@ -25,7 +31,7 @@ void MateriaSource::learnMateria(AMateria *m)
             return ;
         }
     }
-    // delete m;
+    // delete m; 
 }
 
 AMateria *MateriaSource::createMateria(std::string const & type)

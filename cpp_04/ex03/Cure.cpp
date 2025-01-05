@@ -7,13 +7,13 @@ Cure::~Cure()
 
 Cure::Cure() : AMateria("cure")
 {
-    std::cout << "a cure is build\n";
+    // std::cout << "a cure is build\n";
 }
 
 Cure::Cure(Cure const &other) : AMateria(other)
 {
     *this = other;
-    std::cout << "copy constructor for Cure called\n";
+    // std::cout << "copy constructor for Cure called\n";
 }
 
 Cure& Cure::operator=(Cure const &other)
@@ -22,7 +22,7 @@ Cure& Cure::operator=(Cure const &other)
     {
         this->type = other.type;
     }
-    std::cout << "copy assigement for Cure called\n";
+    // std::cout << "copy assigement for Cure called\n";
     return *this;
 }
 

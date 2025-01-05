@@ -2,13 +2,14 @@
 #define CHARACTER_HPP
 
 #include "Icharacter.hpp"
-#include "AMateria.hpp"
+#include "garbage.hpp"
 
 class Character: public ICharacter
 {
 private:
     std::string name;
     AMateria *ar[4];
+    Gar g;
     // polymor
 public: 
     Character(); // default constructor
