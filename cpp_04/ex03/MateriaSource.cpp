@@ -49,7 +49,7 @@ void MateriaSource::learnMateria(AMateria *m)
             break ;
         }
     }
-    delete m;
+    delete m; // check this later
 }
 
 AMateria *MateriaSource::createMateria(std::string const & type)
