@@ -2,6 +2,10 @@
 
 Character::Character() : name("") , g()
 {
+    for (int i=0;i<4;i++)
+    {
+        this->ar[i] = NULL;
+    }
     // std::cout << "default constructor for Character called\n" ;
 }
 
@@ -71,7 +75,7 @@ void Character::equip(AMateria *m)
 void Character::unequip(int idx)
 {
     // what if try to remove some thing first and we have more materias
-    if (this->ar[idx])
+    if (idx >= 0 && idx < 4 && this->ar[idx])
     {
         g.add(this->ar[idx]);
         this->ar[idx] = NULL; // must NOT delete the Materia

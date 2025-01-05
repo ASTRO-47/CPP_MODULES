@@ -11,7 +11,7 @@ protected:
 public:
     AMateria();
     AMateria(std::string const & type);
-    std::string const & getType() const; // Returns the materia type
+    std::string const & getType() const; // returns the materia type
     AMateria(const AMateria &other);
     virtual AMateria* clone() const = 0;
     virtual void use(ICharacter& target); 

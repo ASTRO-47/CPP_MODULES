@@ -10,7 +10,6 @@ class Ice: public AMateria
 private:
     //
 public:
-    //
     Ice();
     Ice(Ice const &other);
     Ice &operator=(Ice const &other);
