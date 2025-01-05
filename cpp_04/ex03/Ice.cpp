@@ -7,13 +7,13 @@ Ice::~Ice()
 
 Ice::Ice() : AMateria("ice")
 {
-    std::cout << "a Ice is build\n";
+    // std::cout << "a Ice is build\n";
 }
 
 Ice::Ice(Ice const &other) : AMateria(other)
 {
     *this = other;
-    std::cout << "copy constructor for Ice called\n";
+    // std::cout << "copy constructor for Ice called\n";
 }
 
 Ice& Ice::operator=(Ice const &other)
@@ -22,7 +22,7 @@ Ice& Ice::operator=(Ice const &other)
     {
         this->type = other.type;
     }
-    std::cout << "copy assigement for Ice called\n";
+    // std::cout << "copy assigement for Ice called\n";
     return *this;
 }
 

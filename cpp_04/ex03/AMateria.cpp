@@ -2,7 +2,7 @@
 
 AMateria::AMateria() : type("")
 {   
-    std::cout << "* a materia is created\n";
+    // std::cout << "* a materia is created\n";
 }
 
 AMateria::AMateria(std::string const &type)
@@ -17,8 +17,7 @@ AMateria::AMateria(const AMateria &other)
 
 AMateria::~AMateria()
 {
-    std::cout << "AMateria " << this->getType() << " destroyed\n";
-    // desctructor
+    // std::cout << "AMateria " << this->getType() << " destroyed\n";
 }
 
 void AMateria::use(ICharacter &target)

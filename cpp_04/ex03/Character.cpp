@@ -2,7 +2,7 @@
 
 Character::Character() : name("") , g()
 {
-    std::cout << "default constructor for Character called\n" ;
+    // std::cout << "default constructor for Character called\n" ;
 }
 
 Character::Character(std::string const &name_) : g()
@@ -12,7 +12,7 @@ Character::Character(std::string const &name_) : g()
     {
         this->ar[i] = NULL;
     }
-    std::cout << "Character " << name_ << " created\n";
+    // std::cout << "Character " << name_ << " created\n";
 }
 
 Character::~Character()
@@ -23,7 +23,7 @@ Character::~Character()
             delete ar[i];
     }
     g.clear();
-    std::cout << "destructor for Character called\n" ;
+    // std::cout << "destructor for Character called\n" ;
 }
 
 std::string const & Character::getName() const
@@ -34,7 +34,7 @@ std::string const & Character::getName() const
 Character::Character(const Character &other)
 {   
     *this = other;
-    std::cout << "copy constructor for Character called\n";
+    // std::cout << "copy constructor for Character called\n";
 }
 
 Character& Character::operator=(const Character &other)
@@ -49,9 +49,8 @@ Character& Character::operator=(const Character &other)
             else
                 this->ar[i] = other.ar[i]->clone();
         }
-        // should do something else?
     }
-    std::cout << "copy assigement for Character called\n";
+    // std::cout << "copy assigement for Character called\n";
     return *this;
 }
 

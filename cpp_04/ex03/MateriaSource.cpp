@@ -8,7 +8,7 @@ MateriaSource::~MateriaSource()
             delete this->arr[i];
     }
     
-    std::cout << "destrctor for MateriaSoure called\n";
+    // std::cout << "destrctor for MateriaSoure called\n";
     // free something
 }
 
