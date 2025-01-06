@@ -1,5 +1,4 @@
 #include "Cat.hpp"
-#include "WrongCat.hpp"
 #include "Dog.hpp"
 
 /*"is-a" relationship between the base and the derived class that's why 

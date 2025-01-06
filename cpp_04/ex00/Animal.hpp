@@ -7,7 +7,7 @@ class Animal {
 protected:
     std::string type;
 public:
-    Animal(); // just for the canonical
+    Animal(); // for the canonical
     Animal(const std::string type);
     Animal(const Animal &other);
     Animal& operator=(const Animal &other);

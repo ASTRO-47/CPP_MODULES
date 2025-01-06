@@ -2,7 +2,7 @@
 #define CHARACTER_HPP
 
 #include "Icharacter.hpp"
-#include "garbage.hpp"
+#include "AMateria.hpp"
 
 class Character: public ICharacter
 {
@@ -11,8 +11,7 @@ private:
     AMateria *ar[4];
     AMateria *gar[4];
     
-    // Gar g;
-    // polymor
+
 public: 
     Character(); // default constructor
     // for the canonical form

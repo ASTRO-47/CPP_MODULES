@@ -34,9 +34,15 @@ MateriaSource& MateriaSource::operator=(const MateriaSource &other)
         for (int i=0; i < 4; i++)
         {
             if (other.arr[i])
+            {
                 this->arr[i] = other.arr[i]->clone();
+                this->gr[i] = other.gr[i]->clone();
+            }
             else
+            {
                 this->arr[i] = NULL;
+                this->gr[i] = NULL;
+            }
         }
     }
     return *this;
@@ -55,6 +61,7 @@ void MateriaSource::learnMateria(AMateria *m)
             break ;
         }
     }
+    // delete m; // think about this later
 }
 
 AMateria *MateriaSource::createMateria(std::string const & type)
@@ -63,10 +70,7 @@ AMateria *MateriaSource::createMateria(std::string const & type)
     for (int i = 0; i < 4; i++)
     {
         if (this->arr[i] && this->arr[i]->getType() == type)
-        {
-            AMateria * tmp = this->arr[i]->clone();
-            return tmp;
-        }
+            return this->arr[i]->clone();
     }
     return NULL; // check that there
 }

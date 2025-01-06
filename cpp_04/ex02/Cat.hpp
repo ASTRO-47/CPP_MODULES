@@ -1,12 +1,12 @@
 #ifndef CAT_HPP
 #define CAT_HPP
 
-#include "Animal2.hpp"
+#include "Animall.hpp"
 #include "Animal.hpp"
 #include "Brain.hpp"
 
 class Cat: public Animall{
-private:
+private:       
     // 
     Brain *_br;
 public:

@@ -13,6 +13,7 @@ WrongCat::WrongCat(const WrongCat &other) : WrongAnimal(other)
     *this = other;
     std::cout << "copy constructor for WrongCat called\n";
 }
+
 WrongCat &WrongCat::operator=(const WrongCat &other)
 {
     if (this != &other)
@@ -21,6 +22,6 @@ WrongCat &WrongCat::operator=(const WrongCat &other)
     return *this;
 }
 
-void    WrongCat::makeSound(void) const{
+void    WrongCat::makeSound(void) const {
     std::cout << "Wrongcat :myaaaw !\n";
 }

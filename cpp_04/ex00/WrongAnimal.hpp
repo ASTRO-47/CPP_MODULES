@@ -3,11 +3,12 @@
 
 #include <iostream>
 
-class WrongAnimal {
+class WrongAnimal 
+{
 protected:
     std::string type;
 public:
-    WrongAnimal(); // just for the canonical
+    WrongAnimal(); // for the canonical form
     WrongAnimal(const std::string type);
     WrongAnimal(const WrongAnimal &other);
     WrongAnimal& operator=(const WrongAnimal &other);

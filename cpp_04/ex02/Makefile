@@ -1,12 +1,12 @@
- FLAGS = -Wall -Wextra -Werror 
+FLAGS = -Wall -Wextra -Werror 
 
-CC = c++ -std=c++98
+CC =  c++ -std=c++98
 
-SOURCES =  main.cpp Animal.cpp Dog.cpp Cat.cpp WrongAnimal.cpp WrongCat.cpp Brain.cpp Animal2.cpp
+SOURCES =  main.cpp Animal.cpp Dog.cpp Cat.cpp WrongAnimal.cpp WrongCat.cpp Brain.cpp Animall.cpp
 OBJECTS = $(SOURCES:.cpp=.o)
 
 NAME = animal
-HEADERS = Animal.hpp Dog.hpp Cat.hpp  WrongAnimal.hpp WrongCat.hpp Brain.hpp Animal2.hpp
+HEADERS = Animal.hpp Dog.hpp Cat.hpp  WrongAnimal.hpp WrongCat.hpp Brain.hpp Animall.hpp
 RM = rm -f
 
 #Colors:

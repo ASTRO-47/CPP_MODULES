@@ -1,4 +1,4 @@
-#include "Animal2.hpp"
+#include "Animall.hpp"
 
 Animall::~Animall()
 {

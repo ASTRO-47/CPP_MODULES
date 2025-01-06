@@ -3,11 +3,11 @@ FLAGS = -Wall -Wextra -Werror
 CPPC = c++ -std=c++98
 
 
-SOURCES =  main.cpp Ice.cpp Cure.cpp AMateria.cpp  Character.cpp MateriaSource.cpp garbage.cpp
+SOURCES =  main.cpp Ice.cpp Cure.cpp AMateria.cpp  Character.cpp MateriaSource.cpp 
 OBJECTS = $(SOURCES:.cpp=.o)
 
 NAME = materia
-HEADERS = AMateria.hpp Icharacter.hpp Ice.hpp Cure.hpp Character.hpp IMateriaSource.hpp MateriaSource.hpp garbage.hpp
+HEADERS = AMateria.hpp Icharacter.hpp Ice.hpp Cure.hpp Character.hpp IMateriaSource.hpp MateriaSource.hpp
 RM = rm -f
 
 #Colors:

@@ -1,6 +1,7 @@
 #include "Animal.hpp"
 
-Animal::~Animal(){
+Animal::~Animal()
+{
     std::cout << "Destructor for Animal called" << std::endl;
 }
 

@@ -8,8 +8,8 @@
 class Dog: public Animal{
 private:
 //
-public:
     Brain *_br; // make this private
+public:
     Dog();
     Dog(const Dog &other);
     Dog& operator=(const Dog &other);

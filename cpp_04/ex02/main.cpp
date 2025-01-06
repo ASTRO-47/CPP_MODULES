@@ -18,6 +18,10 @@ int main( void )
     const Animall* j = new Dog();
     const Animall* i = new Cat();
 
+    // j->makeSound();
+    // i->makeSound();
+
+
     delete j;//should not create a leak
     delete i;
     

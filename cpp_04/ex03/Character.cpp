@@ -25,12 +25,8 @@ Character::~Character()
     for (int i = 0;i < 4; i++)
     {
         if (this->ar[i])
-        {
-
             delete ar[i];
-        }
         if (this->gar[i])
-
             delete gar[i];
     }
     // g.clear();
