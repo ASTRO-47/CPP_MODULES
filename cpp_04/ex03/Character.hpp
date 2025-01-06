@@ -9,7 +9,9 @@ class Character: public ICharacter
 private:
     std::string name;
     AMateria *ar[4];
-    Gar g;
+    AMateria *gar[4];
+    
+    // Gar g;
     // polymor
 public: 
     Character(); // default constructor

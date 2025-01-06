@@ -4,6 +4,8 @@ MateriaSource::~MateriaSource()
 {
     for (size_t i = 0; i < 4; i++)
     {
+        if (this->gr[i])
+            delete this->gr[i];
         if (this->arr[i])
             delete this->arr[i];
     }
@@ -13,8 +15,11 @@ MateriaSource::~MateriaSource()
 
 MateriaSource::MateriaSource()
 {
-    for (int i = 0; i < 4; i++)
+    i = 0;
+    for (int i = 0; i < 4; i++) {
         this->arr[i] = NULL;
+        this->gr[i] = NULL;
+    }
 }
 
 MateriaSource::MateriaSource(const MateriaSource &other)
@@ -45,11 +50,11 @@ void MateriaSource::learnMateria(AMateria *m)
     {
         if (!this->arr[i])
         {
+            this->gr[this->i++] = m;
             this->arr[i] = m->clone();
             break ;
         }
     }
-    delete m; // check this later
 }
 
 AMateria *MateriaSource::createMateria(std::string const & type)
@@ -59,8 +64,33 @@ AMateria *MateriaSource::createMateria(std::string const & type)
     {
         if (this->arr[i] && this->arr[i]->getType() == type)
         {
-            return this->arr[i]->clone();
+            AMateria * tmp = this->arr[i]->clone();
+            return tmp;
         }
     }
     return NULL; // check that there
 }
+
+
+
+
+
+
+// 2000-13-20    |  5454.8  
+// isstringstreamm  ss(line)
+// string date, string pipe,   float value;
+//  ss >> date >> pipe >> value ;
+// // if (date != 10)
+// while (i < 10) {
+//     if (i == 4 || i == 7)
+//      {
+//         if (date.at(i) != '-')
+//             return ;
+//         else if (!isdigit())
+//      }
+// }
+// isstringstreamm  ss(date)
+//    int year, month, day;char ch1, ch2;
+// ss >> year >> ch1 >> month >>
+// 23123123123,75757
+// 0000-13-20,5454.8  
