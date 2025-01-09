@@ -46,6 +46,10 @@ void Bureaucrat::upgrade()
 
 void Bureaucrat::downgrade()
 {
+    // try
+    // {
+        
+    // }
     grade++; // check the condition
 }
 
