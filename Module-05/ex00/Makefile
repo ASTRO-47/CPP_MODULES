@@ -3,11 +3,11 @@
 CPPC = c++ -std=c++98
 
 
-SOURCES =  main.cpp 
+SOURCES =  main.cpp Bureaucrat.cpp
 OBJECTS = $(SOURCES:.cpp=.o)
 
 NAME = materia
-HEADERS = 
+HEADERS = Bureaucrat.hpp
 RM = rm -f
 
 #Colors:
