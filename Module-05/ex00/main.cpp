@@ -1,11 +1,10 @@
 #include "Bureaucrat.hpp"
 
-
 void nothing()
 {
     int error = 42;
     if (true)
-        throw error;
+        throw erro;
     std::cout <<  "hello world";
 }
 
@@ -22,5 +21,6 @@ int main ()
     {
         std::cerr << e.what() << '\n';
     }
+    
     std::cout << "hello world";
 }
