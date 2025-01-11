@@ -14,14 +14,36 @@ public:
     Bureaucrat(const Bureaucrat &other);
     Bureaucrat& operator=(const Bureaucrat &other);
 
+
     class GradeTooHighException : public std::exception
     {
     public:
+        GradeTooHighException()
+        {
+            std::cout << "in the constructor of too high\n";
+        }
+        ~GradeTooHighException() throw ()
+        {
+            std::cout << "in the destrcutor of too high\n";
+        }
         const char * what ()  const throw() ;
     } ;
-    class GradeTooLowException : public std::exception
+
+    class GradeTooLowException: public std::exception
     {
     public:
+        GradeTooLowException()
+        {
+            std::cout << "in the constructor of too low\n";
+        }
+        ~GradeTooLowException() throw()
+        {
+            std::cout << "in the destructor of too low\n";
+        }
+        GradeTooLowException(const GradeTooLowException &other)
+        {
+            std::cout << "copy conctructor\n";
+        }
         const char * what () const throw();
     } ;
 

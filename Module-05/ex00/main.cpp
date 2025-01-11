@@ -1,17 +1,58 @@
 #include "Bureaucrat.hpp"
 
-// stack unwding
 
+// class a
+// {
+//     public:
+//         a()
+//         {
+//             std::cout << "hello from a\n";
+
+//         }
+//         virtual ~a()
+//         {
+//             std::cout << "destructor of a\n";
+//         }
+// };
+// class b:public a
+// {
+//     public:
+//     b()
+//     {
+//         std::cout << "hello from b\n";
+//     }
+//     ~b()
+//     {
+//         std::cout << "destructor for b\n";
+//     }
+// };
+
+// stack unwding
 int main ()
 {
+    // try
+    // {
+    //     Bureaucrat imad("imad" , 156);
+    // }
+    // catch (std::exception &e)
+    // {
+    //     std::cout << "failed to construct: "<< e.what() << std::endl;
+    // }
+
+    // std::cout << "in the middle of the code\n";
+    Bureaucrat imad("imad", 150);
     try
     {
-        Bureaucrat imad("imad" , 156);
+        imad.downgrade();
     }
-    catch (std::exception &e)
+    catch (std::exception e)
     {
-        std::cout << e.what();
+        std::cout << "faild: "<< e.what() << std::endl; 
     }
+
+    std::cout << "resuming the execution of the code\n";
+
+
     // std::cout << imad;
     // try
     // {
