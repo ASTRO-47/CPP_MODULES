@@ -1,26 +1,26 @@
 #include "Bureaucrat.hpp"
 
-void nothing()
-{
-    int error = 42;
-    if (true)
-        throw erro;
-    std::cout <<  "hello world";
-}
+// stack unwding
 
 int main ()
 {
-    Bureaucrat imad("imad" , 1);
-    std::cout << imad;
-    int i = 9;
     try
     {
-        nothing();
+        Bureaucrat imad("imad" , 56);
     }
-    catch(const std::exception& e)
+    catch (std::exception &e)
     {
-        std::cerr << e.what() << '\n';
+        std::cout << e.what();
     }
-    
-    std::cout << "hello world";
+    std::cout << imad;
+    // try
+    // {
+    //    imad.downgrade();
+    // }
+    // catch(std::exception & e)
+    // {
+    //     std::cerr << e.what() << '\n';
+    //     // std::cout << ;
+    // }
+    // std::cout << "got to the end of the program\n";
 }

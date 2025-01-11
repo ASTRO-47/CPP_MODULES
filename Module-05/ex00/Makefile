@@ -9,7 +9,6 @@ OBJECTS = $(SOURCES:.cpp=.o)
 NAME = materia
 HEADERS = Bureaucrat.hpp
 RM = rm -f
-
 #Colors:
 GREEN		=	\e[92;5;118m
 YELLOW		=	\e[93;5;226m
