@@ -6,13 +6,13 @@ int main ()
 {
     try
     {
-        Bureaucrat imad("imad" , 56);
+        Bureaucrat imad("imad" , 156);
     }
     catch (std::exception &e)
     {
         std::cout << e.what();
     }
-    std::cout << imad;
+    // std::cout << imad;
     // try
     // {
     //    imad.downgrade();
