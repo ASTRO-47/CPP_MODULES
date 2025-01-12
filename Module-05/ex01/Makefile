@@ -1,4 +1,4 @@
-# FLAGS = -Wall -Wextra -Werror 
+FLAGS = -Wall -Wextra -Werror 
 
 CPPC = c++ -std=c++98
 
@@ -10,11 +10,10 @@ NAME = Bureaucrat
 HEADERS = Bureaucrat.hpp Form.hpp
 RM = rm -f
 #Colors:
-GREEN		=	\e[92;5;118m
-YELLOW		=	\e[93;5;226m
-GRAY		=	\e[33;2;37m
-RESET		=	\e[0m
-CURSIVE		=	\e[33;3m
+GREEN       = \e[38;5;118m
+YELLOW      = \e[38;5;226m
+GRAY        = \e[38;5;37m
+RESET       = \e[0m
 
 
 %.o: %.cpp $(HEADERS)
@@ -23,9 +22,9 @@ CURSIVE		=	\e[33;3m
 all : $(NAME)
 
 $(NAME): $(OBJECTS)
-	@printf "$(CURSIVE)$(GRAY) 	- Compiling $(NAME)... $(RESET)\n"
+	@printf "$(GRAY)	- Compiling $(NAME)... $(RESET)\n"
 	@$(CPPC) $(FLAGS) $(OBJECTS) -o $(NAME)
-	@printf "$(GREEN)    - Executable ready.\n$(RESET)"
+	@printf "$(GREEN)    - Executable ready.\n"
 
 clean:
 	@$(RM) $(OBJECTS)

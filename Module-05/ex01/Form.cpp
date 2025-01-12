@@ -4,7 +4,7 @@ Form::Form(std::string name_, int to_sign, int to_excute) : name(name_), require
 {
     if (required_grade_2_excute < 1 || required_grade_2_sign < 1)
         throw GradeTooHighException();
-    if (required_grade_2_excute > 150 || required_grade_2_excute > 150)
+    if (required_grade_2_excute > 150 || required_grade_2_sign > 150)
         throw GradeTooLowException();
     std::cout << "new Form for "<< name << " is created\n";
 }
@@ -54,9 +54,6 @@ void Form::beSigned(const Bureaucrat &bur)
         throw GradeTooLowException();
 }
 
-
-
-
 const char * Form::GradeTooHighException::what() const throw()
 {
     return ("Too high grade");
@@ -67,5 +64,17 @@ const char * Form::GradeTooLowException::what() const throw()
     return ("Too low grade");
 }
 
-
 Form::~Form() {}
+
+std::ostream &operator<<(std::ostream &out, const Form &form)
+{
+    out << "--------" << form.getName() << "'s form inforamtions---------\n";
+    out << "name \t\t\t\t: " << form.getName() << std::endl;
+    out << "required grade to sign the form\t: " << form.get_r_sign() << std::endl;
+    out << "required grade to excute\t: " << form.get_r_excute() << std::endl;
+    if (form.get_status())
+        std::cout << "the form status\t\t: signed\n";
+    else
+        std::cout << "the form status\t\t\t: not signed\n";
+    return out;
+}

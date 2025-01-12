@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "Form.hpp"
+
 class Form;
 
 class Bureaucrat
@@ -10,17 +11,16 @@ class Bureaucrat
 private:
     const std::string name;
     int grade; // 150 <= grade <= 1 // meed to throw an exception about the high or low grade
-public:
     Bureaucrat();
+public:
     Bureaucrat(const std::string name, int grade);
     Bureaucrat(const Bureaucrat &other);
     Bureaucrat& operator=(const Bureaucrat &other);
 
-
     class GradeTooHighException : public std::exception
     {
     public:
-        const char * what ()  const throw() ;
+        const char * what ()  const throw();
     } ;
 
     class GradeTooLowException: public std::exception
@@ -34,6 +34,7 @@ public:
     int getGrade() const;
     void upgrade();
     void downgrade();
+
     ~Bureaucrat();
 } ;
 

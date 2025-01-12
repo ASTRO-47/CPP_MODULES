@@ -6,10 +6,10 @@ class Bureaucrat;
 class Form
 {
 private:
-    bool signed_;
     const std::string name;
-    const int required_grade_2_sign;
     const int required_grade_2_excute;
+    const int required_grade_2_sign;
+    bool signed_;
     Form();
 public:
     Form(std::string name_, int to_sign, int to_excute);
