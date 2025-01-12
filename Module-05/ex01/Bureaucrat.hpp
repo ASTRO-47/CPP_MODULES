@@ -2,6 +2,8 @@
 #define BUREAUCRAT_HPP
 
 #include <iostream>
+#include "Form.hpp"
+class Form;
 
 class Bureaucrat
 {
@@ -27,6 +29,7 @@ public:
         const char * what () const throw();
     } ;
 
+    void signForm(const Form &form) const;
     std::string getName() const;
     int getGrade() const;
     void upgrade();

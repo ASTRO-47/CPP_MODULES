@@ -47,8 +47,8 @@ void Form::beSigned(const Bureaucrat &bur)
 {
     if (bur.getGrade() <= required_grade_2_sign)
     {
-        std::cout << "Bureaucrat " << bur.getName() << " signed the Form\n";
         signed_  = true;
+        bur.signForm(*this);
     }
     else 
         throw GradeTooLowException();
