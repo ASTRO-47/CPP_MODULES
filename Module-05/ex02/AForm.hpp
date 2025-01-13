@@ -3,18 +3,18 @@
 #include "Bureaucrat.hpp"
 class Bureaucrat;
 
-class Form
+class AForm
 {
 private:
     const std::string name;
     const int required_grade_2_excute;
     const int required_grade_2_sign;
     bool signed_;
-    Form();
+    AForm();
 public:
-    Form(std::string name_, int to_sign, int to_excute);
-    Form &operator=(const Form &other);
-    Form(const Form &other);
+    AForm(std::string name_, int to_sign, int to_excute);
+    AForm &operator=(const AForm &other);
+    AForm(const AForm &other);
 
     std::string getName() const;
     bool get_status() const;
@@ -23,6 +23,7 @@ public:
 
     void beSigned(const Bureaucrat &bur);
 
+    // the excute function
     class GradeTooHighException: public std::exception 
     {
     public:
@@ -35,9 +36,7 @@ public:
         const char * what() const throw();
     } ;
 
-
-
-    ~Form();
+    virtual ~AForm();
 } ; 
 
-std::ostream& operator<<(std::ostream &out, const Form &f);
+std::ostream& operator<<(std::ostream &out, const AForm &f);

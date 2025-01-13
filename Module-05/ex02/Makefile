@@ -3,11 +3,11 @@ FLAGS = -Wall -Wextra -Werror
 CPPC = c++ -std=c++98
 
 
-SOURCES =  main.cpp Bureaucrat.cpp Form.cpp
+SOURCES =  main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp
 OBJECTS = $(SOURCES:.cpp=.o)
 
 NAME = Bureaucrat
-HEADERS = Bureaucrat.hpp Form.hpp
+HEADERS = Bureaucrat.hpp AForm.hpp ShrubberyCreationForm.hpp RobotomyRequestForm.hpp PresidentialPardonForm.hpp
 RM = rm -f
 #Colors:
 GREEN       = \e[38;5;118m
