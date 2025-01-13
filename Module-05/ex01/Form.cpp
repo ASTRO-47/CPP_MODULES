@@ -9,10 +9,7 @@ Form::Form(std::string name_, int to_sign, int to_excute) : name(name_), require
     std::cout << "new Form for "<< name << " is created\n";
 }
 
-Form::Form(const Form & other) : name(other.name), required_grade_2_excute(other.required_grade_2_excute), required_grade_2_sign(other.required_grade_2_sign),signed_(false)
-{
-
-}
+Form::Form(const Form & other) : name(other.name), required_grade_2_excute(other.required_grade_2_excute), required_grade_2_sign(other.required_grade_2_sign),signed_(false){}
 
 Form &Form::operator=(const Form & other)
 {
@@ -47,8 +44,7 @@ void Form::beSigned(const Bureaucrat &bur)
 {
     if (bur.getGrade() <= required_grade_2_sign)
     {
-        signed_  = true;
-        bur.signForm(*this);
+        signed_ = true;
     }
     else 
         throw GradeTooLowException();

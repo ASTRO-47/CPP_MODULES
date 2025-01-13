@@ -11,7 +11,7 @@ Form::Form(std::string name_, int to_sign, int to_excute) : name(name_), require
 
 Form::Form(const Form & other) : name(other.name), required_grade_2_excute(other.required_grade_2_excute), required_grade_2_sign(other.required_grade_2_sign),signed_(false)
 {
-
+    //
 }
 
 Form &Form::operator=(const Form & other)
@@ -46,10 +46,7 @@ int Form::get_r_excute() const
 void Form::beSigned(const Bureaucrat &bur)
 {
     if (bur.getGrade() <= required_grade_2_sign)
-    {
         signed_  = true;
-        // bur.signForm(*this);
-    }
     else 
         throw GradeTooLowException();
 }
@@ -77,4 +74,4 @@ std::ostream &operator<<(std::ostream &out, const Form &form)
     else
         std::cout << "the form status\t\t\t: not signed\n";
     return out;
-}
+}   

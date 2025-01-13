@@ -47,10 +47,7 @@ int AForm::get_r_excute() const
 void AForm::beSigned(const Bureaucrat &bur)
 {
     if (bur.getGrade() <= required_grade_2_sign)
-    {
         signed_  = true;
-        bur.signForm(*this); // mal hadi    `
-    }
     else 
         throw GradeTooLowException();
 }

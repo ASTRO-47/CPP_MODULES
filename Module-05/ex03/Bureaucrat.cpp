@@ -72,12 +72,19 @@ const char * Bureaucrat::GradeTooHighException::what() const throw()
     return ("Too high grade");
 }
 
-void Bureaucrat::signForm(const AForm &form) const 
+void Bureaucrat::signForm(AForm &form) 
 {
-    if (form.get_status())
-        std::cout << "Bureaucrat " << getName() << " signed the Form\n";
-    else
-        std::cout << "Bureaucrat " << getName() << "coutld not sign the Form because of his low grade\n";
+    try
+    {
+        form.beSigned(*this);
+    } 
+    catch(const std::exception& e)
+    {
+        std::cout << getName() << "falid to sign because: ";
+        std::cerr << e.what() << '\n';
+        return ;
+    }  
+    std::cout << "Bureaucrat " << getName() << " signed the Form\n";
 }
 
 void Bureaucrat::executeForm(AForm const & form) const

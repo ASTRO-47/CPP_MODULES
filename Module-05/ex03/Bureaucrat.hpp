@@ -38,7 +38,7 @@ public:
     void downgrade();
 
     // form functions
-    void signForm(const AForm &form) const;
+    void signForm(AForm &form) ;
     void executeForm(AForm const & form) const;
 
     // destructor

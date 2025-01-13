@@ -29,7 +29,7 @@ public:
         const char * what () const throw();
     } ;
 
-    void signForm(const Form &form) const;
+    void signForm(Form &form);
     std::string getName() const;
     int getGrade() const;
     void upgrade();

@@ -6,46 +6,9 @@
 
 int main ()
 {
-    // too low grade
-    RobotomyRequestForm imaed("imad");
-    Bureaucrat imad("imad", 3);
-    try
-    {
-        imaed.beSigned(imad);
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << e.what() << '\n';
-    }
-    // std::cout << " the rest\n";
-    try
-    {
-        imaed.execute(imad);
+    Intern imad;
 
-    }
-    catch (std::exception &e)
-    {
-        std::cout << e.what() << std::endl;
-    }
-    
-    try
-    {
-        imaed.execute(imad);
-
-    }
-    catch (std::exception &e)
-    {
-        std::cout << e.what() << std::endl;
-    }
-    
-    try
-    {
-        imaed.execute(imad);
-
-    }
-    catch (std::exception &e)
-    {
-        std::cout << e.what() << std::endl;
-    }
-
+    AForm * form= imad.makeForm("shruberry request", "imad");
+    std::cout << form->getName() << std::endl;
+    delete form;
 }
