@@ -2,12 +2,11 @@ FLAGS = -Wall -Wextra -Werror
 
 CPPC = c++ -std=c++98
 
-
-SOURCES =  main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp
+SOURCES =  main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp Intern.cpp Form.cpp
 OBJECTS = $(SOURCES:.cpp=.o)
 
 NAME = Bureaucrat
-HEADERS = Bureaucrat.hpp AForm.hpp ShrubberyCreationForm.hpp RobotomyRequestForm.hpp PresidentialPardonForm.hpp
+HEADERS = Bureaucrat.hpp AForm.hpp ShrubberyCreationForm.hpp RobotomyRequestForm.hpp PresidentialPardonForm.hpp Intern.hpp Form.hpp
 RM = rm -f
 #Colors:
 GREEN       = \e[38;5;118m
@@ -15,9 +14,8 @@ YELLOW      = \e[38;5;226m
 GRAY        = \e[38;5;37m
 RESET       = \e[0m
 
-
 %.o: %.cpp $(HEADERS)
-	@$(CPPC) $(FLAGS) -c $< -o $@
+	$(CPPC) $(FLAGS) -c $< -o $@
 
 all : $(NAME)
 
