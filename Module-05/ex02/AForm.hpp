@@ -10,8 +10,8 @@ private:
     const int required_grade_2_excute;
     const int required_grade_2_sign;
     bool signed_;
-    AForm();
 public:
+    AForm();
     AForm(std::string name_, int to_sign, int to_excute);
     AForm &operator=(const AForm &other);
     AForm(const AForm &other);
@@ -24,6 +24,7 @@ public:
     void beSigned(const Bureaucrat &bur);
 
     // the excute function
+    virtual void execute(Bureaucrat const & executor) const = 0;
     class GradeTooHighException: public std::exception 
     {
     public:
@@ -34,6 +35,11 @@ public:
     {
     public:
         const char * what() const throw();
+    } ;
+    class NotSignedForm : std::exception 
+    {
+    public:
+        const char * what () const throw();
     } ;
 
     virtual ~AForm();

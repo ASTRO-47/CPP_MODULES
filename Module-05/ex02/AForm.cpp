@@ -1,5 +1,5 @@
 #include "AForm.hpp"
-// AForm::AForm(){}
+AForm::AForm(): name("undefined"), required_grade_2_excute(1), required_grade_2_sign(1), signed_(false) {}
 
 AForm::AForm(std::string name_, int to_sign, int to_excute) : name(name_), required_grade_2_excute(to_excute), required_grade_2_sign(to_sign),signed_(false)
 {
@@ -63,6 +63,11 @@ const char * AForm::GradeTooHighException::what() const throw()
 const char * AForm::GradeTooLowException::what() const throw()
 {
     return ("Too low grade");
+}
+
+const char * AForm::NotSignedForm::what() const throw()
+{
+    return ("the bureaucrat does signed the form yet");
 }
 
 AForm::~AForm() {}

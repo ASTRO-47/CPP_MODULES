@@ -1,6 +1,6 @@
 #include "RobotomyRequestForm.hpp"
 
-// RobotomyRequestForm::RobotomyRequestForm() {}
+RobotomyRequestForm::RobotomyRequestForm(): AForm() {}
 
 RobotomyRequestForm::~RobotomyRequestForm() {}
 
@@ -21,4 +21,19 @@ RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm &o
     return *this;
 }
 
-// need implementation for excute
+void RobotomyRequestForm::execute(const Bureaucrat &executor) const
+{
+    // check the grade
+    if (executor.getGrade() > get_r_excute())
+        throw GradeTooLowException();
+    if (!get_status())
+        throw NotSignedForm();
+    static int i;
+    if (i % 2 == 0 )
+    {
+        std::cout << "vrrrrrrrr ";
+        std::cout << target << " has been successfully robotomized\n";
+    }
+    else
+        std::cout << target << " failed to robotomized\n";
+}

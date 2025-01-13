@@ -79,3 +79,11 @@ void Bureaucrat::signForm(const AForm &form) const
     else
         std::cout << "Bureaucrat " << getName() << "coutld not sign the Form because of his low grade\n";
 }
+
+void Bureaucrat::executeForm(AForm const & form) const
+{
+    if (getGrade() <= form.get_r_excute())
+        std::cout << getName() <<  "executed" << form.getName() << std::endl;
+    else
+        std::cerr <<getName() << "grade too low to execute the " << form.getName() << std::endl;
+}

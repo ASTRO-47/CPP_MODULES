@@ -35,6 +35,8 @@ public:
     void upgrade();
     void downgrade();
 
+    void executeForm(AForm const & form) const;
+
     ~Bureaucrat();
 } ;
 
