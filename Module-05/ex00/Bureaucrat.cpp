@@ -1,9 +1,6 @@
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat() : name("")
-{
-    grade = 75;
-}
+Bureaucrat::Bureaucrat() {}
 
 Bureaucrat::Bureaucrat(const std::string name, int grade_) : name(name), grade(grade_)
 {
@@ -11,7 +8,7 @@ Bureaucrat::Bureaucrat(const std::string name, int grade_) : name(name), grade(g
         throw GradeTooHighException();
     if (grade > 150)
         throw GradeTooLowException();
-        // throw std::exception();
+        // throw std::except    ion();
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat &other) : name(other.name)
@@ -30,6 +27,7 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &other)
 
 Bureaucrat::~Bureaucrat()
 {
+    std::cout << name << " died \n";
     // nothing to do
 }
 

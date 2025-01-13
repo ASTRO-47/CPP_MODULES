@@ -4,7 +4,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(): AForm() {}
 
 ShrubberyCreationForm::~ShrubberyCreationForm() {}
 
-ShrubberyCreationForm::ShrubberyCreationForm(const std::string target_) : AForm("ShrubberyCreationForm", 145, 137), target(target_) {}
+ShrubberyCreationForm::ShrubberyCreationForm(const std::string target_) : AForm("Shrubbery", 145, 137), target(target_) {}
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &other) : AForm(other)
 {
@@ -26,10 +26,10 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationF
 void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {
     // checking the grade first
-    if (!executor.getGrade())
+    if (!get_status())
         throw AForm::NotSignedForm();
     if (executor.getGrade() > get_r_excute())
-        throw GradeTooHighException();
+        throw GradeTooLowException();
     std::ofstream file(this->target + "_shrubbery");
     if (!file.is_open())
     {

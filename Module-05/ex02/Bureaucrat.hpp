@@ -17,6 +17,7 @@ public:
     Bureaucrat(const Bureaucrat &other);
     Bureaucrat& operator=(const Bureaucrat &other);
 
+    // exectption classes
     class GradeTooHighException : public std::exception
     {
     public:
@@ -28,15 +29,19 @@ public:
     public:
         const char * what () const throw();
     } ;
-
-    void signForm(const AForm &form) const;
+    // geters
     std::string getName() const;
     int getGrade() const;
+
+    // update the grade
     void upgrade();
     void downgrade();
 
+    // form functions
+    void signForm(const AForm &form) const;
     void executeForm(AForm const & form) const;
 
+    // destructor
     ~Bureaucrat();
 } ;
 

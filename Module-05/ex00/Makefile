@@ -1,4 +1,4 @@
-# FLAGS = -Wall -Wextra -Werror 
+FLAGS = -Wall -Wextra -Werror 
 
 CPPC = c++ -std=c++98
 
@@ -6,15 +6,14 @@ CPPC = c++ -std=c++98
 SOURCES =  main.cpp Bureaucrat.cpp
 OBJECTS = $(SOURCES:.cpp=.o)
 
-NAME = materia
+NAME = Bureaucrat
 HEADERS = Bureaucrat.hpp
 RM = rm -f
 #Colors:
-GREEN		=	\e[92;5;118m
-YELLOW		=	\e[93;5;226m
-GRAY		=	\e[33;2;37m
-RESET		=	\e[0m
-CURSIVE		=	\e[33;3m
+GREEN       = \e[38;5;118m
+YELLOW      = \e[38;5;226m
+GRAY        = \e[38;5;37m
+RESET       = \e[0m
 
 
 %.o: %.cpp $(HEADERS)

@@ -4,7 +4,7 @@ PresidentialPardonForm::PresidentialPardonForm(): AForm() {}
 
 PresidentialPardonForm::~PresidentialPardonForm() {} // desturctor
 
-PresidentialPardonForm::PresidentialPardonForm(const std::string target_) : AForm("PresidentialPardonForm", 25, 5), target(target_) {}
+PresidentialPardonForm::PresidentialPardonForm(const std::string target_) : AForm("Pardon", 25, 5), target(target_) {}
 
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &other) : AForm(other)
 {

@@ -4,7 +4,7 @@ RobotomyRequestForm::RobotomyRequestForm(): AForm() {}
 
 RobotomyRequestForm::~RobotomyRequestForm() {}
 
-RobotomyRequestForm::RobotomyRequestForm(const std::string target_) : AForm("RobotomyRequestForm", 72, 45), target(target_) {}
+RobotomyRequestForm::RobotomyRequestForm(const std::string target_) : AForm("Robot request", 72, 45), target(target_) {}
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &other) : AForm(other)
 {
@@ -36,4 +36,5 @@ void RobotomyRequestForm::execute(const Bureaucrat &executor) const
     }
     else
         std::cout << target << " failed to robotomized\n";
+    i++;
 }

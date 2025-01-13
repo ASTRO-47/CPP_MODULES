@@ -1,67 +1,41 @@
 #include "Bureaucrat.hpp"
 
 
-// class a
-// {
-//     public:
-//         a()
-//         {
-//             std::cout << "hello from a\n";
-
-//         }
-//         virtual ~a()
-//         {
-//             std::cout << "destructor of a\n";
-//         }
-// };
-// class b:public a
-// {
-//     public:
-//     b()
-//     {
-//         std::cout << "hello from b\n";
-//     }
-//     ~b()
-//     {
-//         std::cout << "destructor for b\n";
-//     }
-// };
-
 // stack unwding
+
+// when catch a throwen exception by value could made a slicing
+
+// another reason to catch excptio by reference make you catch every class derived from the std::exception class
+// and this because of the polymorphism
+
+// in a try block if an exception throwed all the work inside the block canceled (destroyed)
+// the  exception objects stored in special memory region that's its lifetime more than the usual objects
+
+
+// if there is no catch block and an exception throwen a function called unxpected and stops the code
+
+
+
+
 int main ()
 {
-    // try
-    // {
-    //     Bureaucrat imad("imad" , 156);
-    // }
-    // catch (std::exception &e)
-    // {
-    //     std::cout << "failed to construct: "<< e.what() << std::endl;
-    // }
-
-    // std::cout << "in the middle of the code\n";
-    Bureaucrat imad("imad", 150);
+    // two example (consturcting the object, modify the grade)
     try
     {
-        imad.downgrade();
+        Bureaucrat imad("imad", 35);
     }
-    catch (std::exception e)
+    catch(const std::exception& e)
     {
-        std::cout << "faild: "<< e.what() << std::endl; 
+        std::cerr << "failed: " << e.what() << '\n';
     }
-
-    std::cout << "resuming the execution of the code\n";
-
-
-    // std::cout << imad;
-    // try
-    // {
-    //    imad.downgrade();
-    // }
-    // catch(std::exception & e)
-    // {
-    //     std::cerr << e.what() << '\n';
-    //     // std::cout << ;
-    // }
-    // std::cout << "got to the end of the program\n";
+    
+    Bureaucrat imad("imad_beta", 1);
+    try
+    {
+        imad.upgrade();
+    }
+    catch(Bureaucrat::GradeTooHighException &e)
+    {
+        std::cerr << "faild: " << e.what() << std::endl;
+    }
 }
