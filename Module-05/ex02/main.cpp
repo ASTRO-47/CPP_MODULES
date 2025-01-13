@@ -4,7 +4,6 @@
 #include "RobotomyRequestForm.hpp"
 #include "Bureaucrat.hpp"
 
-
 int main ()
 {
     // too low grade
