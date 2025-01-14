@@ -1,6 +1,6 @@
 #include "ShrubberyCreationForm.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm(): AForm() {}
+ShrubberyCreationForm::ShrubberyCreationForm(): AForm("undefined", 145, 137) {}
 
 ShrubberyCreationForm::~ShrubberyCreationForm() {}
 

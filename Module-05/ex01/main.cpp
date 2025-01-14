@@ -1,4 +1,5 @@
 #include "Form.hpp"
+#include "Bureaucrat.hpp"
 // #include <iostream> 
 
 /*   stack unwiding    */
@@ -56,7 +57,11 @@ int main ()
 {
     try 
     {
-        Form imad("imad", 1, 45);
+        Form imad("imad", 100, 45);
+        Bureaucrat B("sabir", 10);
+        B.signForm(imad);
+        imad.beSigned(B);
+        B.signForm(imad);
         std::cout << imad ;
     }
     catch(std::exception &e)

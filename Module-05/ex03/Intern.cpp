@@ -45,11 +45,10 @@ AForm *Intern::makeForm(const std::string form_name, const std::string target)
     while (i < 3)
     {
         if (form_name == order[i])
-            break ;
+            return (ptr[i](target));
         i++;
     }
-    if (i < 3)
-        return (ptr[i](target));
+        
     std::cout << "i can not create  this type form\n" << "i can just create: shruberry request, pardon request,robotomy request \n";
     return 0;
 }

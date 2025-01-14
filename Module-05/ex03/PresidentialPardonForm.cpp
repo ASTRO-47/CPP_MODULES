@@ -1,6 +1,6 @@
 #include "PresidentialPardonForm.hpp"
 
-PresidentialPardonForm::PresidentialPardonForm(): AForm() {}
+PresidentialPardonForm::PresidentialPardonForm(): AForm("undefined", 25, 5) {}
 
 PresidentialPardonForm::~PresidentialPardonForm() {} // desturctor
 

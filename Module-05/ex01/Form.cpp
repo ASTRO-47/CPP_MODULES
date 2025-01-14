@@ -1,5 +1,9 @@
 #include "Form.hpp"
 
+Form::Form() : name("undefined"), required_grade_2_excute(10), required_grade_2_sign(10), signed_(false)
+{
+ // default 
+}
 Form::Form(std::string name_, int to_sign, int to_excute) : name(name_), required_grade_2_excute(to_excute), required_grade_2_sign(to_sign),signed_(false)
 {
     if (required_grade_2_excute < 1 || required_grade_2_sign < 1)
@@ -42,7 +46,7 @@ int Form::get_r_excute() const
 
 void Form::beSigned(const Bureaucrat &bur)
 {
-    if (bur.getGrade() <= required_grade_2_sign)
+    if (bur.getGrade() <= get_r_sign())
     {
         signed_ = true;
     }

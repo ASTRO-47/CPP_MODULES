@@ -11,8 +11,8 @@ class Bureaucrat
 private:
     const std::string name;
     int grade; // 150 <= grade <= 1 // meed to throw an exception about the high or low grade
-    Bureaucrat();
 public:
+    Bureaucrat();
     Bureaucrat(const std::string name, int grade);
     Bureaucrat(const Bureaucrat &other);
     Bureaucrat& operator=(const Bureaucrat &other);

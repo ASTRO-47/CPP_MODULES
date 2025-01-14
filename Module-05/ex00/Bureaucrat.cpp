@@ -1,13 +1,15 @@
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat() {}
+Bureaucrat::Bureaucrat():name("undefined"), grade(10) // by default no exception needed
+{}
 
-Bureaucrat::Bureaucrat(const std::string name, int grade_) : name(name), grade(grade_)
+Bureaucrat::Bureaucrat(const std::string name, int grade_) : name(name)
 {
-    if (grade < 1)
+    if (grade_ < 1)
         throw GradeTooHighException();
-    if (grade > 150)
+    if (grade_ > 150)
         throw GradeTooLowException();
+    grade = grade_;
         // throw std::except    ion();
 }
 
@@ -45,7 +47,9 @@ void Bureaucrat::upgrade()
 {
     if (grade - 1 < 1)
         throw GradeTooHighException();
+    
     grade--; // check the condition
+    std::cout << grade << std::endl;
 }
 
 void Bureaucrat::downgrade()

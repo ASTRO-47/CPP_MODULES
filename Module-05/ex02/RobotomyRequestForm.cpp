@@ -1,6 +1,6 @@
 #include "RobotomyRequestForm.hpp"
 
-RobotomyRequestForm::RobotomyRequestForm(): AForm() {}
+RobotomyRequestForm::RobotomyRequestForm(): AForm("undefined", 72, 45) {}
 
 RobotomyRequestForm::~RobotomyRequestForm() {}
 

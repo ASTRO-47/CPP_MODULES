@@ -1,5 +1,5 @@
 #include "AForm.hpp"
-AForm::AForm(): name("undefined"), required_grade_2_excute(1), required_grade_2_sign(1), signed_(false) {}
+AForm::AForm(): name("undefined"), required_grade_2_excute(10), required_grade_2_sign(10), signed_(false) {}
 
 AForm::AForm(std::string name_, int to_sign, int to_excute) : name(name_), required_grade_2_excute(to_excute), required_grade_2_sign(to_sign), signed_(false)
 {
@@ -12,7 +12,6 @@ AForm::AForm(std::string name_, int to_sign, int to_excute) : name(name_), requi
 
 AForm::AForm(const AForm & other) : name(other.name), required_grade_2_excute(other.required_grade_2_excute), required_grade_2_sign(other.required_grade_2_sign),signed_(false)
 {
-
 }
 
 AForm &AForm::operator=(const AForm & other)

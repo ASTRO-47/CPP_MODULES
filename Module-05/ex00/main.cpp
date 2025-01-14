@@ -15,14 +15,12 @@
 // if there is no catch block and an exception throwen a function called unxpected and stops the code
 
 
-
-
 int main ()
 {
     // two example (consturcting the object, modify the grade)
     try
     {
-        Bureaucrat imad("imad", 35);
+        Bureaucrat imad("imad", 10);
     }
     catch(const std::exception& e)
     {

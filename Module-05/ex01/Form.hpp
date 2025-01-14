@@ -10,8 +10,8 @@ private:
     const int required_grade_2_excute;
     const int required_grade_2_sign;
     bool signed_;
-    Form();
 public:
+    Form();// default
     Form(std::string name_, int to_sign, int to_excute);
     Form &operator=(const Form &other);
     Form(const Form &other);
@@ -34,8 +34,6 @@ public:
     public:
         const char * what() const throw();
     } ;
-
-
 
     ~Form();
 } ; 
