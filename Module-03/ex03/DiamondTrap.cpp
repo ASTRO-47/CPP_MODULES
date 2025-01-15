@@ -1,6 +1,6 @@
 #include "DiamondTrap.hpp"
 
-DiamondTrap::DiamondTrap(std::string name_): ClapTrap(name_), ScavTrap(name_), FragTrap(name_)
+DiamondTrap::DiamondTrap(std::string name_): ClapTrap(name_)
 {
     //should build the claptrap first
     name = name_;

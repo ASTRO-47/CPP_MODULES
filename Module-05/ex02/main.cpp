@@ -49,3 +49,13 @@ int main ()
     }
     
 }
+
+
+class dimo : scav , frag
+{
+    name;
+    dimo(std:;stirn name_) :scav(iamd)
+    {
+        name = name_;
+    }
+}
