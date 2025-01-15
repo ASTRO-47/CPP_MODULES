@@ -1,13 +1,13 @@
-FLAGS = -Wall -Wextra -Werror 
+# FLAGS = -Wall -Wextra -Werror 
 
 CPPC = c++ -std=c++98
 
 
-SOURCES =  main.cpp Bureaucrat.cpp
+SOURCES =  main.cpp ScalarConverter.cpp
 OBJECTS = $(SOURCES:.cpp=.o)
 
-NAME = Bureaucrat
-HEADERS = Bureaucrat.hpp
+NAME = ScalarConverter
+HEADERS = ScalarConverter.hpp
 RM = rm -f
 #Colors:
 GREEN       = \e[38;5;118m
