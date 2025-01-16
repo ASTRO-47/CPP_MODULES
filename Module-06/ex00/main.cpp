@@ -1,7 +1,7 @@
 
-#include <iostream>
+#include "ScalarConverter.hpp"
 
- /* operator overloading and function overloading are a compile time polymorphism
+/* operator overloading and function overloading are a compile time polymorphism
 
 the virtual methods and function overiding are the compile time polymorphism
 there are 4 types of casting in c++: static_cast dynamic_cast reinterpret_cast  const_cast
@@ -27,40 +27,20 @@ it does not check the if the pointer type and data pionted by the pointer are sa
 it is used to convert a pointer of some data type into a pointer of another data type, even
 
 
-----------------reinterpret_cast-------------------
-
+----------------const_cast-------------------
+it is used to change or manipulate the const behavior of the source pointer it means we can perform the const 
+in two ways:
+setting a const pointer to a non-const pointer or deleting or removing the const from a cosnt
+pointer
 
 */
- 
-using namespace std;
 
-class base
+int main (int ac , char *av[])
 {
-    public:
-        base(){ puts("hello");}
-} ;
-
-
-class derived : public base
-{
-    public:
-        derived(){puts("from hello");}
-} ;
-
-
-class test2
-{
-    public:
-        test2(){ puts("hello");}
-} ; 
-
-int main ()
-{
-    const int *ptr = new int (8);
-
-    int * ptr_ = const_cast <int*> (ptr);
+    if (ac != 2)
+        return(std::cerr << "invalid number of arguments\n", 1);
+    ScalarConverter::convert(av[1]);
 }
-
 
 // compile time polymorphism ---> function overloading and operator overloading
 // run time polymorphism : virutal methods (overiding)
