@@ -1,6 +1,8 @@
 #pragma once
 
 #include <iostream>
+#include <iomanip>
+#include <limits>
 
 class ScalarConverter
 {
@@ -16,9 +18,10 @@ public:
 
 struct checker
 {
-    int int_;
     bool    digit_;
-    float   float_;
+    bool char_check;
+    double  int_;
+    double   float_;
     double  double_;
     char    char_;
 }  ;
