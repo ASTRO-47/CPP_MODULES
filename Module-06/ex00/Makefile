@@ -3,7 +3,7 @@
 CPPC = c++ -std=c++98
 
 
-SOURCES =  main.cpp ScalarConverter.cpp
+SOURCES =  main.cpp ScalarConverter.cpp utils.cpp
 OBJECTS = $(SOURCES:.cpp=.o)
 
 NAME = ScalarConverter

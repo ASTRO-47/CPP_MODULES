@@ -33,20 +33,20 @@ setting a const pointer to a non-const pointer or deleting or removing the const
 pointer
 
 */
-#include <stdlib.h>
+
+
+
 int main (int ac , char *av[])
 {
-    // char *p = malloc(10);
-    char *p;
-    p = strdup("hello");
-    printf("%s\n",p);
-    unsigned int *p_ = reinterpret_cast<unsigned int*>(p);
-    printf("%s",p_);
-    // if (ac != 2)
-    //     return(std::cerr << "invalid number of arguments\n", 1);
-    // checker my_checker = {0,0,0,0};
+    // char *p;
+    // p = strdup("hello");
+    // printf("%s\n",p);
+    // unsigned int *p_ = reinterpret_cast<unsigned int*>(p);
+    // printf("%s",p_);
+    if (ac != 2)
+        return(std::cerr << "invalid number of arguments\n", 1);
 
-    // ScalarConverter::convert(av[1]);
+    ScalarConverter::convert(av[1]);
 }
 
 // compile time polymorphism ---> function overloading and operator overloading

@@ -14,10 +14,13 @@ public:
 } ;
 
 
-typedef struct checker
+struct checker
 {
-    bool    invalid_;
+    int int_;
+    bool    digit_;
     float   float_;
     double  double_;
     char    char_;
-} checker ;
+}  ;
+
+void  handle_one_char(checker *my_checker, std::string m);

@@ -33,7 +33,7 @@ double handle_int(std::string m)
     //     return -1;
     // }
     char *check =  NULL;
-    float y = std::strtof(m.c_str(), &check);
+    float y = std::strtod(m.c_str(), &check);
     if (strlen(check))
         return -1;
     return y;
@@ -60,6 +60,14 @@ void handle_char(std::string m)
 
 void ScalarConverter::convert(std::string m)
 {
+    // make a checker for every possible case , if not print unkwen type
+    checker my_checker = {0,0,0,0};
+
+    // here need to add a first checker to pass only the valid string
+
+    if (m.length() == 1)
+        return (handle_one_char(&my_checker, m));
+
     if (m.length() > 1 && m[m.length() - 1]  == 'f' ) // there is a problem with one char ,fix it
         m.pop_back();
     std::cout << "this is the first step to make a good impact\n";
