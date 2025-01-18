@@ -25,8 +25,6 @@ bool check_nums(const std::string &m)
     return 0;
 }
 
-
-
 double handle_int(std::string m)
 {
     // if (m.length() > 12)
@@ -49,22 +47,25 @@ void handle_char(std::string m)
         return ;
     }
 }
-bool first_check(const std::string &m)
-{
-    if (m == "nan")
-    
-    return true;
-}
+// bool first_check(const std::string &m)
+// {
+//     if (m == "nan")
+//     return true;
+// }
+
+// void handle_float(float f)
+// {
+
+// }
 
 void ScalarConverter::convert(std::string m)
 {
-    // first_check();
-    // m[0] = 'h';
     if (m.length() > 1 && m[m.length() - 1]  == 'f' ) // there is a problem with one char ,fix it
         m.pop_back();
-    // std::cout << m ;return ;
+    std::cout << "this is the first step to make a good impact\n";
     std::cout << "Int: ";
     float i_cast = handle_int(m);
+    // std::cout << i_cast << std::endl;
     if ((i_cast == -1 && m != "-1") || (i_cast > 2147483647 || i_cast < -2147483648))
         std::cout << "Impossible\n";
     else
@@ -72,15 +73,21 @@ void ScalarConverter::convert(std::string m)
     std::cout << "Char: ";
     if (!std::isprint(static_cast<char>(i_cast)))
         std::cout << "Non displayable\n";
-    else if (i_cast < 127)
+    else if (i_cast > 31 && i_cast < 127)
         std::cout << "'"<<  static_cast<char> (i_cast) << "'" << std::endl;
     else
         std::cout << "Impossible\n";
     std::cout << "float: " ;
-    if (i_cast < std::numeric_limits<float>::min() || i_cast > std::numeric_limits<float>::max())
+    // std::cout << std::numeric_limits<float>::min();
+    if ((i_cast == -1 && m != "-1") || (i_cast < std::numeric_limits<float>::min() || i_cast > std::numeric_limits<float>::max()))
         std::cout << "Impossible\n";
     else
-        std::cout << (i_cast) << std::endl;
+    {
+        // if (m.length() == 1)
+        //     std::cout << std::fixed << std::setp<< static_cast<float> (i_cast) << 'f' << std::endl;
+        std::cout << static_cast<float> (i_cast) << 'f' << std::endl;
+
+    }
     std::cout << "double: ";
     // if (!check_nums(m) && m.length() > 25)
     // if ()
