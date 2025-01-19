@@ -38,14 +38,8 @@ pointer
 
 int main (int ac , char *av[])
 {
-    // char *p;
-    // p = strdup("hello");
-    // printf("%s\n",p);
-    // unsigned int *p_ = reinterpret_cast<unsigned int*>(p);
-    // printf("%s",p_);
     if (ac != 2)
         return(std::cerr << "invalid number of arguments\n", 1);
-
     ScalarConverter::convert(av[1]);
 }
 

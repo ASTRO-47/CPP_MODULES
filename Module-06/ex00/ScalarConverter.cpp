@@ -24,30 +24,6 @@ bool check_nums(const std::string &m)
     }
     return true;
 }
-
-double handle_int(std::string m)
-{
-    // if (m.length() > 12)
-    // {
-    //     std::cout << "Impossible\n";
-    //     return -1;
-    // }
-    char *check =  NULL;
-    float y = std::strtod(m.c_str(), &check);
-    if (strlen(check))
-        return -1;
-    return y;
-}
-
-void handle_char(std::string m)
-{
-    if (m.length() > 3)
-    {
-        std::cout << "Impossible\n";
-        return ;
-    }
-}
-
 bool check_int(std::string m)
 {
     int j  = 0;
@@ -76,11 +52,12 @@ bool check_char(std::string m)
 
 void print_result(checker *my_checker)
 {
+    // std::cout << std::numeric_limits<int>::max() << std::endl;
     std::cout << "Int: " ;
-    if (my_checker->int_ < std::numeric_limits<int>::min() || my_checker->int_ > std::numeric_limits<int>::max())
+    if (my_checker->double_ < std::numeric_limits<int>::min() || my_checker->float_ > std::numeric_limits<int>::max())
         std::cout << "Impossible\n";
     else
-        std::cout << my_checker->int_ << std::endl;
+        std::cout << static_cast<int>(my_checker->float_) << std::endl;
     std::cout  << "char: ";
     if (!std::isprint((my_checker->char_)) || my_checker->char_check)
         std::cout << "Non displayable\n";
@@ -112,7 +89,7 @@ bool float_check(std::string m)
 {
     char *end = NULL;
     double first_conversion = std::strtod(m.c_str(), &end);
-    if (first_conversion != -1 && strcmp(end, "f"))
+    if (first_conversion != -1 && strcmp(end, "f") && strlen(end) == 1)
         return true;
     return false;
 }
@@ -129,9 +106,9 @@ void customize_inf(std::string m)
 {
     std::cout << "Int : Impossible\n" ;
     std::cout << "Char: Impossible\n" ;
-    std::cout << "float :" ;
+    std::cout << "float: " ;
     std::cout << m[0] << "inff" << std::endl;
-    std::cout << "double :" ;
+    std::cout << "double: " ;
     std::cout << m[0] << "inf" << std::endl;
 }
 
@@ -146,17 +123,17 @@ void ScalarConverter::convert(std::string m)
         return (customize_inf(m));
     if (check_int(m))// checke if int 
     {
-        puts("in int");
+        // puts("in int");
         my_checker.digit_= true;
         my_checker.char_check = true;
         my_checker.double_ = std::strtod(m.c_str(), &p_checker);
         my_checker.int_ = static_cast<int> (my_checker.double_);
         my_checker.char_ = static_cast<char>(my_checker.int_);
-        my_checker.float_ = my_checker.int_;
+        my_checker.float_ = my_checker.double_;
     }
     else if (check_char(m)) // check if char
     {
-        puts("in char");
+        // puts("in char");
         my_checker.digit_= true;
         my_checker.char_check = true;
         my_checker.char_ = m[0];
@@ -166,7 +143,7 @@ void ScalarConverter::convert(std::string m)
     }
     else if (float_check(m))
     {
-        puts("in float");
+        // puts("in float");
         my_checker.char_check = false;
         my_checker.float_ = std::strtod(m.c_str(), NULL);
         my_checker.double_ = static_cast<double> (my_checker.float_);
@@ -174,7 +151,7 @@ void ScalarConverter::convert(std::string m)
     }
     else if (double_check(m))
     {
-        puts("in double");
+        // puts("in double");
         my_checker.char_check = false;
         my_checker.double_ = std::strtod(m.c_str(), NULL);
         my_checker.float_ = static_cast<float> (my_checker.double_);
@@ -182,7 +159,7 @@ void ScalarConverter::convert(std::string m)
     }
     else
     {
-        std::cout << "unknowen type\n";
+        std::cout << "unknown type\n";
         return ;
     }
     print_result(&my_checker);
