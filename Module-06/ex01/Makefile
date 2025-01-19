@@ -1,13 +1,13 @@
-FLAGS = -Wall -Wextra -Werror 
+# FLAGS = -Wall -Wextra -Werror 
 
 CPPC = c++ -std=c++98
 
 
-SOURCES =  main.cpp Bureaucrat.cpp
+SOURCES =  main.cpp Serializer.cpp
 OBJECTS = $(SOURCES:.cpp=.o)
 
-NAME = Bureaucrat
-HEADERS = Bureaucrat.hpp
+NAME = Serializer
+HEADERS = Serializer.hpp
 RM = rm -f
 #Colors:
 GREEN       = \e[38;5;118m
