@@ -1,39 +1,58 @@
-#include "Bureaucrat.hpp"
+#include "classes.hpp"
 
+Base::~Base(){};
 
-// stack unwding
+Base *genrate()
+{
+    int ran = rand() % 3;
+    // std::cout << ran << std::endl;
+    if (ran == 0)
+        return new A();
+    if (ran == 2)
+        return new B();
+    if (ran == 1)
+        return new C();
+    return 0;
+}
 
-// when catch a throwen exception by value could made a slicing
+void identify(Base& p) 
+{
+    try 
+    {
+        A& a = dynamic_cast<A&>(p);
+        std::cout << "The reference passed is for an object of type A\n";
+        return;
+    }
+    catch (const std::bad_cast&) {}
 
-// another reason to catch excptio by reference make you catch every class derived from the std::exception class
-// and this because of the polymorphism
+    try 
+    {
+        B& b = dynamic_cast<B&>(p);
+        std::cout << "The reference passed is for an object of type B\n";
+        return;
+    }
+    catch (const std::bad_cast&) {}
 
-// in a try block if an exception throwed all the work inside the block canceled (destroyed)
-// the  exception objects stored in special memory region that's its lifetime more than the usual objects
+    try 
+    {
+        C& c = dynamic_cast<C&>(p);
+        std::cout << "The reference passed is for an object of type C\n";
+        return;
+    } catch (const std::bad_cast&) {}
 
-
-// if there is no catch block and an exception throwen a function called unxpected and stops the code
+}
 
 
 int main ()
 {
-    // two example (consturcting the object, modify the grade)
-    try
-    {
-        Bureaucrat imad("imad", 10);
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << "failed: " << e.what() << '\n';
-    }
-    
-    Bureaucrat imad("imad_beta", 1);
-    try
-    {
-        imad.upgrade();
-    }
-    catch(Bureaucrat::GradeTooHighException &e)
-    {
-        std::cerr << "faild: " << e.what() << std::endl;
-    }
+    srand(time(0));
+
+    B a;
+    Base &ptr = a;
+    identify(ptr);
+    // for (int i=0;i< 10;i++)
+    // {
+    //     Base *ptr  = genrate();
+    //     delete ptr;
+    // }
 }

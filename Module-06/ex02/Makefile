@@ -1,15 +1,17 @@
-FLAGS = -Wall -Wextra -Werror 
+# FLAGS = -Wall -Wextra -Werror 
 
 CPPC = c++ -std=c++98
 
 
-SOURCES =  main.cpp Bureaucrat.cpp
+SOURCES =  main.cpp 
 OBJECTS = $(SOURCES:.cpp=.o)
 
-NAME = Bureaucrat
-HEADERS = Bureaucrat.hpp
+NAME = type
+HEADERS = classes.hpp
 RM = rm -f
+
 #Colors:
+
 GREEN       = \e[38;5;118m
 YELLOW      = \e[38;5;226m
 GRAY        = \e[38;5;37m
