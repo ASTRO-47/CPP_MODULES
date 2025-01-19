@@ -4,6 +4,14 @@
 #include <iomanip>
 #include <limits>
 
+
+struct Data
+{
+    std::string name;
+}  ;
+
+
+
 class Serializer
 {
 private:
@@ -12,16 +20,8 @@ private:
     Serializer & operator=(const Serializer &other);
 public:
     ~Serializer();
-    static void convert(const std::string);
+    static uintptr_t serialize(Data* ptr);
+    static Data* deserialize(uintptr_t raw);
 } ;
 
 
-struct checker
-{
-    bool    digit_;
-    bool char_check;
-    double  int_;
-    double   float_;
-    double  double_;
-    char    char_;
-}  ;

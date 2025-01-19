@@ -25,5 +25,3 @@ struct checker
     double  double_;
     char    char_;
 }  ;
-
-void  handle_one_char(checker *my_checker, std::string m);
