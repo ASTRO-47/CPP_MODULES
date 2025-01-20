@@ -3,6 +3,7 @@
 // for the canonical form
 
 ScalarConverter::ScalarConverter() {}
+
 ScalarConverter::ScalarConverter(const ScalarConverter &other) 
 {
     (void) other;
@@ -24,6 +25,7 @@ bool check_nums(const std::string &m)
     }
     return true;
 }
+
 bool check_int(std::string m)
 {
     int j  = 0;
@@ -89,7 +91,6 @@ bool float_check(std::string m)
 {
     char *end = NULL;
     double first_conversion = std::strtod(m.c_str(), &end);
-    // std::cout << first_conversion <<"[]" <<end<< "]" << strlen(end) <<std::endl;
     if (first_conversion != -1 && !strcmp(end, "f") && strlen(end) == 1)
         return true;
     return false;

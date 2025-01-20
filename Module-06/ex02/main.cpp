@@ -5,7 +5,6 @@ Base::~Base(){};
 Base *genrate()
 {
     int ran = rand() % 3;
-    // std::cout << ran << std::endl;
     if (ran == 0)
         return new A();
     if (ran == 2)
@@ -20,6 +19,7 @@ void identify(Base& p)
     try 
     {
         A& a = dynamic_cast<A&>(p);
+        (void) a;
         std::cout << "The reference passed is for an object of type A\n";
         return;
     }
@@ -28,6 +28,7 @@ void identify(Base& p)
     try 
     {
         B& b = dynamic_cast<B&>(p);
+        (void) b;
         std::cout << "The reference passed is for an object of type B\n";
         return;
     }
@@ -37,22 +38,28 @@ void identify(Base& p)
     {
         C& c = dynamic_cast<C&>(p);
         std::cout << "The reference passed is for an object of type C\n";
+        (void) c;
         return;
     } catch (const std::bad_cast&) {}
 
 }
 
 
+void identify(Base *p)
+{
+    if (dynamic_cast<A*>(p))
+        std::cout << "the pointer holding a A object\n";
+    if (dynamic_cast<B*>(p))
+        std::cout << "the pointer holding B object\n";
+    if (dynamic_cast<C*>(p))
+        std::cout << "the pointer holding C object\n";
+}
+
 int main ()
 {
     srand(time(0));
 
-    B a;
-    Base &ptr = a;
+    A a;
+    Base *ptr = &a;
     identify(ptr);
-    // for (int i=0;i< 10;i++)
-    // {
-    //     Base *ptr  = genrate();
-    //     delete ptr;
-    // }
 }
