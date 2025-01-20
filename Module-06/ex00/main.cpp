@@ -35,13 +35,9 @@ pointer
 */
 
 
-
 int main (int ac , char *av[])
 {
     if (ac != 2)
         return(std::cerr << "invalid number of arguments\n", 1);
     ScalarConverter::convert(av[1]);
 }
-
-// compile time polymorphism ---> function overloading and operator overloading
-// run time polymorphism : virutal methods (overiding)

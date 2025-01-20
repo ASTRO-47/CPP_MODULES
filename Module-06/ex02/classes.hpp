@@ -5,9 +5,7 @@
 class Base
 {
 public:
-    virtual ~Base();  
-    // Base *genrate(void);
-    // virtual void identify(Base *p) = 0;
+    virtual ~Base(); 
 } ;
 
 
@@ -16,7 +14,6 @@ class A : public Base
 private:
     //
 public:
-    // Base *generate();
     //
 } ;
 class B : public Base 
@@ -24,7 +21,6 @@ class B : public Base
 private:
     //
 public:
-    // Base *generate();
     //
 } ;
 class C : public Base 
@@ -32,7 +28,6 @@ class C : public Base
 private:
     //
 public:
-    // Base *generate();
     //
 } ;
 

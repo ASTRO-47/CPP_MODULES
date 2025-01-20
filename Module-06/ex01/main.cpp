@@ -17,3 +17,4 @@ int main()
    Data *my_data_2 = Serializer::deserialize(my_ptr);
    std::cout << "the pointer returned by the deserialize function: " << my_data_2 << std::endl;
 }
+

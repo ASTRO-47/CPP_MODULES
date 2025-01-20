@@ -1,8 +1,10 @@
 #pragma once
 
 #include <iostream>
-#include <iomanip>
 #include <limits>
+#include <iomanip> // setprecision
+#include <cmath>
+#include "my_checker.hpp"
 
 class ScalarConverter
 {
@@ -14,14 +16,3 @@ public:
     ~ScalarConverter();
     static void convert(const std::string);
 } ;
-
-
-struct checker
-{
-    bool    digit_;
-    bool char_check;
-    double  int_;
-    double   float_;
-    double  double_;
-    char    char_;
-}  ;
