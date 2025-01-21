@@ -1,12 +1,14 @@
-#include "Temp.hpp"
-#include <typeinfo>
+#include "whatever.hpp"
 
 // RTTI : run time type informations
 
 int main()
 {  
-    std::string n1 = "hello ";
-    std::string n2 = "world";
+    int _42 = 42;
+    int second = 1337;
+    const int *test = &_42;
+    // *((int *)test) = 3;
 
-    my_add(n1, n2);
+    std::cout << _42 << std::endl;
+    int * else_ = const_cast<int*>(test);
 }

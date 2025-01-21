@@ -7,7 +7,7 @@ SOURCES =  main.cpp
 OBJECTS = $(SOURCES:.cpp=.o)
 
 NAME = Temp
-HEADERS = Temp.hpp
+HEADERS = whatever.hpp
 RM = rm -f
 #Colors:
 GREEN       = \e[38;5;118m
