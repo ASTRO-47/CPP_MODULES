@@ -4,7 +4,11 @@ Base::~Base(){};
 
 Base *genrate()
 {
+    // std::srand(rand)
+    // std::srand(std::time(0));
     int ran = rand() % 3;
+    std::cout << ran << std::endl;
+    // return N;
     if (ran == 0)
         return new A();
     if (ran == 2)
@@ -47,6 +51,10 @@ void identify(Base& p)
 
 void identify(Base *p)
 {
+
+    // NULL protection
+    if (!p)
+        return ;
     if (dynamic_cast<A*>(p))
         std::cout << "the pointer holding a A object\n";
     if (dynamic_cast<B*>(p))
@@ -59,7 +67,11 @@ int main ()
 {
     srand(time(0));
 
-    A a;
-    Base *ptr = &a;
-    identify(ptr);
+    for (int i = 0;i < 10;i++) 
+    {
+        genrate();
+    }
+    // A a;
+    // Base *ptr = &a;
+    // identify(ptr);
 }
