@@ -1,9 +1,12 @@
+#include "Temp.hpp"
+#include <typeinfo>
 
-#include 
+// RTTI : run time type informations
 
+int main()
+{  
+    std::string n1 = "hello ";
+    std::string n2 = "world";
 
-
-int main (int ac , char *av[])
-{
-
+    my_add(n1, n2);
 }

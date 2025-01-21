@@ -3,11 +3,11 @@ FLAGS = -Wall -Wextra -Werror
 CPPC = c++ -std=c++98
 
 
-SOURCES =  main.cpp ScalarConverter.cpp
+SOURCES =  main.cpp
 OBJECTS = $(SOURCES:.cpp=.o)
 
-NAME = ScalarConverter
-HEADERS = ScalarConverter.hpp
+NAME = Temp
+HEADERS = Temp.hpp
 RM = rm -f
 #Colors:
 GREEN       = \e[38;5;118m
