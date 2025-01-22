@@ -3,11 +3,11 @@ FLAGS = -Wall -Wextra -Werror
 CPPC = c++ -std=c++98
 
 
-SOURCES =  main.cpp
+SOURCES =  main.cpp Array.cpp
 OBJECTS = $(SOURCES:.cpp=.o)
 
-NAME = Iter
-HEADERS = Iter.hpp
+NAME = Array
+HEADERS = Array.hpp
 RM = rm -f
 #Colors:
 GREEN       = \e[38;5;118m
