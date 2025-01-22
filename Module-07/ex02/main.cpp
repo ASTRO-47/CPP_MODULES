@@ -1,7 +1,9 @@
 
-#include ".hpp"
+#include "Iter.hpp"
 
 
-int main (int ac , char *av[])
-{
+int main ()
+{ 
+    int arr[] = {2,5,2,5,2};
+    iter(&arr[0], 5, &print<int>);
 }
