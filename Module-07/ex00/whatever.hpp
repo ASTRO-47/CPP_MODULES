@@ -12,7 +12,7 @@ template <typename t> void swap(t &arg1, t &arg2)
 }
 
 
-template <typename t_> t_ &min(t_ &arg1, t_ &arg2)
+template <typename t_> t_ min(t_ &arg1, t_ &arg2)
 {
     if (arg1 >= arg2)
         return arg2;
@@ -21,7 +21,7 @@ template <typename t_> t_ &min(t_ &arg1, t_ &arg2)
 }
 
 
-template <typename t_> t_ &max(t_ &arg1, t_ &arg2)
+template <typename t_> t_ max(t_ &arg1, t_ &arg2)
 {
     if (arg1 <= arg2)
         return arg2;
