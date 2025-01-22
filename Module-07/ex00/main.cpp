@@ -1,8 +1,5 @@
 #include "whatever.hpp"
 
-
-// RTTI : run time type informations
-
 int main( void ) 
 {
     int a = 2;

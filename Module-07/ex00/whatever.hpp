@@ -28,13 +28,3 @@ template <typename t_> t_ max(t_ &arg1, t_ &arg2)
     else
         return arg1;
 }
-
-
-// template <typename he>
-
-template <typename data> 
-
-void print(data arge)
-{
-    std::cout << arge << std::endl;
-}
