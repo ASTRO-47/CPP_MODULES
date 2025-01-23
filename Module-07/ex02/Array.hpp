@@ -1,32 +1,41 @@
 #pragma once
 
+
+// template are used and determined at compile time 
+// 4. Non-Type Template Parameters
+
+
 #include <iostream>
 
 template <typename T, int size>
 class Array
 {
-private:
-    T data[size];
+private:  
+    //
 public:
-    // Array(T d, int size): data(d){};
+    T arr[size];
+    void set_value(T data)
+    {
+        for(int i = 0;i < size;i++)
+        {
+            arr[i] = data;
+        }
+    }
     void display()
     {
-        for (int i = 0;i < size;i++)
-            std::cout << data[i] << std::endl;
-    }
-    void fill_case(int start, T data_)
-    {   
-        data[start] = data_;
-    }
-    void show_case(int pos)
-    {
-        std::cout << data[pos] << std::endl;
+        for (int i = 0;i<size;i++)
+        {
+            std::cout << arr[i] << std::endl;
+        }
     }
 } ;
 
-template<class D>
+template <typename T>
 
-void test(D t)
+void test(T data)
 {
-    std::cout << t << std::endl;
+    (void)data;
+    static int i = 0;
+    std::cout << i++ << std::endl;
 }
+

@@ -1,17 +1,52 @@
 #include "Array.hpp"
 
-int main()
+#include <iostream> 
+
+using namespace std; 
+
+template <class T> class Test 
 {
-    Array<std::string, 5> imad;
-    
-    imad.fill_case(0, "imad_1");
-    imad.show_case(0);
-    imad.show_case(8);
-    // ::test<std::string>("hello");
+private: 
+    T val; 
+public: 
+    static int count; 
+
+Test() 
+{
+	count++; 
 }
 
+// some other stuff in class 
+}; 
 
-void f()
+template<class T> 
+int Test<T>::count = 0; 
+
+
+
+class test
 {
-    throw std::bad_alloc();
+public:
+    static int o;
+} ;
+
+int main() 
+{
+    Test<int> a; // value of count for Test<int> is 1 now 
+    Test<int> b; // value of count for Test<int> is 2 now 
+    Test<double> c; // value of count for Test<double> is 1 now 
+    // cout << Test<int>::count << endl;
+    cout << Test<int>::count << endl; // prints 2 
+    cout << Test<double>::count << endl; //prints 1 
+
+    return 0; 
 }
+
+// int main()
+// {
+//     test<char> (4);
+//     test<int> (4);
+//     test<char>(5);
+//     test<int> (34);
+// }
+
