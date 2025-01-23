@@ -14,7 +14,7 @@ private:
     size_t size_;
 public:
     Array();
-
+    Array(size_t);
 
 } ;
 

@@ -1,9 +1,10 @@
 #include "Array.hpp"
+
 template <typename T>
+Array<T>::Array() : arr(NULL), size(0) {}
 
-
-Array<T>::Array()
+template<typename T> 
+Array<T>::Array(size_t size)
 {
-    arr = new T[];
-    std::cout << "defautl constructor for Array called\n";
+    
 }
