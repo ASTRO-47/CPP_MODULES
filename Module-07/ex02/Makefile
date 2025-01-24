@@ -1,4 +1,4 @@
-	FLAGS = -Wall -Wextra -Werror 
+FLAGS = -Wall -Wextra -Werror
 
 CPPC = c++ -std=c++98
 

@@ -1,13 +1,6 @@
 
 #include "Iter.hpp"
 
-
-// int main ()
-// { 
-//     int arr[] = {2,5,2,5,2};
-//     iter(&arr[0], 5, &print<int>);
-// }
-
 class Awesome
 {
 	public:
@@ -23,7 +16,8 @@ std::ostream & operator<<( std::ostream & o, Awesome const & rhs )
 	return o;
 }
 
-int main() {
+int main()
+{
   int tab[] = { 0, 1, 2, 3, 4 };
   Awesome tab2[5];
 

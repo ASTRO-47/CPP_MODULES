@@ -13,7 +13,7 @@ private:
     T   *arr;
     unsigned int size_;
 public:
-    Array() : arr(new T()), size_(0) {}
+    Array() : arr(NULL), size_(0) {}
     Array(unsigned int size) : arr(new T[size]), size_(size) {}
     Array(const Array &other) : arr(NULL)
     {
@@ -36,6 +36,13 @@ public:
     }
 
     T&  operator[](unsigned int index)
+    {
+        if (index >= size_)
+            throw std::out_of_range("index out of bounds");
+        return arr[index];
+    }
+
+    const T& operator[](unsigned int index) const
     {
         if (index >= size_)
             throw std::out_of_range("index out of bounds");
