@@ -1,9 +1,9 @@
-FLAGS = -Wall -Wextra -Werror 
+	FLAGS = -Wall -Wextra -Werror 
 
 CPPC = c++ -std=c++98
 
 
-SOURCES =  main.cpp Array.cpp
+SOURCES =  main.cpp
 OBJECTS = $(SOURCES:.cpp=.o)
 
 NAME = Array

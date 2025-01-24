@@ -9,7 +9,6 @@ void print(M arg)
     std::cout << arg << std::endl;
 }
 
-
 template<typename T, typename M>
 void iter(T *addr, std::size_t length, void (*func)(M))
 {
