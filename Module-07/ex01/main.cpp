@@ -18,12 +18,16 @@ std::ostream & operator<<( std::ostream & o, Awesome const & rhs )
 
 int main()
 {
-  int tab[] = { 0, 1, 2, 3, 4 };
-  Awesome tab2[5];
+	// Arrray<int> 
+//   int tab[] = { 0, 1, 2, 3, 4 };
+//   Awesome tab2[5];
 
-  iter(  tab, 5, print<const int> );
-  iter( tab2, 5, print<Awesome> );
+//   iter(  tab, 5, print<const int> );
+//   iter( tab2, 5, print<Awesome> );
 
+	char **ptr = new char*[10];
+
+	std::cout << ptr << "]\n" << &ptr[0] << std::endl;
   return 0;
 }
 
