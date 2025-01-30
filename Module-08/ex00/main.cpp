@@ -34,7 +34,6 @@ int main()
     {
         int  looking_for = easyfind(imad, 5);
         std::cout << looking_for << std::endl;
-
     }
     catch(std::exception &e)
     {
