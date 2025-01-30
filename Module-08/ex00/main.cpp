@@ -1,8 +1,5 @@
 #include "easyfind.hpp"
-#include <vector>
-#include <list>
-#include <algorithm>
-#include <stdexcept>
+
 /*
 
 The components of STL are the features provided by Standard Template Library (STL) in C++ that can be classified into 4 types:
@@ -54,4 +51,3 @@ int main()
         std::cout << e.what() << std::endl;
     }
 }
-
