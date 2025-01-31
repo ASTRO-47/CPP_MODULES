@@ -1,8 +1,8 @@
 #pragma once
 
 #include <iostream>
+#include <algorithm>
 #include <vector>
-using namespace std;
 class Span
 {
 private:
@@ -16,5 +16,7 @@ public:
     void addNumber(int n);
     int shortestSpan();
     int longestSpan();
+
+    
     ~Span();
 } ;
