@@ -3,6 +3,9 @@
 #include <iostream>
 #include <algorithm>
 #include <vector>
+
+typedef std::vector<int>::iterator it;
+
 class Span
 {
 private:
@@ -16,7 +19,10 @@ public:
     void addNumber(int n);
     int shortestSpan();
     int longestSpan();
-
+    void addRange(it, it);
+    void addrandRange(unsigned int);
+    void print_elements() const;
+    
     
     ~Span();
 } ;

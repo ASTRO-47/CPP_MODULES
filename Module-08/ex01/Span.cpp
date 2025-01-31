@@ -44,3 +44,28 @@ int Span::longestSpan()
         throw std::runtime_error("no enough elements for a span");
     return (*std::max_element(_array.begin(), _array.end()) - *std::min_element(_array.begin(), _array.end()));
 }
+
+void Span::addRange(it begin, it end)
+{
+    if (_array.size() + std::distance(begin , end) >= max)
+        throw std::runtime_error("not enough slots to add elements");
+    _array.insert(_array.end(), begin ,end);
+}
+
+void Span::print_elements() const
+{
+    for (size_t i = 0; i < _array.size(); i++)
+    {
+        std::cout << _array[i] << std::endl;
+    }
+}
+
+void Span::addrandRange(unsigned int size)
+{
+    if (_array.size() + size >= max)
+        throw std::runtime_error("not enough slots to add elements");
+    for (unsigned int i = 0; i < size; i++)
+    {
+        _array.push_back(std::rand() % 100);
+    }
+}
