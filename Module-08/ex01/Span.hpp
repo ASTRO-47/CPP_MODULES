@@ -2,20 +2,19 @@
 
 #include <iostream>
 #include <vector>
-
+using namespace std;
 class Span
 {
 private:
     unsigned int max;
-    std::vector<int> array;
+    std::vector<int> _array;
     Span();
 public:
     Span(unsigned int);
     Span(const Span &);
     Span& operator=(const Span &);
     void addNumber(int n);
-    int &shortestSpan() const;
-    int &longestSpan() const;
+    int shortestSpan();
+    int longestSpan();
     ~Span();
 } ;
-

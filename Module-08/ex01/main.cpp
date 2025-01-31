@@ -1,20 +1,32 @@
 #include "Span.hpp"
 
-using namespace std;
+
 int main()
 {
-    Span test(-1);
-    try
-    {
-        test.addNumber(3);
-        test.addNumber(3);
-        test.addNumber(3);
-        test.addNumber(3);
-        test.addNumber(3);
-    }
-    catch (std::exception & e)
-    {
-        std::cout << e.what() << std::endl;
-    }
-
+    Span sp = Span(4);
+    sp.addNumber(-9);
+    sp.addNumber(-7);
+    sp.addNumber(-5);
+    sp.addNumber(-349);
+    std::cout << sp.shortestSpan() << std::endl;
+    std::cout << sp.longestSpan() << std::endl;
+    return 0;
 }
+
+
+// -9
+// -7
+// -5
+// -346
+
+
+// 6
+// 5
+// 7
+// 8
+// 767
+
+// -349
+// -9
+// -7
+// -5
