@@ -2,7 +2,6 @@
 
 int main()
 {
-
     Span sp = Span(5);
     sp.addNumber(6);
     sp.addNumber(3);
@@ -16,5 +15,4 @@ int main()
 
     test.addrandRange(9);
     test.print_elements();
-
 }
