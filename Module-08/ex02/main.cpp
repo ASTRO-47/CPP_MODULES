@@ -10,7 +10,7 @@ int main()
     imad.push(34);
     imad.push(56);
 
-    imad
+    // imad
     
     for (MutantStack<int>::iterator it = imad.begin();it !=imad.end(); it++)
     {
