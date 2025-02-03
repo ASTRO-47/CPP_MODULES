@@ -1,37 +1,33 @@
 #pragma once
 
 #include <iostream>
-#include <vector>
 #include <stack>
-#include <deque>
+#include <iterator>
 
 template <typename T>
-class MutantStack
+class MutantStack : public std::stack<T>
 {
 private:
-    std::stack<T, std::deque<T> >  my_stack;
+    //
 public:
-    MutantStack(){};
+    typedef typename std::stack<T>::container_type::iterator iterator;
+
+    MutantStack() : std::stack<T>() {};
     MutantStack(const MutantStack &other){
         *this = other;
     };
     MutantStack<T>& operator=(const MutantStack &other){
         if(this != &other)
-        {
-            // do some thind to copy
-            
-        }
+            std::stack<T>::operator=(other);
     };
 
-    void push(T arg) {
-        my_stack.push_back(arg);
-    };
-    void pop(){
-
-    };
-    size_t size() const{
-        return my_stack.size();
-    };
-
+    iterator begin()
+    {
+        return this->c.begin();
+    }
+    iterator end()
+    {
+        return this->c.end();
+    }
     ~MutantStack(){};
 };

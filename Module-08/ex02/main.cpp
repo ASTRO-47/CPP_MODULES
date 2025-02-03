@@ -1,16 +1,19 @@
 #include "MutantStack.tpp"
 
-#include <stack>
-#include <deque>
-
 int main()
 {
+    MutantStack<int> imad;
 
-    std::stack<int, std::deque<int> > imad;
+    imad.push(3);
 
-    imad.push(1);
+    imad.push(6);
+    imad.push(34);
+    imad.push(56);
+
+    imad
     
-    // MutantStack<int> imad;
-
-    // std::cout << imad.size() << std::endl;
+    for (MutantStack<int>::iterator it = imad.begin();it !=imad.end(); it++)
+    {
+        std::cout << *it  << std::endl;
+    }
 }
