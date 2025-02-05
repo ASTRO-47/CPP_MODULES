@@ -1,5 +1,5 @@
 #pragma once
-
+#include <cstdio>
 #include <iostream>
 #include <stack>
 #include <iterator>
