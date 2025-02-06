@@ -1,7 +1,7 @@
 
 #include <iostream>
 #include <vector>
-
+clear
 
 using namespace std;
 int result(int hello)
