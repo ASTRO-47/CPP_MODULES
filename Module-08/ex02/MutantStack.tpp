@@ -3,7 +3,6 @@
 #include <cstdio>  //do not forgot this 
 #include <iostream>
 #include <stack>
-#include <iterator>
 
 template <typename T>
 class MutantStack : public std::stack<T>
@@ -22,11 +21,14 @@ public:
     {
         if(this != &other)
             std::stack<T>::operator=(other);
+        return *this;
     }
 
-    const_iterator begin() const {puts("const"); return this->c.begin(); }
-    const_iterator end() const {puts("not const"); return this->c.end(); }
-    iterator begin() { return this->c.begin(); }
-    iterator end() { return this->c.end();}
+    const_iterator begin() const {puts(" const for begin"); return this->c.begin(); }
+    const_iterator end() const {puts(" const for begin"); return this->c.end(); }
+    iterator begin() { puts("no const called for begin");return this->c.begin(); }
+    iterator end() { puts("no const called for end");return this->c.end();}
+
     ~MutantStack(){};
 };
+

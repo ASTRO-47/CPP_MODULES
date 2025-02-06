@@ -1,7 +1,6 @@
 FLAGS = -Wall -Wextra -Werror 
 
-CPPC =g++ -std=c++98
-
+CPPC = g++ -std=c++98
 
 SOURCES =  main.cpp 
 OBJECTS = $(SOURCES:.cpp=.o)
