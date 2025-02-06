@@ -22,7 +22,6 @@ public:
     void addRange(it, it);
     void addrandRange(unsigned int);
     void print_elements() const;
-    
-    
+
     ~Span();
 } ;

@@ -3,7 +3,6 @@
 #include <vector>
 
 template <typename T>
-
 int &easyfind(T& container, int value)
 {
     typename T::iterator arg = std::find(container.begin(), container.end(), value);
