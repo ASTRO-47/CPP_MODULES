@@ -1,31 +1,19 @@
-#include "easyfind.hpp"
+#include "BitcoinExchange.hpp"
 
-int main()
+int main(int ac, char *argv[])
 {
-    std::vector<int> imad;
-
-    imad.push_back(1);
-    imad.push_back(2);
-    imad.push_back(3);
-    imad.push_back(4);
-
+    if (ac != 2)
+    {
+        std::cerr << "invalid argument number\n";
+        return (1);
+    }
+    BitcoinExchange btc(argv[1]);
     try
     {
-        int  looking_for = easyfind(imad, 5);
-        std::cout << looking_for << std::endl;
+        btc.load_data_base();
     }
-    catch(std::exception &e)
+    catch (std::exception &e)
     {
-        std::cout << e.what() << std::endl;
-    }
-    try
-    {
-        int  looking_for = easyfind(imad, 4);
-        std::cout << "value found: " << looking_for << std::endl;
-
-    }
-    catch(std::exception &e)
-    {
-        std::cout << e.what() << std::endl;
+        std::cout << "failed:  " << e.what() << std::endl;
     }
 }
