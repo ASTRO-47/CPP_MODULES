@@ -3,12 +3,13 @@
 #include <iostream>
 #include <sstream>
 #include <fstream>
+#include <iomanip>
 #include <map>
 
 class BitcoinExchange
 {
 private:
-    std::map<std::string, float> history;
+    std::map<std::string, double> history;
     std::string input_file;
     BitcoinExchange();
 public:
