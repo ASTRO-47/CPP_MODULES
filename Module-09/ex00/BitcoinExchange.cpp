@@ -32,17 +32,15 @@ void BitcoinExchange::load_data_base()
     while (std::getline(file, line))
     {
         std::istringstream ss(line);
-
         std::getline(ss, date, ',');
-        std::getline(ss, str_value, ',');
-
-        value = std::stod(str_value);
+        value = std::strtod(str_value.c_str(), NULL);
+        std::cout.precision(15);
         ss >> value;
         history[date] = value;
     }
     for (std::map<std::string , double>::iterator it = history.begin(); it != history.end();it++)
     {
-        std::cout << it->first << "," << it->second << std::endl;
+        std::cout <<it->first << ","<<  it->second << std::endl;
     }
 }
 

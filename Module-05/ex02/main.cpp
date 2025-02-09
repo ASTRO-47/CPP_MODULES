@@ -7,7 +7,7 @@
 int main ()
 {
     // too low grade
-    RobotomyRequestForm imaed("imad");
+    ShrubberyCreationForm imaed("imad");
     Bureaucrat imad("imad", 3);
     try
     {
@@ -51,11 +51,11 @@ int main ()
 }
 
 
-class dimo : scav , frag
-{
-    name;
-    dimo(std:;stirn name_) :scav(iamd)
-    {
-        name = name_;
-    }
-}
+// class dimo : scav , frag
+// {
+//     name;
+//     dimo(std:;stirn name_) :scav(iamd)
+//     {
+//         name = name_;
+//     }
+// }

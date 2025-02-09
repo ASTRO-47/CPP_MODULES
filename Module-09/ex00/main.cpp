@@ -1,5 +1,8 @@
 #include "BitcoinExchange.hpp"
 
+#include <cmath>
+
+
 int main(int ac, char *argv[])
 {
     if (ac != 2)
