@@ -18,7 +18,7 @@ public:
     BitcoinExchange& operator=(const BitcoinExchange &);
 
     // open the  files
-    void open_files();
+    void parse_input_file();
     void load_data_base();
     ~BitcoinExchange();
 } ; 

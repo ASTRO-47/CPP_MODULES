@@ -19,4 +19,12 @@ int main(int ac, char *argv[])
     {
         std::cout << "failed:  " << e.what() << std::endl;
     }
+    try
+    {
+        btc.parse_input_file();
+    }
+    catch (std::exception &e)
+    {
+        std::cout << "failed: "  << e.what() << std::endl;
+    }
 }
