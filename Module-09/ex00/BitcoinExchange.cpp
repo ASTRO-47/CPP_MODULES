@@ -52,6 +52,13 @@ void BitcoinExchange::load_data_base()
 //     return true;
 // }
 
+bool leap_year(int year)
+{
+    if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0))
+        return true;
+    return false;
+}
+
 void check_numerics(std::string s)
 {
     for (size_t i = 0; i < s.length(); i++)
@@ -60,32 +67,34 @@ void check_numerics(std::string s)
             throw std::runtime_error("INVALID FORMAT");
     }
 }
-void check_date_validity_2(int year, int month, int day)
+void BitcoinExchange::check_date_validity_2()
 {
-    if (year < 2009 || month > 12 || month < 1)
+    if (year < 2009 || month > 12 || month < 1 || day > 31)
         throw std::runtime_error("INVALID FORMAT");
     int _days[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-    // if ()
+    if (leap_year(year))
+        _days[1] = 29;
+    if (_days[month - 1] < day)
+        throw std::runtime_error("INVALID FORMAT");
 }
 
-void check_date_validity (std::string date)
+void BitcoinExchange::check_date_validity(std::string date)
 {
     std::istringstream _date(date);
-    std::string  year, month, day;
-    if (!getline(_date, year, '-') || !getline(_date, month, '-') || !getline(_date, day))
+    std::string  _year, _month, _day;
+    if (!getline(_date, _year, '-') || !getline(_date, _month, '-') || !getline(_date, _day))
         throw std::runtime_error("INVALID FORMAT");
-    check_numerics(year);
-    check_numerics(month);
-    check_numerics(day);
+    check_numerics(_year);
+    check_numerics(_month);
+    check_numerics(_day);
     // std::cout << year << std::endl << month << std::endl << day << std::endl;   // print the holl date
-    int _year, _month, _day;
-    _year = std::strtod(year.c_str(), NULL);
-    _month = std::strtod(month.c_str(), NULL);
-    _day  = std::strtod(day.c_str(), NULL);
-    check_date_validity_2(_year, _month, _day);
+    year = std::strtod(_year.c_str(), NULL);
+    month = std::strtod(_month.c_str(), NULL);
+    day = std::strtod(_day.c_str(), NULL);
+    check_date_validity_2();
 }
 
-void    check_date(std::string date)
+void    BitcoinExchange::check_date(std::string date)
 {
     if (date.length() != 10)
         throw std::runtime_error("INVALID FORMAT");
@@ -116,6 +125,7 @@ void BitcoinExchange::parse_input_file()
         throw std::runtime_error("an error occured while parsing the input file!!");
     if (line != "date | value")
         throw std::runtime_error("the input file must be start with the format \"date | value\"");
+    std::string _date;
     while (std::getline(data, line))
     {
         std::istringstream ss(line);
@@ -125,29 +135,27 @@ void BitcoinExchange::parse_input_file()
         {
             check_date(date);
         }
-        catch(const std::exception& e)
+        catch (const std::exception& e)
         {
-            std::cerr << e.what() <<  " :---->\"   "<< date << "\"" << '\n';
-            break ;
+            std::cerr << e.what() <<  " :---->   \""<< line << "\"" << '\n';
+            continue ;
         }
-        
-        // if (!check_data(date))
-        // {
-        //     std::cout << "INVALID FORMAT: "  << "\""<< line << "\""<< std::endl;
-        //     continue;
-        // }
         // Parse pipe separator
         if (!(ss >> pipe))
             throw std::runtime_error("an error occured while parsing the input file!!"); // stack unwding will handle the file stream
-        // Parse value
+        if (pipe.length() != 1 || pipe[0] != '|')
+        {
+            std::cerr << "INVALID FORMAT" << " :---->   \""<< line << "\"" << '\n';
+            continue;
+        }
+        // stoped here
         if (!(ss >> value))
             throw std::runtime_error("an error occured while parsing the input file!!");
-
+        std::cout << value << std::endl;
         // std::cout << date << " " << pipe << " " << value << std::endl;        // history[date] = value;
-        break;
     }
 }
 
 
 
-BitcoinExchange::~BitcoinExchange()   {}
+BitcoinExchange::~BitcoinExchange()  {}

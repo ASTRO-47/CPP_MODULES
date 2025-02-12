@@ -11,7 +11,14 @@ class BitcoinExchange
 private:
     std::map<std::string, double> history;
     std::string input_file;
+    int year;
+    int month;
+    int day;
+    int value;
     BitcoinExchange();
+    void check_date_validity_2();
+    void check_date_validity(std::string date);
+    void check_date(std::string date);
 public:
     BitcoinExchange(std::string);
     BitcoinExchange(const BitcoinExchange &);
