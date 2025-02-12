@@ -69,20 +69,22 @@ void    check_date(std::string date)
     int dash = 0;
     for (int i = 0; i < 10 ; i++)
     {
-        if (!isdigit(date[i]))
+        if (!isdigit(date[i]) && date[i] != '-')
             throw std::runtime_error("INVALID FORMAT");
         if (date[i] == '-')
         {
             dash++;
             if (dash > 1)
+            {
                 throw std::runtime_error("INVALID FORMAT");
+            }
         }
     }
     std::istringstream _date(date);
 }
 void BitcoinExchange::parse_input_file()
 {
-    std::ifstream data(input_file);
+    std::ifstream data("input.txt");
     if (!data.is_open())
         throw std::runtime_error("can't open the input file");
     std::string line;
@@ -96,7 +98,7 @@ void BitcoinExchange::parse_input_file()
     while (std::getline(data, line))
     {
         std::istringstream ss(line);
-        if (!(ss >> date)) // parse the date
+        if (!(ss >> date))   // parse the date
             throw std::runtime_error("an error occured while parsing the input file!!");
         try
         {
