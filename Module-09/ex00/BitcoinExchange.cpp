@@ -52,14 +52,37 @@ void BitcoinExchange::load_data_base()
 //     return true;
 // }
 
-bool check_numerics(std::string s)
+void check_numerics(std::string s)
 {
     for (size_t i = 0; i < s.length(); i++)
     {
         if (!std::isdigit(s[i]))
-            return false;
+            throw std::runtime_error("INVALID FORMAT");
     }
-    return true;
+}
+void check_date_validity_2(int year, int month, int day)
+{
+    if (year < 2009 || month > 12 || month < 1)
+        throw std::runtime_error("INVALID FORMAT");
+    int _days[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    // if ()
+}
+
+void check_date_validity (std::string date)
+{
+    std::istringstream _date(date);
+    std::string  year, month, day;
+    if (!getline(_date, year, '-') || !getline(_date, month, '-') || !getline(_date, day))
+        throw std::runtime_error("INVALID FORMAT");
+    check_numerics(year);
+    check_numerics(month);
+    check_numerics(day);
+    // std::cout << year << std::endl << month << std::endl << day << std::endl;   // print the holl date
+    int _year, _month, _day;
+    _year = std::strtod(year.c_str(), NULL);
+    _month = std::strtod(month.c_str(), NULL);
+    _day  = std::strtod(day.c_str(), NULL);
+    check_date_validity_2(_year, _month, _day);
 }
 
 void    check_date(std::string date)
@@ -69,18 +92,16 @@ void    check_date(std::string date)
     int dash = 0;
     for (int i = 0; i < 10 ; i++)
     {
-        if (!isdigit(date[i]) && date[i] != '-')
+        if (!isdigit(date[i]) && (date[i] == '-' && (i != 4 && i != 7)))
             throw std::runtime_error("INVALID FORMAT");
         if (date[i] == '-')
         {
-            dash++;
             if (dash > 1)
-            {
                 throw std::runtime_error("INVALID FORMAT");
-            }
+            dash++;
         }
     }
-    std::istringstream _date(date);
+    check_date_validity(date);
 }
 void BitcoinExchange::parse_input_file()
 {
@@ -107,7 +128,7 @@ void BitcoinExchange::parse_input_file()
         catch(const std::exception& e)
         {
             std::cerr << e.what() <<  " :---->\"   "<< date << "\"" << '\n';
-            continue;
+            break ;
         }
         
         // if (!check_data(date))
@@ -117,12 +138,13 @@ void BitcoinExchange::parse_input_file()
         // }
         // Parse pipe separator
         if (!(ss >> pipe))
-            throw std::runtime_error("an error occured while parsing the input file!!");
+            throw std::runtime_error("an error occured while parsing the input file!!"); // stack unwding will handle the file stream
         // Parse value
         if (!(ss >> value))
             throw std::runtime_error("an error occured while parsing the input file!!");
 
-        std::cout << date << " " << pipe << " " << value << std::endl;        // history[date] = value;
+        // std::cout << date << " " << pipe << " " << value << std::endl;        // history[date] = value;
+        break;
     }
 }
 
