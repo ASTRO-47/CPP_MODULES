@@ -5,6 +5,11 @@
 
 int main(int ac, char *argv[])
 {
+    // std::string h = "h53453";
+    // std::istringstream hello(h);
+    // double val;
+    // hello >> val;
+    // std::cout << val << std::endl;
     if (ac != 2)
     {
         std::cerr << "invalid argument number\n";

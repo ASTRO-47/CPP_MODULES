@@ -42,6 +42,44 @@ void BitcoinExchange::load_data_base()
     data.close();
 }
 
+// void check_date_elements(std::string &date)
+// {
+//     for (int i = 0; i < 10 ; i++)
+//     {
+//         if (!isdigit(date[i]) && date[i] != '-')
+//             return false;
+//     }
+//     return true;
+// }
+
+bool check_numerics(std::string s)
+{
+    for (size_t i = 0; i < s.length(); i++)
+    {
+        if (!std::isdigit(s[i]))
+            return false;
+    }
+    return true;
+}
+
+void    check_date(std::string date)
+{
+    if (date.length() != 10)
+        throw std::runtime_error("INVALID FORMAT");
+    int dash = 0;
+    for (int i = 0; i < 10 ; i++)
+    {
+        if (!isdigit(date[i]))
+            throw std::runtime_error("INVALID FORMAT");
+        if (date[i] == '-')
+        {
+            dash++;
+            if (dash > 1)
+                throw std::runtime_error("INVALID FORMAT");
+        }
+    }
+    std::istringstream _date(date);
+}
 void BitcoinExchange::parse_input_file()
 {
     std::ifstream data(input_file);
@@ -60,6 +98,21 @@ void BitcoinExchange::parse_input_file()
         std::istringstream ss(line);
         if (!(ss >> date)) // parse the date
             throw std::runtime_error("an error occured while parsing the input file!!");
+        try
+        {
+            check_date(date);
+        }
+        catch(const std::exception& e)
+        {
+            std::cerr << e.what() <<  " :---->\"   "<< date << "\"" << '\n';
+            continue;
+        }
+        
+        // if (!check_data(date))
+        // {
+        //     std::cout << "INVALID FORMAT: "  << "\""<< line << "\""<< std::endl;
+        //     continue;
+        // }
         // Parse pipe separator
         if (!(ss >> pipe))
             throw std::runtime_error("an error occured while parsing the input file!!");
@@ -67,7 +120,7 @@ void BitcoinExchange::parse_input_file()
         if (!(ss >> value))
             throw std::runtime_error("an error occured while parsing the input file!!");
 
-        // std::cout << date << " | "  << value << std::endl;        // history[date] = value;
+        std::cout << date << " " << pipe << " " << value << std::endl;        // history[date] = value;
     }
 }
 
