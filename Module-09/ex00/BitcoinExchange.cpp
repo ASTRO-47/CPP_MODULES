@@ -38,15 +38,6 @@ void BitcoinExchange::load_data_base()
     data.close();
 }
 
-// void check_date_elements(std::string &date)
-// {
-//     for (int i = 0; i < 10 ; i++)
-//     {
-//         if (!isdigit(date[i]) && date[i] != '-')
-//             return false;
-//     }
-//     return true;
-// }
 
 bool leap_year(int year)
 {
@@ -65,7 +56,7 @@ void check_numerics(std::string s)
 }
 void BitcoinExchange::check_date_validity_2()
 {
-    if (year < 2009 || month > 12 || month < 1 || day > 31)
+    if (year < 2009 || month > 12 || month < 1 || day > 31 || day < 1)
         throw std::runtime_error("bad input");
     int _days[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
     if (leap_year(year))
@@ -121,7 +112,6 @@ void BitcoinExchange::parse_value(std::string _value)
         throw std::runtime_error("not a positive number");
     if (value > 1000)
         throw std::runtime_error("too large number");
-    // std::cout << value << std::endl;
 }
 
 bool just_white_spaces(std::string line)
@@ -137,8 +127,8 @@ bool just_white_spaces(std::string line)
 std::map<std::string, double>::iterator BitcoinExchange::look_for_value()
 {
     std::map<std::string , double>::iterator it = history.lower_bound(date);
-    // if (it != history.end()&& it->first == date)
-    //     return it;
+    if (it != history.end() && it->first == date)
+        return it;
     if (it == history.end() && it->first != date)
         return --it;
     return it;
@@ -171,9 +161,7 @@ void BitcoinExchange::parse_input_file()
             std::cerr << "ERROR: " << e.what() <<  " => \""<< line << "\"" << '\n';
             continue ;
         }
-        // Parse pipe separator
         ss >> pipe; // need to protect this later champ
-            // throw std::runtime_error("an error occured while parsing the input file!!"); // stack unwding will handle the file stream
         if (pipe.length() != 1 || pipe[0] != '|')
         {
             std::cerr << "ERROR: bad input" << " => \""<< line << "\"" << '\n';
@@ -189,8 +177,6 @@ void BitcoinExchange::parse_input_file()
             std::cerr <<"ERROR: " << e.what() <<  " => \""<< line << "\"" << '\n';
             continue ;
         }
-        // std::cout << date << std::endl;
-
         std::map<std::string, double>::iterator it = look_for_value();
         std::cout <<  date << " => " << value << " = " << it->second * value << std::endl;
     }
@@ -198,5 +184,4 @@ void BitcoinExchange::parse_input_file()
 
 
 
-
-BitcoinExchange::~BitcoinExchange()  {}
+BitcoinExchange::~BitcoinExchange()  {history.clear();}
