@@ -64,18 +64,18 @@ void check_numerics(std::string s)
     for (size_t i = 0; i < s.length(); i++)
     {
         if (!std::isdigit(s[i]))
-            throw std::runtime_error("INVALID FORMAT");
+            throw std::runtime_error("bad input");
     }
 }
 void BitcoinExchange::check_date_validity_2()
 {
     if (year < 2009 || month > 12 || month < 1 || day > 31)
-        throw std::runtime_error("INVALID FORMAT");
+        throw std::runtime_error("bad input");
     int _days[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
     if (leap_year(year))
         _days[1] = 29;
     if (_days[month - 1] < day)
-        throw std::runtime_error("INVALID FORMAT");
+        throw std::runtime_error("bad input");
 }
 
 void BitcoinExchange::check_date_validity(std::string date)
@@ -83,7 +83,7 @@ void BitcoinExchange::check_date_validity(std::string date)
     std::istringstream _date(date);
     std::string  _year, _month, _day;
     if (!getline(_date, _year, '-') || !getline(_date, _month, '-') || !getline(_date, _day))
-        throw std::runtime_error("INVALID FORMAT");
+        throw std::runtime_error("bad input");
     check_numerics(_year);
     check_numerics(_month);
     check_numerics(_day);
@@ -97,21 +97,34 @@ void BitcoinExchange::check_date_validity(std::string date)
 void    BitcoinExchange::check_date(std::string date)
 {
     if (date.length() != 10)
-        throw std::runtime_error("INVALID FORMAT");
+        throw std::runtime_error("bad input");
     int dash = 0;
     for (int i = 0; i < 10 ; i++)
     {
         if (!isdigit(date[i]) && (date[i] == '-' && (i != 4 && i != 7)))
-            throw std::runtime_error("INVALID FORMAT");
+            throw std::runtime_error("bad input");
         if (date[i] == '-')
         {
             if (dash > 1)
-                throw std::runtime_error("INVALID FORMAT");
+                throw std::runtime_error("bad input");
             dash++;
         }
     }
     check_date_validity(date);
 }
+
+void BitcoinExchange::parse_value(std::string _value)
+{
+    if (!_value.length())
+        throw std::runtime_error("INVALID FORMAT");
+    char *res = NULL;
+    value = std::strtod(_value.c_str(), &res);
+    if (strlen(res) || value < 0 || value > 10001)
+        throw std::runtime_error("INVALID FORMAT");
+    // std::cout << res << std::endl;
+    std::cout << value << std::endl;
+}
+
 void BitcoinExchange::parse_input_file()
 {
     std::ifstream data("input.txt");
@@ -120,7 +133,7 @@ void BitcoinExchange::parse_input_file()
     std::string line;
     std::string date;
     std::string pipe;
-    double value;
+    std::string value;
     if (!(getline(data, line)))
         throw std::runtime_error("an error occured while parsing the input file!!");
     if (line != "date | value")
@@ -129,29 +142,39 @@ void BitcoinExchange::parse_input_file()
     while (std::getline(data, line))
     {
         std::istringstream ss(line);
-        if (!(ss >> date))   // parse the date
-            throw std::runtime_error("an error occured while parsing the input file!!");
+        ss >> date;
         try
         {
             check_date(date);
         }
         catch (const std::exception& e)
         {
-            std::cerr << e.what() <<  " :---->   \""<< line << "\"" << '\n';
+            std::cerr << "ERROR: " << e.what() <<  " => \""<< line << "\"" << '\n';
             continue ;
         }
         // Parse pipe separator
-        if (!(ss >> pipe))
-            throw std::runtime_error("an error occured while parsing the input file!!"); // stack unwding will handle the file stream
+        ss >> pipe;
+            // throw std::runtime_error("an error occured while parsing the input file!!"); // stack unwding will handle the file stream
         if (pipe.length() != 1 || pipe[0] != '|')
         {
-            std::cerr << "INVALID FORMAT" << " :---->   \""<< line << "\"" << '\n';
+            std::cerr << "ERROR: bad input" << " :---->   \""<< line << "\"" << '\n';
             continue;
         }
         // stoped here
-        if (!(ss >> value))
-            throw std::runtime_error("an error occured while parsing the input file!!");
-        std::cout << value << std::endl;
+        ss >> value;
+        // if (!(ss >> value))
+            // throw std::runtime_error("an error occured while parsing the input file!!");
+        
+        try
+        {
+            parse_value(value);
+        }
+        catch (const std::exception& e)
+        {
+            std::cerr << e.what() <<  " :---->   \""<< line << "\"" << '\n';
+            continue ;
+        }
+        // std::cout << value << std::endl;
         // std::cout << date << " " << pipe << " " << value << std::endl;        // history[date] = value;
     }
 }

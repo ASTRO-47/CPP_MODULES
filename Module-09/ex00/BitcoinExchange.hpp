@@ -5,6 +5,7 @@
 #include <fstream>
 #include <iomanip>
 #include <map>
+#include <cstring>
 
 class BitcoinExchange
 {
@@ -14,11 +15,12 @@ private:
     int year;
     int month;
     int day;
-    int value;
+    double value;
     BitcoinExchange();
     void check_date_validity_2();
     void check_date_validity(std::string date);
     void check_date(std::string date);
+    void parse_value(std::string);
 public:
     BitcoinExchange(std::string);
     BitcoinExchange(const BitcoinExchange &);
