@@ -35,10 +35,6 @@ void BitcoinExchange::load_data_base()
             throw std::runtime_error("an error occured while parsing the database!!");
         history[date] = value;
     }
-    // for(std::map<std::string , double>::iterator it = history.begin();it != history.end();it++)
-    // {
-    //     std::cout << it->first << "," << it->second << std::endl;
-    // }
     data.close();
 }
 
@@ -116,13 +112,36 @@ void    BitcoinExchange::check_date(std::string date)
 void BitcoinExchange::parse_value(std::string _value)
 {
     if (!_value.length())
-        throw std::runtime_error("INVALID FORMAT");
+        throw std::runtime_error("bad input");
     char *res = NULL;
     value = std::strtod(_value.c_str(), &res);
-    if (strlen(res) || value < 0 || value > 10001)
-        throw std::runtime_error("INVALID FORMAT");
-    // std::cout << res << std::endl;
-    std::cout << value << std::endl;
+    if (strlen(res))
+        throw std::runtime_error("bad input");
+    if (value < 0)
+        throw std::runtime_error("not a positive number");
+    if (value > 1000)
+        throw std::runtime_error("too large number");
+    // std::cout << value << std::endl;
+}
+
+bool just_white_spaces(std::string line)
+{
+    for (size_t i = 0; i < line.length();i++)
+    {
+        if (!(line[i] = ' ' || (line[i] >= 9 && line[i] <= 13)))
+            return false;
+    }
+    return true;
+}
+
+std::map<std::string, double>::iterator BitcoinExchange::look_for_value()
+{
+    std::map<std::string , double>::iterator it = history.lower_bound(date);
+    // if (it != history.end()&& it->first == date)
+    //     return it;
+    if (it == history.end() && it->first != date)
+        return --it;
+    return it;
 }
 
 void BitcoinExchange::parse_input_file()
@@ -131,16 +150,16 @@ void BitcoinExchange::parse_input_file()
     if (!data.is_open())
         throw std::runtime_error("can't open the input file");
     std::string line;
-    std::string date;
     std::string pipe;
-    std::string value;
+    std::string _value;
     if (!(getline(data, line)))
         throw std::runtime_error("an error occured while parsing the input file!!");
     if (line != "date | value")
         throw std::runtime_error("the input file must be start with the format \"date | value\"");
-    std::string _date;
     while (std::getline(data, line))
     {
+        if (!line.length() || !just_white_spaces(line))
+            continue ;
         std::istringstream ss(line);
         ss >> date;
         try
@@ -153,31 +172,30 @@ void BitcoinExchange::parse_input_file()
             continue ;
         }
         // Parse pipe separator
-        ss >> pipe;
+        ss >> pipe; // need to protect this later champ
             // throw std::runtime_error("an error occured while parsing the input file!!"); // stack unwding will handle the file stream
         if (pipe.length() != 1 || pipe[0] != '|')
         {
-            std::cerr << "ERROR: bad input" << " :---->   \""<< line << "\"" << '\n';
+            std::cerr << "ERROR: bad input" << " => \""<< line << "\"" << '\n';
             continue;
         }
-        // stoped here
-        ss >> value;
-        // if (!(ss >> value))
-            // throw std::runtime_error("an error occured while parsing the input file!!");
-        
+        ss >> _value;
         try
         {
-            parse_value(value);
+            parse_value(_value);
         }
         catch (const std::exception& e)
         {
-            std::cerr << e.what() <<  " :---->   \""<< line << "\"" << '\n';
+            std::cerr <<"ERROR: " << e.what() <<  " => \""<< line << "\"" << '\n';
             continue ;
         }
-        // std::cout << value << std::endl;
-        // std::cout << date << " " << pipe << " " << value << std::endl;        // history[date] = value;
+        // std::cout << date << std::endl;
+
+        std::map<std::string, double>::iterator it = look_for_value();
+        std::cout <<  date << " => " << value << " = " << it->second * value << std::endl;
     }
 }
+
 
 
 
