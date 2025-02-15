@@ -183,5 +183,4 @@ void BitcoinExchange::parse_input_file()
 }
 
 
-
 BitcoinExchange::~BitcoinExchange()  {history.clear();}
