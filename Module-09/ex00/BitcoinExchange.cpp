@@ -102,7 +102,7 @@ void    BitcoinExchange::check_date(std::string date)
 
 void BitcoinExchange::parse_value(std::string _value)
 {
-    if (!_value.length())
+    if (!_value.length()) // nan no passable, inf, two pipes
         throw std::runtime_error("bad input");
     char *res = NULL;
     value = std::strtod(_value.c_str(), &res);
@@ -136,7 +136,8 @@ std::map<std::string, double>::iterator BitcoinExchange::look_for_value()
 
 void BitcoinExchange::parse_input_file()
 {
-    std::ifstream data("input.txt");
+    std::ifstream data(input_file);
+    std::string remain;
     if (!data.is_open())
         throw std::runtime_error("can't open the input file");
     std::string line;
@@ -176,6 +177,12 @@ void BitcoinExchange::parse_input_file()
         {
             std::cerr <<"ERROR: " << e.what() <<  " => \""<< line << "\"" << '\n';
             continue ;
+        }
+        if (getline(ss, remain))
+        {
+            std::cerr <<"ERROR: " << "bad input" <<  " => \""<< line << "\"" << '\n';
+            continue ;
+
         }
         std::map<std::string, double>::iterator it = look_for_value();
         std::cout <<  date << " => " << value << " = " << it->second * value << std::endl;

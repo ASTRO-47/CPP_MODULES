@@ -3,9 +3,9 @@
 #include <iostream>
 
 template<typename N>
-void print(N arg, N arg2)
+void print(N &arg)
 {
-    std::cout << arg << arg2 << std::endl;
+    std::cout << arg  << std::endl;
 }
 
 template<typename T, typename M>
