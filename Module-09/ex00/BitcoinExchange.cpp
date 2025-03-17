@@ -6,9 +6,9 @@ BitcoinExchange::BitcoinExchange(std::string m): input_file(m) {}
 
 BitcoinExchange::BitcoinExchange(const BitcoinExchange &other)
 {
-
+    *this = other;
 }
-
+    
 BitcoinExchange & BitcoinExchange::operator=(const BitcoinExchange &other)
 {
     return *this;
@@ -74,7 +74,6 @@ void BitcoinExchange::check_date_validity(std::string date)
     check_numerics(_year);
     check_numerics(_month);
     check_numerics(_day);
-    // std::cout << year << std::endl << month << std::endl << day << std::endl;   // print the holl date
     year = std::strtod(_year.c_str(), NULL);
     month = std::strtod(_month.c_str(), NULL);
     day = std::strtod(_day.c_str(), NULL);
