@@ -1,13 +1,7 @@
-
-
-
 date | value
 
 
-
-
-
-
+hello world
 
 
 2009-01-01 | 674 43

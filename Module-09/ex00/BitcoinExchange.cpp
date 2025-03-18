@@ -11,9 +11,12 @@ BitcoinExchange::BitcoinExchange(const BitcoinExchange &other)
     
 BitcoinExchange & BitcoinExchange::operator=(const BitcoinExchange &other)
 {
+    if (this != &other)
+    {
+        // 
+    }
     return *this;
 }
-
 
 void BitcoinExchange::load_data_base()
 {
@@ -29,7 +32,7 @@ void BitcoinExchange::load_data_base()
     {
         std::istringstream ss(line);
         if (!std::getline(ss, date, ','))
-            throw std::runtime_error("an error occured while parsing the database!!");
+            throw std::runtime_error("an error occured while parsing the database, or the file is empty!!");
         std::cout.precision(15);
         if (!(ss >> value))
             throw std::runtime_error("an error occured while parsing the database!!");
@@ -37,7 +40,6 @@ void BitcoinExchange::load_data_base()
     }
     data.close();
 }
-
 
 bool leap_year(int year)
 {
@@ -143,7 +145,7 @@ void BitcoinExchange::parse_input_file()
     std::string pipe;
     std::string _value;
     if (!(getline(data, line)))
-        throw std::runtime_error("an error occured while parsing the input file!!");
+        throw std::runtime_error("an error occured while parsing the input file, or its empty!!");
     if (line != "date | value")
         throw std::runtime_error("the input file must be start with the format \"date | value\"");
     while (std::getline(data, line))
