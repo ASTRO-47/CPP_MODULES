@@ -13,7 +13,7 @@ BitcoinExchange & BitcoinExchange::operator=(const BitcoinExchange &other)
 {
     if (this != &other)
     {
-        // 
+        //
     }
     return *this;
 }
@@ -27,15 +27,24 @@ void BitcoinExchange::load_data_base()
     std::string date;
     double value;
     if (!std::getline(data, line)) // to skip the first line in the database
+    {
+        data.close();   
         throw std::runtime_error("an error occured while parsing the database!!");
+    }
     while (std::getline(data, line))
     {
         std::istringstream ss(line);
         if (!std::getline(ss, date, ','))
+        {
+            data.close();
             throw std::runtime_error("an error occured while parsing the database, or the file is empty!!");
+        }
         std::cout.precision(15);
         if (!(ss >> value))
+        {
+            data.close();
             throw std::runtime_error("an error occured while parsing the database!!");
+        }
         history[date] = value;
     }
     data.close();
@@ -125,14 +134,15 @@ bool just_white_spaces(std::string line)
     return true;
 }
 
-std::map<std::string, double>::iterator BitcoinExchange::look_for_value()
+void        BitcoinExchange::look_for_value()
 {
+    if (!history.size())
+        return ;
     std::map<std::string , double>::iterator it = history.lower_bound(date);
-    if (it != history.end() && it->first == date)
-        return it;
     if (it == history.end() && it->first != date)
-        return --it;
-    return it;
+        it--;
+    std::cout <<  date << " => " << value << " = " << it->second * value << std::endl;
+    
 }
 
 void BitcoinExchange::parse_input_file()
@@ -145,9 +155,15 @@ void BitcoinExchange::parse_input_file()
     std::string pipe;
     std::string _value;
     if (!(getline(data, line)))
+    {
+        data.close();
         throw std::runtime_error("an error occured while parsing the input file, or its empty!!");
+    }
     if (line != "date | value")
+    {
+        data.close();
         throw std::runtime_error("the input file must be start with the format \"date | value\"");
+    }
     while (std::getline(data, line))
     {
         if (!line.length() || !just_white_spaces(line))
@@ -170,7 +186,7 @@ void BitcoinExchange::parse_input_file()
             continue;
         }
         ss >> _value;
-        try
+        try 
         {
             parse_value(_value);
         }
@@ -185,10 +201,13 @@ void BitcoinExchange::parse_input_file()
             continue ;
 
         }
-        std::map<std::string, double>::iterator it = look_for_value();
-        std::cout <<  date << " => " << value << " = " << it->second * value << std::endl;
+        look_for_value();
     }
+    data.close();
 }
 
 
-BitcoinExchange::~BitcoinExchange()  {history.clear();}
+BitcoinExchange::~BitcoinExchange(){
+    history.clear();
+
+}
