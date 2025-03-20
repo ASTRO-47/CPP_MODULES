@@ -124,18 +124,21 @@ void BitcoinExchange::parse_value(std::string _value)
         throw std::runtime_error("too large number");
 }
 
-bool just_white_spaces(std::string line)
+bool just_white_spaces(const std::string str) 
 {
-    for (size_t i = 0; i < line.length();i++)
+    if (str.empty())
+       return true;
+    for (std::string::const_iterator it = str.begin(); it != str.end(); ++it)
     {
-        if (!(line[i] = ' ' || (line[i] >= 9 && line[i] <= 13)))
-            return false;
+        if (!std::isspace(static_cast<char>(*it)))
+            return false ;
     }
     return true;
 }
 
 void        BitcoinExchange::look_for_value()
 {
+    puts("hello world");
     if (!history.size())
         return ;
     std::map<std::string , double>::iterator it = history.lower_bound(date);
@@ -166,7 +169,7 @@ void BitcoinExchange::parse_input_file()
     }
     while (std::getline(data, line))
     {
-        if (!line.length() || !just_white_spaces(line))
+        if (!line.length() || just_white_spaces(line))
             continue ;
         std::istringstream ss(line);
         ss >> date;
@@ -185,7 +188,8 @@ void BitcoinExchange::parse_input_file()
             std::cerr << "ERROR: bad input" << " => \""<< line << "\"" << '\n';
             continue;
         }
-        ss >> _value;
+        if (ss >> _value)
+
         try 
         {
             parse_value(_value);
@@ -197,17 +201,19 @@ void BitcoinExchange::parse_input_file()
         }
         if (getline(ss, remain))
         {
-            std::cerr <<"ERROR: " << "bad input" <<  " => \""<< line << "\"" << '\n';
-            continue ;
-
+            if (!just_white_spaces(remain))
+            {
+                std::cerr <<"ERROR: " << "bad input" <<  " => \""<< line << "\"" << '\n';
+                continue ;
+            }
         }
+        puts("here");
         look_for_value();
     }
     data.close();
 }
 
-
-BitcoinExchange::~BitcoinExchange(){
+BitcoinExchange::~BitcoinExchange()
+{
     history.clear();
-
 }
