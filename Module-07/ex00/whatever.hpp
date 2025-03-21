@@ -8,7 +8,7 @@ template <typename t> void swap(t &arg1, t &arg2)
 {
     t tmp = arg1;
     arg1 = arg2;
-    arg2 = tmp;        
+    arg2 = tmp;
 }
 
 
