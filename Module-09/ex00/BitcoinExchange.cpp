@@ -13,7 +13,7 @@ BitcoinExchange & BitcoinExchange::operator=(const BitcoinExchange &other)
 {
     if (this != &other)
     {
-        //
+        input_file = other.input_file;
     }
     return *this;
 }
@@ -138,11 +138,10 @@ bool just_white_spaces(const std::string str)
 
 void        BitcoinExchange::look_for_value()
 {
-    puts("hello world");
     if (!history.size())
         return ;
     std::map<std::string , double>::iterator it = history.lower_bound(date);
-    if (it == history.end() && it->first != date)
+    if (it == history.end() && it->first != date) // the second one i think zayd
         it--;
     std::cout <<  date << " => " << value << " = " << it->second * value << std::endl;
     
@@ -207,7 +206,6 @@ void BitcoinExchange::parse_input_file()
                 continue ;
             }
         }
-        puts("here");
         look_for_value();
     }
     data.close();
@@ -216,4 +214,38 @@ void BitcoinExchange::parse_input_file()
 BitcoinExchange::~BitcoinExchange()
 {
     history.clear();
+}
+
+
+
+
+// getters
+
+// Getters
+std::map<std::string, double> BitcoinExchange::getHistory() const {
+    return history;
+}
+
+std::string BitcoinExchange::getInputFile() const {
+    return input_file;
+}
+
+std::string BitcoinExchange::getDate() const {
+    return date;
+}
+
+int BitcoinExchange::getYear() const {
+    return year;
+}
+
+int BitcoinExchange::getMonth() const {
+    return month;
+}
+
+int BitcoinExchange::getDay() const {
+    return day;
+}
+
+double BitcoinExchange::getValue() const {
+    return value;
 }

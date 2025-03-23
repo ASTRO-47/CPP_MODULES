@@ -29,7 +29,17 @@ public:
     BitcoinExchange& operator=(const BitcoinExchange &);
 
     // open the  files
+    
     void                    parse_input_file();
     void                    load_data_base();
     ~BitcoinExchange();
+
+    // getters
+    std::map<std::string, double>   getHistory() const;
+    std::string                     getInputFile() const;
+    std::string                     getDate() const;
+    int                             getYear() const;
+    int                             getMonth() const;
+    int                             getDay() const;
+    double getValue() const;
 } ; 
