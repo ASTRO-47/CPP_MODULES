@@ -11,5 +11,6 @@ private:
     RPN();
 public:
     RPN(const std::string);
+    long long parse_calculate();
     ~RPN();
 } ;
