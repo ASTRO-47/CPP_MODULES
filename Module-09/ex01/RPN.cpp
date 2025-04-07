@@ -12,11 +12,12 @@ bool RPN::its_Op(char c) const
 
 long long RPN::parse_calculate()
 {
-    std::cout << "stack size :" << _numbs.size() << std::endl;
+    std::istringstream ss(_str);
+
     for (size_t i = 0; i < _str.length(); i++)
     {
         if (std::isspace(_str[i]))
-            i++;
+            continue ;
         if (its_Op(_str[i]))
         {
             switch (_str[i])
