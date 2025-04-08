@@ -11,6 +11,7 @@ private:
     std::stack<int> _numbs;
     RPN();
     bool    its_Op(char) const;
+    void    Error_msge(const std::string);
 public:
     RPN(const std::string);
     long long parse_calculate();
