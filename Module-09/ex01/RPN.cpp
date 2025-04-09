@@ -1,6 +1,7 @@
 #include "RPN.hpp"
 
 RPN::~RPN() {}
+
 RPN::RPN() {}
 
 RPN::RPN(const std::string _exp) :_str(_exp) {}
@@ -14,6 +15,18 @@ void        RPN::Error_msge(const std::string _msge)
 {
     std::cerr << _msge << std::endl;
     exit (1);
+}
+
+bool    RPN::checker(std::string _str)
+{
+    for (size_t i = 0;i < _str.length(); i++)
+    {
+        if (!i && _str[i] == '+')
+            continue ;
+        if (_str[i]  == '0' && (i != 0 || (_str[i]))) // add the condition here
+            Error_msge("ERROR");
+    }
+    return true;
 }
 
 long long RPN::parse_calculate()
@@ -45,6 +58,8 @@ long long RPN::parse_calculate()
         }
         else
         {
+            if (checker(_geter))
+                Error_msge("ERROR");
             char *att = NULL;
             int res = std::strtod(_geter.c_str(), &att);
             if (att[0] != '\0')

@@ -12,6 +12,7 @@ private:
     RPN();
     bool    its_Op(char) const;
     void    Error_msge(const std::string);
+    bool    checker(std::string);
 public:
     RPN(const std::string);
     long long parse_calculate();
