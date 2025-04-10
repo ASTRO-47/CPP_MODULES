@@ -3,11 +3,11 @@ FLAGS = -Wall -Wextra -Werror
 CPPC = c++ -std=c++98
 
 
-SOURCES =  main.cpp
+SOURCES =  main.cpp PmergeMe.cpp
 OBJECTS = $(SOURCES:.cpp=.o)
 
-NAME = Iter
-HEADERS = easyfind.hpp
+NAME = PmergeMe
+HEADERS = PmergeMe.hpp
 RM = rm -f
 #Colors:
 GREEN       = \e[38;5;118m
