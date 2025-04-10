@@ -23,7 +23,7 @@ bool    RPN::checker(std::string _str)
     if (_str[j] == '+')
         j++;
     for (;j < _str.length() && _str[j] == '0'; j++) {}
-    if (std::isdigit(_str[j]) && _str[j + 1] == '\0')
+    if ((std::isdigit(_str[j]) && _str[j + 1] == '\0') || (!_str[j]))
         return true;
     return false;
 }
@@ -32,20 +32,29 @@ void       RPN::apply_operator(char _op)
 {
     if (_numbs.size() !=  2)
         Error_msge("ERROR");
+    int second = _numbs.top();
+    _numbs.pop();
+    int first = _numbs.top();
+    _numbs.pop();
+    // std::cout << "first=" << first << std::endl << "second=" << second << std::endl;
+    int res;
     switch (_op)
     {
         case '+':
-            puts("plus");
+            res = second + first;
             break ;
         case '-':
-            puts("minus");
+            res = first - second;
             break ;
         case '*':
-            puts("multi");
+            res = first * second;
             break ;
         case '/':
-            puts("div");
+            if (!second)
+                Error_msge("ERROR: DIVISION BY 0");
+            res = first / second;
     }
+    _numbs.push(res);
 }
 
 long long RPN::parse_calculate()
@@ -57,7 +66,8 @@ long long RPN::parse_calculate()
     std::string _geter;
     while (getline(ss, _geter, ' '))
     {
-        std::cout << "array:" << _geter << "]" << std::endl;
+        if (!_geter.length())
+            continue ;
         if (_geter.length() == 1 && its_Op(_geter[0]))
             apply_operator(_geter[0]);
         else
@@ -71,19 +81,7 @@ long long RPN::parse_calculate()
             _numbs.push(res);
         }
     }
-    // for (size_t i = 0; i < _str.length(); i++)
-    // {
-    //     if (std::isspace(_str[i]))
-    //         continue ;
-    //     if (its_Op(_str[i]))
-    //     {
-    //         }
-    //     }
-    //     else
-    //     {
-    //         std::cout << _str[i] << std::endl;
-    //     }
-        
-    // }
-    return 0;
+    if (_numbs.size() != 1)
+        Error_msge("ERROR");
+    return _numbs.top();
 }
