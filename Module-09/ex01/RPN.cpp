@@ -19,14 +19,33 @@ void        RPN::Error_msge(const std::string _msge)
 
 bool    RPN::checker(std::string _str)
 {
-    for (size_t i = 0;i < _str.length(); i++)
+    size_t j  = 0;
+    if (_str[j] == '+')
+        j++;
+    for (;j < _str.length() && _str[j] == '0'; j++) {}
+    if (std::isdigit(_str[j]) && _str[j + 1] == '\0')
+        return true;
+    return false;
+}
+
+void       RPN::apply_operator(char _op)
+{
+    if (_numbs.size() !=  2)
+        Error_msge("ERROR");
+    switch (_op)
     {
-        if (!i && _str[i] == '+')
-            continue ;
-        if (_str[i]  == '0' && (i != 0 || (_str[i]))) // add the condition here
-            Error_msge("ERROR");
+        case '+':
+            puts("plus");
+            break ;
+        case '-':
+            puts("minus");
+            break ;
+        case '*':
+            puts("multi");
+            break ;
+        case '/':
+            puts("div");
     }
-    return true;
 }
 
 long long RPN::parse_calculate()
@@ -38,33 +57,18 @@ long long RPN::parse_calculate()
     std::string _geter;
     while (getline(ss, _geter, ' '))
     {
+        std::cout << "array:" << _geter << "]" << std::endl;
         if (_geter.length() == 1 && its_Op(_geter[0]))
-        {
-            puts("its op");
-            // switch (_geter[0])
-            // {
-            //     case '+':
-            //         puts("plus");
-            //         break ;
-            //     case '-':
-            //         puts("minus");
-            //         break ;
-            //     case '*':
-            //         puts("multi");
-            //         break ;
-            //     case '/':
-            //         puts("div");
-            // }
-        }
+            apply_operator(_geter[0]);
         else
         {
-            if (checker(_geter))
+            if (!checker(_geter))
                 Error_msge("ERROR");
             char *att = NULL;
             int res = std::strtod(_geter.c_str(), &att);
             if (att[0] != '\0')
                 Error_msge("ERROR");
-            std::cout << res << std::endl;
+            _numbs.push(res);
         }
     }
     // for (size_t i = 0; i < _str.length(); i++)
