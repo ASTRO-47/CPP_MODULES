@@ -6,6 +6,31 @@ RPN::RPN() {}
 
 RPN::RPN(const std::string _exp) :_str(_exp) {}
 
+RPN::RPN(const RPN &other)
+{
+    *this = other;
+}
+
+std::string RPN::_str_geter() const
+{
+    return _str;
+}
+
+std::stack<int> RPN::_numbs_geter() const
+{
+    return _numbs;
+}
+
+RPN& RPN::operator=(const RPN &other)
+{
+    if (this != &other)
+    {
+        _str = other._str_geter();
+        _numbs = other._numbs_geter();
+    }
+    return *this;
+}
+
 bool RPN::its_Op(char c) const
 {
     return c == '+' || c == '-' || c == '*' || c == '/';
@@ -30,18 +55,17 @@ bool    RPN::checker(std::string _str)
 
 void       RPN::apply_operator(char _op)
 {
-    if (_numbs.size() !=  2)
+    if (_numbs.size() <  2)
         Error_msge("ERROR");
     int second = _numbs.top();
     _numbs.pop();
     int first = _numbs.top();
     _numbs.pop();
-    // std::cout << "first=" << first << std::endl << "second=" << second << std::endl;
     int res;
     switch (_op)
     {
         case '+':
-            res = second + first;
+            res = first + second;
             break ;
         case '-':
             res = first - second;
