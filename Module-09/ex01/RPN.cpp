@@ -88,10 +88,8 @@ long long RPN::parse_calculate()
     std::istringstream ss(_str);
 
     std::string _geter;
-    while (getline(ss, _geter, ' '))
+    while (ss >> _geter)
     {
-        if (!_geter.length())
-            continue ;
         if (_geter.length() == 1 && its_Op(_geter[0]))
             apply_operator(_geter[0]);
         else
