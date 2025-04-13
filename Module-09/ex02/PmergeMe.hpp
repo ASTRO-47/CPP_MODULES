@@ -4,20 +4,22 @@
 #include <sstream>
 #include <deque>
 #include <vector>
+#include <utility>
 
 class PmergeMe
 {
 private:
     PmergeMe();
-    std::vector<int> _vec;
-    std::deque<int> _deq;
+    void                                store_pairs(); 
+    int                                 _remain;
+    std::vector<int>                    _vec;
+    std::deque<int>                     _deq;
+    std::vector<std::pair<int, int> >    _pairs;
 public:
     PmergeMe(int, char *[]);
     PmergeMe(const PmergeMe &);
     PmergeMe &operator=(const PmergeMe &);
     void        parse_sort(int, char *[]);
-    void        Error_msge() const;
 
-    
     ~PmergeMe();
 } ;
