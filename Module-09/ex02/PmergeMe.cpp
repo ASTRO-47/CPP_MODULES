@@ -62,7 +62,7 @@ void    PmergeMe::_jacob_gen()
     size_t insert_count = 1; // we already inserted _pend_seq[0]
     size_t jacob_idx = 1;
     
-    while (insert_count < _pend_seq.size())
+    while (insert_count < _pend_seq.size()) // 0 1 1 3 
     {
         // Get the next Jacobsthal index within the range of pending sequence
         size_t next_idx = _jacob_seq[jacob_idx];
@@ -71,7 +71,7 @@ void    PmergeMe::_jacob_gen()
             jacob_idx++;
             next_idx = _jacob_seq[jacob_idx];
         }
-        
+
         // Process elements from current Jacobsthal number down to the previous inserted element
         for (size_t i = std::min(next_idx, _pend_seq.size() - 1); i >= insert_count; i--)
         {
