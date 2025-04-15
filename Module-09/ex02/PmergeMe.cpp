@@ -58,30 +58,25 @@ void    PmergeMe::_jacob_gen()
         _pend_seq.push_back(_pairs[i].second);
     }
 
-    _main_seq.push_front(_pend_seq[0]);
+    _main_seq.push_front(_pend_seq[0]); // need to check all the possible cases of this push
     size_t insert_count = 1; // we already inserted _pend_seq[0]
-    size_t jacob_idx = 1;
+    size_t jacob_idx = 2;
     
     while (insert_count < _pend_seq.size()) // 0 1 1 3 
     {
         // Get the next Jacobsthal index within the range of pending sequence
         size_t next_idx = _jacob_seq[jacob_idx];
-        while (next_idx < insert_count && next_idx < _pend_seq.size())
-        {
-            jacob_idx++;
-            next_idx = _jacob_seq[jacob_idx];
-        }
 
         // Process elements from current Jacobsthal number down to the previous inserted element
-        for (size_t i = std::min(next_idx, _pend_seq.size() - 1); i >= insert_count; i--)
+
+        for (size_t i = std::min(next_idx, _pend_seq.size() - 1); i >= insert_count; i--) // 4 1
         {
             if (i == 0) continue; // Skip the first element which is already inserted
-            
             // Binary search to find insertion position in main sequence
             size_t left = 0;
             size_t right = insert_count + i; // The current sorted portion of main_seq
             size_t element = _pend_seq[i];
-            
+
             while (left < right)
             {
                 size_t mid = left + (right - left) / 2;
@@ -194,11 +189,6 @@ void    PmergeMe::parse_sort(int ac, char *av[])
             std::cout << " ";
     }
     std::cout << std::endl;
-
 }
 
-
-PmergeMe::~PmergeMe()
-{ 
-
-}
+PmergeMe::~PmergeMe() {}
