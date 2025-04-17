@@ -87,9 +87,8 @@ void    PmergeMe::_sort_vec()
             size_t element = _pend_seq[i];
             binary_search(element);
             if (!i)
-                break ; // to prevent overlfow
+                break ; //to prevent overlfow
         }
-
         insert_count = next_idx + 1;
         jacob_idx++;
     }
@@ -98,6 +97,54 @@ void    PmergeMe::_sort_vec()
 }
 
 void    PmergeMe::store_pairs()
+{
+    size_t _s = _vec.size();
+    if (_s % 2)
+        _remain = _vec[_s-- - 1];
+    for (size_t i = 0; i < _s; i+=2)
+        _pairs.push_back(std::make_pair(_vec[i], _vec[i + 1]));
+    for (size_t i = 0; i < _pairs.size(); i++)
+    {
+        if (_pairs[i].first < _pairs[i].second)
+        {
+            int tmp = _pairs[i].first;
+            _pairs[i].first = _pairs[i].second;
+            _pairs[i].second = tmp;
+        }
+    }
+    std::sort(_pairs.begin(), _pairs.end());
+}
+
+void    PmergeMe::_sort_deq()
+{
+    for (size_t i = 0; i < _pairs.size(); i++)
+    {
+        _main_seq.push_back(_pairs[i].first);
+        _pend_seq.push_back(_pairs[i].second);
+    }
+
+    _main_seq.push_front(_pend_seq[0]);
+    size_t insert_count = 1;
+    size_t jacob_idx = 2;
+
+    while (insert_count < _pend_seq.size())
+    {
+        size_t next_idx = _jacob_seq[jacob_idx];
+        for (size_t i = std::min(next_idx, _pend_seq.size() - 1); i >= insert_count; i--) // to prevent out bounds cases
+        {
+            size_t element = _pend_seq[i];
+            binary_search(element);
+            if (!i)
+                break ; //to prevent overlfow
+        }
+        insert_count = next_idx + 1;
+        jacob_idx++;
+    }
+    if (_remain != -1)
+        binary_search(_remain);
+}
+
+void    PmergeMe::store_pairs_deq()
 {
     size_t _s = _vec.size();
     if (_s % 2)
@@ -130,7 +177,6 @@ void    PmergeMe::parse_sort(int ac, char *av[])
     for (int i = 1;i < ac; i++)
     {
         std::istringstream ss(av[i]);
-
         std::string _geter; // positive integer sequence
         while (ss >> _geter)
         {
@@ -142,34 +188,45 @@ void    PmergeMe::parse_sort(int ac, char *av[])
             _vec.push_back(_res);
         }
     }
-    _jacob_gen();
-    // if (!isSorted())
-    // {
-    //     std::cout << "elements are not sorted\n";
-    //     return ;
-    // }
+    _jacob_gen(); // generate the jacobsthal seq
+    std::cout << "Before:   ";
+    for (size_t i = 0;i < _vec.size() ;i++)
+    {
+        std::cout << _vec[i];
+        if (i != _vec.size() - 1)
+            std::cout << " ";
+    }
+    std::cout << std::endl;
 
-    // std::cout << "Before:   ";
-    // for (size_t i = 0;i < _vec.size() ;i++)
-    // {
-    //     std::cout << _vec[i];
-    //     if (i != _vec.size() - 1)
-    //         std::cout << " ";
-    // }
-    // std::cout << std::endl;
-    // std::cout << "After:   ";
+    // for vector
     std::clock_t _start_vec = std::clock();
     store_pairs();
+    _sort_vec();
     std::clock_t _end_vec = std::clock();
-    double _vec_time = static_cast<double>(_end_vec - _start_vec) / CLOCKS_PER_SEC;
-    std::cout << std::fixed << std::setprecision(6) << _vec_time << std::endl;
-    // for (size_t i = 0;i < _main_seq.size() ;i++)
-    // {
-    //     std::cout << _main_seq[i];
-    //     if (i != _main_seq.size() - 1)
-    //         std::cout << " ";
-    // }
+
+    // for deque
+    std::clock_t _start_deq = std::clock();
+    store_pairs_deq();
+    _sort_deq();
+    std::clock_t _end_deq = std::clock();
+
+
+    std::cout << "After:   ";
+    for (size_t i = 0;i < _main_seq.size() ;i++)
+    {
+        std::cout << _main_seq[i];
+        if (i != _main_seq.size() - 1)
+            std::cout << " ";
+    }
     std::cout << std::endl;
+
+
+    // print time to sort elements for vector and deque
+    double _vec_time = static_cast<double>(_end_vec - _start_vec) / CLOCKS_PER_SEC;
+    std::cout << std::fixed << std::setprecision(6)  << "time to sort with std::vector : " << _vec_time << " s" << std::endl;
+
+    double _deq_time = static_cast<double>(_end_deq - _start_deq) / CLOCKS_PER_SEC;
+    std::cout << std::fixed << std::setprecision(6)  << "time to sort with std::vector : " << _deq_time << " s" << std::endl;
 }
 
 PmergeMe::~PmergeMe() {}
