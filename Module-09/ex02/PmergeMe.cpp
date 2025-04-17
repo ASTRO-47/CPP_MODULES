@@ -2,7 +2,7 @@
 
 // do not forgot canonical form
 
-PmergeMe::PmergeMe(int ac, char *av[])
+PmergeMe::PmergeMe(int ac, char *av[]) : _remain(-1)
 {
     std::string _geter;
     
@@ -12,7 +12,7 @@ PmergeMe::PmergeMe(int ac, char *av[])
     }
 }
 
-PmergeMe::PmergeMe()
+PmergeMe::PmergeMe() : _remain(-1)
 {
     // do nothing i guess for now
 }
@@ -44,83 +44,53 @@ bool    checker(std::string _m)
     return true;
 }
 
+void    PmergeMe::binary_search(size_t element)
+{
+    int left = 0;
+    int right = _main_seq.size();
+    while (left < right)
+    {   
+        size_t mid = (right + left) / 2;  
+        if (element > _main_seq[mid])
+            left = mid + 1;
+        else
+            right = mid;
+    }
+    _main_seq.insert(_main_seq.begin() + left, element);
+}
+
 void    PmergeMe::_jacob_gen()
 {
     _jacob_seq.push_back(0);
     _jacob_seq.push_back(1);
     for (size_t i = 2; i < _vec.size(); i++)
-    {
         _jacob_seq.push_back(_jacob_seq[i-1] + 2*_jacob_seq[i-2]);
-    }
     for (size_t i = 0; i < _pairs.size(); i++)
     {
         _main_seq.push_back(_pairs[i].first);
         _pend_seq.push_back(_pairs[i].second);
     }
 
-    _main_seq.push_front(_pend_seq[0]); // need to check all the possible cases of this push
-    size_t insert_count = 1; // we already inserted _pend_seq[0]
+    _main_seq.push_front(_pend_seq[0]);
+    size_t insert_count = 1;
     size_t jacob_idx = 2;
-    
-    while (insert_count < _pend_seq.size()) // 0 1 1 3 
+
+    while (insert_count < _pend_seq.size())
     {
-        // Get the next Jacobsthal index within the range of pending sequence
         size_t next_idx = _jacob_seq[jacob_idx];
-
-        // Process elements from current Jacobsthal number down to the previous inserted element
-
-        for (size_t i = std::min(next_idx, _pend_seq.size() - 1); i >= insert_count; i--) // 4 1
+        for (size_t i = std::min(next_idx, _pend_seq.size() - 1); i >= insert_count; i--) // to prevent out bounds cases
         {
-            if (i == 0) continue; // Skip the first element which is already inserted
-            // Binary search to find insertion position in main sequence
-            size_t left = 0;
-            size_t right = insert_count + i; // The current sorted portion of main_seq
             size_t element = _pend_seq[i];
-
-            while (left < right)
-            {
-                size_t mid = left + (right - left) / 2;
-                if (_main_seq[mid] < element)
-                    left = mid + 1;
-                else
-                    right = mid;
-            }
-
-            // Insert at the found position
-            _main_seq.insert(_main_seq.begin() + left, element);
-            
-            if (i == 0) break; // To handle unsigned integer underflow
+            binary_search(element);
+            if (!i)
+                break ; // to prevent overlfow
         }
-        
+
         insert_count = next_idx + 1;
         jacob_idx++;
-        
-        if (insert_count >= _pend_seq.size())
-            break;
     }
-    
-    // Handle any remaining elements
-    for (size_t i = insert_count; i < _pend_seq.size(); i++)
-    {
-        if (i == 0) continue; // Skip the first element which is already inserted
-        
-        // Binary search to find insertion position
-        size_t left = 0;
-        size_t right = _main_seq.size();
-        size_t element = _pend_seq[i];
-        
-        while (left < right)
-        {
-            size_t mid = left + (right - left) / 2;
-            if (_main_seq[mid] < element)
-                left = mid + 1;
-            else
-                right = mid;
-        }
-        
-        // Insert at the found position
-        _main_seq.insert(_main_seq.begin() + left, element);
-    }
+    if (_remain != -1)
+        binary_search(_remain);
 }
 
 void    PmergeMe::store_pairs()
@@ -141,17 +111,8 @@ void    PmergeMe::store_pairs()
             _pairs[i].second = tmp;
         }
     }
-    // for (size_t i = 0; i < _pairs.size(); i++)
-    // {
-        // std::cout << _pairs[i].first << std::endl << _pairs[i].second << std::endl << std::endl; 
-    // }
     std::sort(_pairs.begin(), _pairs.end());
     _jacob_gen();
-    // for (size_t i = 0; i < _main_seq.size(); i++)
-    // {
-        // std::cout << _pairs[i].first << std::endl << _pairs[i].second << std::endl << std::endl; 
-        // std::cout << _main_seq[i] << std::endl;
-    // }
 }
 
 void    PmergeMe::parse_sort(int ac, char *av[])

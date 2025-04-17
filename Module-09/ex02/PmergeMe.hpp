@@ -19,6 +19,7 @@ private:
     std::deque<size_t>                  _main_seq;
     std::deque<size_t>                  _pend_seq;
     void                                _jacob_gen();
+    void                                binary_search(size_t);
 public:
     PmergeMe(int, char *[]);
     PmergeMe(const PmergeMe &);
@@ -27,3 +28,6 @@ public:
 
     ~PmergeMe();
 } ;
+
+// main_chain : 7, 8, 46, 53, 100 // 0 1 1 3 5 11 2
+// pend_chain : 7), 11, 2, 27
