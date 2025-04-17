@@ -4,7 +4,8 @@
 #include <sstream>
 #include <deque>
 #include <vector>
-#include <utility>
+#include <ctime>
+#include <iomanip>
 
 class PmergeMe
 {
@@ -18,9 +19,12 @@ private:
     std::vector<int>                    _jacob_seq;
     std::deque<size_t>                  _main_seq;
     std::deque<size_t>                  _pend_seq;
+    std::vector<size_t>                 _main_seq_;
+    std::vector<size_t>                 _pend_seq_;
     void                                _jacob_gen();
     void                                binary_search(size_t);
     bool                                isSorted();
+    void                                _sort_vec();
 public:
     PmergeMe(int, char *[]);
     PmergeMe(const PmergeMe &);
@@ -29,6 +33,3 @@ public:
 
     ~PmergeMe();
 } ;
-
-// main_chain : 7, 8, 46, 53, 100 // 0 1 1 3 5 11 2
-// pend_chain : 7), 11, 2, 27

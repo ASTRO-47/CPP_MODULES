@@ -64,7 +64,11 @@ void    PmergeMe::_jacob_gen()
     _jacob_seq.push_back(0);
     _jacob_seq.push_back(1);
     for (size_t i = 2; i < _vec.size(); i++)
-        _jacob_seq.push_back(_jacob_seq[i-1] + 2*_jacob_seq[i-2]);
+        _jacob_seq.push_back(_jacob_seq[i - 1] + 2 * _jacob_seq[i - 2]);
+}
+
+void    PmergeMe::_sort_vec()
+{
     for (size_t i = 0; i < _pairs.size(); i++)
     {
         _main_seq.push_back(_pairs[i].first);
@@ -99,9 +103,7 @@ void    PmergeMe::store_pairs()
     if (_s % 2)
         _remain = _vec[_s-- - 1];
     for (size_t i = 0; i < _s; i+=2)
-    {
         _pairs.push_back(std::make_pair(_vec[i], _vec[i + 1]));
-    }
     for (size_t i = 0; i < _pairs.size(); i++)
     {
         if (_pairs[i].first < _pairs[i].second)
@@ -112,7 +114,6 @@ void    PmergeMe::store_pairs()
         }
     }
     std::sort(_pairs.begin(), _pairs.end());
-    _jacob_gen();
 }
 
 bool PmergeMe::isSorted()
@@ -141,27 +142,33 @@ void    PmergeMe::parse_sort(int ac, char *av[])
             _vec.push_back(_res);
         }
     }
-    if (!isSorted())
-    {
-        std::cout << "elements are not sorted\n";
-        return ;
-    }
-    std::cout << "Before:   ";
-    for (size_t i = 0;i < _vec.size() ;i++)
-    {
-        std::cout << _vec[i];
-        if (i != _vec.size() - 1)
-            std::cout << " ";
-    }
-    std::cout << std::endl ;
-    std::cout << "After:   ";
+    _jacob_gen();
+    // if (!isSorted())
+    // {
+    //     std::cout << "elements are not sorted\n";
+    //     return ;
+    // }
+
+    // std::cout << "Before:   ";
+    // for (size_t i = 0;i < _vec.size() ;i++)
+    // {
+    //     std::cout << _vec[i];
+    //     if (i != _vec.size() - 1)
+    //         std::cout << " ";
+    // }
+    // std::cout << std::endl;
+    // std::cout << "After:   ";
+    std::clock_t _start_vec = std::clock();
     store_pairs();
-    for (size_t i = 0;i < _main_seq.size() ;i++)
-    {
-        std::cout << _main_seq[i];
-        if (i != _main_seq.size() - 1)
-            std::cout << " ";
-    }
+    std::clock_t _end_vec = std::clock();
+    double _vec_time = static_cast<double>(_end_vec - _start_vec) / CLOCKS_PER_SEC;
+    std::cout << std::fixed << std::setprecision(6) << _vec_time << std::endl;
+    // for (size_t i = 0;i < _main_seq.size() ;i++)
+    // {
+    //     std::cout << _main_seq[i];
+    //     if (i != _main_seq.size() - 1)
+    //         std::cout << " ";
+    // }
     std::cout << std::endl;
 }
 
