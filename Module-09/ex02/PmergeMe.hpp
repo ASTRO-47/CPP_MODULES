@@ -20,6 +20,7 @@ private:
     std::deque<size_t>                  _pend_seq;
     void                                _jacob_gen();
     void                                binary_search(size_t);
+    bool                                isSorted();
 public:
     PmergeMe(int, char *[]);
     PmergeMe(const PmergeMe &);

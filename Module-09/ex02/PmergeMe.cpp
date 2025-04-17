@@ -115,6 +115,14 @@ void    PmergeMe::store_pairs()
     _jacob_gen();
 }
 
+bool PmergeMe::isSorted()
+{
+    for (size_t i = 1; i < _main_seq.size(); i++)
+        if (_main_seq[i - 1] > _main_seq[i])
+            return false;
+    return true;
+}
+
 void    PmergeMe::parse_sort(int ac, char *av[])
 {
     char *check = NULL;
@@ -133,6 +141,11 @@ void    PmergeMe::parse_sort(int ac, char *av[])
             _vec.push_back(_res);
         }
     }
+    if (!isSorted())
+    {
+        std::cout << "elements are not sorted\n";
+        return ;
+    }
     std::cout << "Before:   ";
     for (size_t i = 0;i < _vec.size() ;i++)
     {
@@ -141,8 +154,8 @@ void    PmergeMe::parse_sort(int ac, char *av[])
             std::cout << " ";
     }
     std::cout << std::endl ;
-    store_pairs();
     std::cout << "After:   ";
+    store_pairs();
     for (size_t i = 0;i < _main_seq.size() ;i++)
     {
         std::cout << _main_seq[i];
