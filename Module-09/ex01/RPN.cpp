@@ -16,7 +16,7 @@ std::string RPN::_str_geter() const
     return _str;
 }
 
-std::stack<int> RPN::_numbs_geter() const
+std::stack<double> RPN::_numbs_geter() const
 {
     return _numbs;
 }
@@ -57,11 +57,11 @@ void       RPN::apply_operator(char _op)
 {
     if (_numbs.size() <  2)
         Error_msge("ERROR");
-    int second = _numbs.top();
+    double second = _numbs.top();
     _numbs.pop();
-    int first = _numbs.top();
+    double first = _numbs.top();
     _numbs.pop();
-    int res;
+    double res;
     switch (_op)
     {
         case '+':
@@ -78,10 +78,11 @@ void       RPN::apply_operator(char _op)
                 Error_msge("ERROR: DIVISION BY 0");
             res = first / second;
     }
+    // std::cout << res << std::endl; exit(0);
     _numbs.push(res);
 }
 
-long long RPN::parse_calculate()
+double RPN::parse_calculate()
 {
     if (_str.empty())
         Error_msge("Error");
@@ -97,7 +98,7 @@ long long RPN::parse_calculate()
             if (!checker(_geter))
                 Error_msge("ERROR");
             char *att = NULL;
-            int res = std::strtod(_geter.c_str(), &att);
+            double res = std::strtod(_geter.c_str(), &att);
             if (att[0] != '\0')
                 Error_msge("ERROR");
             _numbs.push(res);

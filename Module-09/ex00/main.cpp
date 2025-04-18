@@ -1,13 +1,7 @@
 #include "BitcoinExchange.hpp"
 
-void f()
-{
-    system("lsof -c btc");
-}
-
 int main(int ac, char *argv[])
 {
-    // atexit (f);
     if (ac != 2)
     {
         std::cerr << "invalid argument number\n";

@@ -17,14 +17,21 @@ private:
     std::vector<int>                    _vec;
     std::deque<int>                     _deq;
     std::vector<std::pair<int, int> >   _pairs;
+
     std::deque<std::pair<int, int> >   _pairs_deq;
+
     std::vector<int>                    _jacob_seq;
+    std::deque<int>                    _jacob_seq_deq;
+
     std::deque<size_t>                  _main_seq;
     std::deque<size_t>                  _pend_seq;
+
     std::vector<size_t>                 _main_seq_;
     std::vector<size_t>                 _pend_seq_;
     void                                _jacob_gen();
-    void                                binary_search(size_t);
+    void                                _jacob_gen_deq();
+    void                                binary_search_vec(size_t);
+    void                                binary_search_deq(size_t);
     bool                                isSorted();
     void                                _sort_vec();
     void                                _sort_deq();
