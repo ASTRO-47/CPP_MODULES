@@ -9,14 +9,21 @@ BitcoinExchange::BitcoinExchange(const BitcoinExchange &other)
     *this = other;
 }
     
-BitcoinExchange & BitcoinExchange::operator=(const BitcoinExchange &other)
+BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& other)
 {
     if (this != &other)
     {
-        input_file = other.input_file;
+        this->history = other.history;
+        this->input_file = other.input_file;
+        this->date = other.date;
+        this->year = other.year;
+        this->month = other.month;
+        this->day = other.day;
+        this->value = other.value;
     }
     return *this;
 }
+
 
 void BitcoinExchange::load_data_base()
 {
@@ -116,7 +123,7 @@ void BitcoinExchange::parse_value(std::string _value)
         throw std::runtime_error("bad input");
     char *res = NULL;
     value = std::strtod(_value.c_str(), &res);
-    if (strlen(res))
+    if ((res[0] != '\0' && (std::string)res != "f") || _value == "f")
         throw std::runtime_error("bad input");
     if (value < 0)
         throw std::runtime_error("not a positive number");
@@ -136,16 +143,21 @@ bool just_white_spaces(const std::string str)
     return true;
 }
 
-void        BitcoinExchange::look_for_value()
+void BitcoinExchange::look_for_value()
 {
-    if (!history.size())
-        return ;
-    std::map<std::string , double>::iterator it = history.lower_bound(date);
-    if (it == history.end() && it->first != date) // the second one i think zayd
-        it--;
-    std::cout <<  date << " => " << value << " = " << it->second * value << std::endl;
-    
+    if (history.empty())
+        return;
+    std::map<std::string, double>::iterator it = history.lower_bound(date);
+    if (it == history.begin() && it->first != date)
+    {
+        std::cerr << "Error: no data available before " << date << std::endl;
+        return;
+    }
+    if (it == history.end() || it->first != date)
+        --it;
+    std::cout << date << " => " << value << " = " << it->second * value << std::endl;
 }
+
 
 void BitcoinExchange::parse_input_file()
 {
@@ -181,15 +193,18 @@ void BitcoinExchange::parse_input_file()
             std::cerr << "ERROR: " << e.what() <<  " => \""<< line << "\"" << '\n';
             continue ;
         }
-        ss >> pipe; // need to protect this later champ
+        ss >> pipe;
         if (pipe.length() != 1 || pipe[0] != '|')
         {
             std::cerr << "ERROR: bad input" << " => \""<< line << "\"" << '\n';
             continue;
         }
-        if (ss >> _value)
-
-        try 
+        if (!(ss >> _value))
+        {
+            std::cerr <<"ERROR: " << "bad input" <<  " => \""<< line << "\"" << '\n';
+            continue ;
+        }
+        try
         {
             parse_value(_value);
         }
