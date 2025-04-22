@@ -2,6 +2,7 @@
 
 int main()
 {
+    
     std::vector<int> imad;
 
     imad.push_back(1);

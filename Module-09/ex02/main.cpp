@@ -6,7 +6,7 @@ int main(int ac, char *av[])
         return (std::cerr << "invalid number of argumetns\n", 1);
     try
     {
-        PmergeMe _sort(ac, av);
+        PmergeMe _sort;
         _sort.parse_sort(ac, av);
     }
     catch(const std::exception& e)
