@@ -22,3 +22,26 @@ This repository contains my implementation of the C++ modules from the 42/1337 c
 cd CPP_Module_XX
 make
 ./ExerciseXX
+
+Skills Acquired
+
+Object-Oriented Programming
+Memory management
+STL usage
+Exception handling
+Inheritance and polymorphism
+Template programming
+
+Technical Details
+
+All code follows C++98 standard
+Each module scored 100/100 in evaluations
+Code complies with the school's coding standards
+
+Helpful Resources
+
+cplusplus.com
+cppreference.com
+learncpp.com
+
+Feel free to explore and reach out with questions!
