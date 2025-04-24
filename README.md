@@ -27,6 +27,7 @@ make
 Skills Acquired
 
 Object-Oriented Programming
+
 Memory management
 STL usage
 Exception handling
