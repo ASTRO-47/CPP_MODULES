@@ -29,21 +29,32 @@ Skills Acquired
 Object-Oriented Programming
 
 Memory management
+
 STL usage
+
 Exception handling
+
 Inheritance and polymorphism
+
 Template programming
+
 
 Technical Details
 
 All code follows C++98 standard
+
 Each module scored 100/100 in evaluations
+
 Code complies with the school's coding standards
+
 
 Helpful Resources
 
 cplusplus.com
+
 cppreference.com
+
 learncpp.com
+
 
 Feel free to explore and reach out with questions!
