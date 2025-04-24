@@ -22,6 +22,7 @@ This repository contains my implementation of the C++ modules from the 42/1337 c
 cd CPP_Module_XX
 make
 ./ExerciseXX
+```
 
 Skills Acquired
 
